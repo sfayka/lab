@@ -22,7 +22,11 @@ Regular maintenance tasks to keep your site running smoothly.
   bundle update
   ```
 - [ ] Test site after updates to ensure nothing broke
-- [ ] Check for security advisories: `bundle audit`
+- [ ] (Optional) Check for security advisories:
+  ```bash
+  gem install bundler-audit
+  bundle audit
+  ```
 
 ### Content Review
 - [ ] Archive old experiments that are no longer active
@@ -69,7 +73,8 @@ bundle exec jekyll serve
 # Update dependencies
 bundle update
 
-# Check for security issues
+# Check for security issues (requires bundler-audit gem)
+gem install bundler-audit
 bundle audit
 
 # Build site (without serving)
