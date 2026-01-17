@@ -1,0 +1,22 @@
+title: Knox Analytics Lab
+email: 
+description: >-
+  Lab notes, essays, and experiments from Knox Analytics.
+baseurl: ""
+url: "https://lab.knoxanalytics.com"
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+
+minima:
+  skin: auto
+
+header_pages:
+  - essays.md
+  - experiments.md
+  - now.md
+
+# Optional: make excerpts on listings a bit nicer
+show_excerpts: true

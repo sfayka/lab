@@ -1,0 +1,8 @@
+- name: Example Project
+  url: https://github.com/knoxanalytics/example-project
+  why: >-
+    A small proof-of-concept to explore an idea. Replace this with your real repos.
+  status: active
+  tags:
+    - prototype
+    - tooling
