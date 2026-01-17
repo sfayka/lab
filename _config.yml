@@ -20,3 +20,12 @@ header_pages:
 
 # Optional: make excerpts on listings a bit nicer
 show_excerpts: true
+
+# Suppress Sass deprecation warnings from theme
+sass:
+  quiet_deps: true
+  style: compressed
+  silence_deprecations:
+    - global-builtin
+    - color-functions
+    - import
