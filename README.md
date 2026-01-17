@@ -11,14 +11,40 @@ A simple GitHub Pages (Jekyll) site for **lab.knoxanalytics.com**.
 
 ## Local preview
 
-If you have Ruby/Jekyll installed:
+### Prerequisites
 
-```bash
-bundle install
-bundle exec jekyll serve
-```
+- Ruby (2.6 or higher) - You have Ruby installed ✓
+- Bundler - You have Bundler installed ✓
 
-Then open `http://localhost:4000`.
+### Setup and run
+
+1. **Install dependencies:**
+   ```bash
+   bundle install
+   ```
+
+2. **Start the Jekyll server:**
+   ```bash
+   bundle exec jekyll serve
+   ```
+
+3. **Open your browser:**
+   Navigate to `http://localhost:4000`
+
+The site will automatically rebuild when you make changes to files. Press `Ctrl+C` to stop the server.
+
+### Troubleshooting
+
+- If you get permission errors, you may need to install gems to a local path:
+  ```bash
+  bundle config set --local path 'vendor/bundle'
+  bundle install
+  ```
+
+- If you encounter issues with the minima theme, try:
+  ```bash
+  bundle update
+  ```
 
 ## Deploy (GitHub Pages)
 
