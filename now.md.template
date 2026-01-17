@@ -1,0 +1,18 @@
+---
+layout: page
+title: Now
+permalink: /now/
+---
+
+What I'm focused on right now, and why.
+
+## Current focus
+
+- _Your first focus item - what you're working on and why it matters_
+- _Second focus item - what outcome you're aiming for_
+- _Third focus item - why this is important to you_
+
+## Essays connected to this
+
+{% assign essays = site.posts | where_exp: "p", "p.categories contains 'essays'" %}
+{% include post-list.html posts=essays limit=5 %}

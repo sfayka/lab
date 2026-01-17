@@ -1,0 +1,23 @@
+# Experiments Template
+# Copy this file to experiments.yml and fill in your projects
+# Or use this as a reference when adding new experiments
+
+- name: Project Name
+  url: https://github.com/yourusername/project-name
+  why: >-
+    A brief explanation of why this project exists and what problem it solves.
+    You can write multiple lines here - they'll be combined into one paragraph.
+  status: active
+  tags:
+    - tag1
+    - tag2
+
+# Add more projects below following the same format:
+
+# - name: Another Project
+#   url: https://github.com/yourusername/another-project
+#   why: >-
+#     Description of this project.
+#   status: active
+#   tags:
+#     - different-tag
