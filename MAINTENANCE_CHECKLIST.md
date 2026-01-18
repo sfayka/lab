@@ -5,11 +5,13 @@ Regular maintenance tasks to keep your site running smoothly.
 ## ✅ Regular Maintenance (Monthly)
 
 ### Content Updates
+
 - [ ] Review and update "Now" page with current focus
 - [ ] Check experiments status - update any that have changed
 - [ ] Review old posts - update if needed
 
 ### Technical Checks
+
 - [ ] Test site locally: `bundle exec jekyll serve`
 - [ ] Check all links still work
 - [ ] Verify GitHub Pages is building successfully (check Actions tab)
@@ -17,18 +19,23 @@ Regular maintenance tasks to keep your site running smoothly.
 ## 🔄 Quarterly Maintenance
 
 ### Dependency Updates
+
 - [ ] Update Jekyll and gems:
+
   ```bash
   bundle update
   ```
+
 - [ ] Test site after updates to ensure nothing broke
 - [ ] (Optional) Check for security advisories:
+
   ```bash
   gem install bundler-audit
   bundle audit
   ```
 
 ### Content Review
+
 - [ ] Archive old experiments that are no longer active
 - [ ] Review and update site description in `_config.yml` if needed
 - [ ] Check if any new pages should be added to navigation
@@ -36,11 +43,13 @@ Regular maintenance tasks to keep your site running smoothly.
 ## 🛠️ As Needed
 
 ### When Adding New Features
+
 - [ ] Test locally before pushing
 - [ ] Check mobile responsiveness
 - [ ] Verify dark theme still looks good
 
 ### When Dependencies Break
+
 - [ ] Check Jekyll version compatibility
 - [ ] Review minima theme updates
 - [ ] Update `Gemfile` if needed
@@ -48,6 +57,7 @@ Regular maintenance tasks to keep your site running smoothly.
 ## 📋 Annual Maintenance
 
 ### Major Updates
+
 - [ ] Review and update Ruby version (if system Ruby is outdated)
 - [ ] Consider updating to latest Jekyll version
 - [ ] Review and refresh site design/styling if desired
