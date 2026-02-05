@@ -4,6 +4,8 @@ title: Now
 permalink: /now/
 ---
 
+<div class="now-page-content">
+
 What I'm focused on right now, and why.
 
 ## Current focus
@@ -16,3 +18,5 @@ What I'm focused on right now, and why.
 
 {% assign essays = site.posts | where_exp: "p", "p.categories contains 'essays'" %}
 {% include post-list.html posts=essays limit=5 %}
+
+</div>

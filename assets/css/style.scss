@@ -547,72 +547,74 @@ h3 {
 }
 
 // Now page - style h2 sections as cards
-.post-content h2 {
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  padding: 1.25rem 1.5rem;
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  border-radius: 8px 8px 0 0;
-  position: relative;
-  font-size: 1.75rem;
-  letter-spacing: -0.02em;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-primary), var(--color-accent), transparent);
-    opacity: 0.5;
+.now-page-content {
+  h2 {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
     border-radius: 8px 8px 0 0;
-  }
-  
-  &:first-of-type {
-    margin-top: 2rem;
-  }
-}
-
-// Style the content following h2 on now page
-.post-content h2 + ul {
-  list-style: none;
-  padding: 1.5rem;
-  padding-left: 3rem;
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  margin-top: 0;
-  margin-bottom: 2.5rem;
-  
-  li {
-    padding: 0.75rem 0;
-    padding-left: 1.5rem;
     position: relative;
-    color: var(--color-text-light);
+    font-size: 1.75rem;
+    letter-spacing: -0.02em;
     
     &::before {
-      content: "▸";
+      content: '';
       position: absolute;
+      top: 0;
       left: 0;
-      color: var(--color-primary);
-      font-weight: bold;
-      text-shadow: 0 0 6px var(--color-primary-glow);
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-accent), transparent);
+      opacity: 0.5;
+      border-radius: 8px 8px 0 0;
+    }
+    
+    &:first-of-type {
+      margin-top: 2rem;
     }
   }
-}
 
-// Style other content following h2 (like the post-list include)
-.post-content h2 + *:not(ul) {
-  padding: 1.5rem;
-  background: var(--color-bg-alt);
-  border: 1px solid var(--color-border);
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  margin-top: 0;
-  margin-bottom: 2.5rem;
+  // Style the content following h2 on now page
+  h2 + ul {
+    list-style: none;
+    padding: 1.5rem;
+    padding-left: 3rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+    
+    li {
+      padding: 0.75rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      color: var(--color-text-light);
+      
+      &::before {
+        content: "▸";
+        position: absolute;
+        left: 0;
+        color: var(--color-primary);
+        font-weight: bold;
+        text-shadow: 0 0 6px var(--color-primary-glow);
+      }
+    }
+  }
+
+  // Style other content following h2 (like the post-list include)
+  h2 + *:not(ul) {
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    margin-top: 0;
+    margin-bottom: 2.5rem;
+  }
 }
 
 // Legacy support for .now-section class if used elsewhere
