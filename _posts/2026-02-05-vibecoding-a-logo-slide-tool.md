@@ -73,6 +73,7 @@ Next steps:
 When I started vibecoding, my goals were huge. I was going to build massive SaaS projects, make a fortune, and have a million concurrent users. But I soon realized I lack the engineering experience and the cash lying about to just quit my job, buy "Claude Max," and vibe away. So, I started with small tools—things that were annoying and time-consuming but manageable. Sometimes it’s the things that are too stupid to exist yet too expensive to buy that are the most satisfying to build yourself.
 
 The moral of the story is: small tools matter. They make life better and people happy. They don't require a million concurrent users or a million dollars in marketing. They just require a little time, a little focus, and the right "vibe."
+
 ---
 
 *This is part of my ongoing exploration of how AI is reshaping how we build software. More at [lab.knoxanalytics.com](https://lab.knoxanalytics.com).*
