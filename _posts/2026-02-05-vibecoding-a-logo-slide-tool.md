@@ -7,19 +7,13 @@ categories: [essays]
 
 My coworker mentioned a tool he used to have—something that made building logo slides painless. Search for logos, drag them into a grid, done. He missed it. I decided to build it.
 
-<!-- INTRO: Set up the problem - logo slides are a universal annoyance, the manual process is tedious -->
-
 ## The Annoyance
-
-<!-- Describe the pain: finding logos (right format, right resolution, transparent backgrounds), positioning them evenly, the fiddly alignment work -->
 
 Aligning logos to a grid: it sounds like a small thing, but it's a constant distraction—a reminder of the tedium that can creep into the job. If you’ve ever experienced it, you know the pain instantly. Why is it so difficult? Why is it so tedious?
 
-It's simple: no logos are uniform. They have different backgrounds, sizes, and shapes. You spend your life either hunting for the "perfect" version (right size, right color, transparent background) or paying for a service to do it for you. Then, once you finally have them, you have to position them perfectly. If one logo sits even slightly higher than the others, someone in the room will be staring at it instead of listening to you. See what I mean? 
+It's simple: no logos are uniform. They have different backgrounds, sizes, and shapes. You spend your life either hunting for the "perfect" version (right size, right color, transparent background) or paying for a service to do it for you. Then, once you finally have them, you have to position them perfectly. If one logo sits even slightly higher than the others, someone in the room will be staring at it instead of listening to you. See what I mean?
 
 ## What "Vibecoding" Means to Me
-
-<!-- Define the term for readers who haven't heard it - conversational development, iterating with AI, building by feel rather than spec -->
 
 I define "vibecoding" as the act of building software by feel rather than spec. It’s less about writing every line of code and more about letting the AI handle the heavy lifting while you iterate with it. This is especially useful for those of us who don't have the time—or the desire—to write detailed specs and documentation.
 
@@ -27,11 +21,9 @@ My own process is pretty straightforward. I have a CS degree, but I’ve always 
 
 I’ll be honest: I don’t always know if the AI is writing *good* code, or just code that happens to work. To me, vibecoding is about trusting the AI to handle the technical kinks while I provide the guardrails. I usually instruct the AI to write a PRD (Product Requirement Document) first, then have it write tests to verify its work along the way. It’s not a perfect system—AI makes assumptions and doesn't always choose the best frameworks—but with some fundamental knowledge and the right tests, it’s a powerful way to build. 
 
-So, with all of that in mind, and having set the stage, this is what I'm building and how I'm building it, so you can see the process. 
+So, with all of that in mind, and having set the stage, this is what I'm building and how I'm building it, so you can see the process.
 
 ## The Build
-
-<!-- Walk through the process: what you started with, how you iterated, where AI helped vs. where you had to step in -->
 
 I started like I typically do: by asking the AI to interview me, letting it write the spec, and then refining it. From there, the AI handles the coding while I review the output. In this case, I explained the problem and my vision, then let the AI interview me to build out the plan. The questions were pretty typical: *What frameworks do you want? Where should we get logos? (It actually provided some great suggestions). What does the output look like? What sort of exporting is required? Are some features needed for v1, or can they wait for v2?*
 
@@ -41,11 +33,9 @@ The AI came up with a plan, and it sounded solid. It would be a simple tool with
 
 I approved the plan and let the AI write the code, approving the commands it ran in VS Code (using the Codex extension). After about 20-30 minutes, it was essentially done. I hit some "Node package drama" with dependencies that wouldn't install, but eventually, I got it running—and it worked!
 
-I did notice that searching for company names wasn't working at first because the AI had used hardcoded values. I had to go fetch some API keys and client IDs from a few services to bridge the gap. Otherwise, the UI and core functionality were exactly what I had in mind. It even looked good—something I didn't have to specifically ask for or even really think about. 
+I did notice that searching for company names wasn't working at first because the AI had used hardcoded values. I had to go fetch some API keys and client IDs from a few services to bridge the gap. Otherwise, the UI and core functionality were exactly what I had in mind. It even looked good—something I didn't have to specifically ask for or even really think about.
 
 ## What Worked
-
-<!-- Specific wins: things that came together faster than expected, moments where the AI "got it" -->
 
 For the most part, I didn't need to micromanage the AI. It handled the coding, the UI, and the core functionality on its own. It even came up with some great suggestions, like the pre-built grid layouts and the export functionality. It didn't ask me for a color scheme or a UI layout—it just delivered. I really appreciated not having to think like a designer. Honestly, that’s probably for the best; I’d likely end up with something spartan and plain. For the designers out there with true vision, my hat is off to you.
 
@@ -59,13 +49,12 @@ This time, the friction was minimal. There was one issue with Node.js on my MacB
 
 ## The Tool So Far
 
-<!-- Current state: what it does, maybe a screenshot or link if it's shareable -->
-
 Here is a screenshot of the tool in its current state:
 
 ![Logo Slide Tool](/assets/images/logo_grid_v1_feb2026.png)
 
 What's working now:
+
 1. You can pick your grid layout.
 2. You can export to SVG, PPTX, PNG, and PDF.
 3. You can search for company names (currently hardcoded as I polish the logo fetching).
@@ -73,14 +62,13 @@ What's working now:
 5. You can choose the background color (white, black, or transparent).
 
 Next steps:
+
 1. Get the logo fetching working via API.
 2. Add custom grid layouts.
 3. Add the backend API for logos (thanks to Codex for the recommendations).
 4. Full end-to-end testing (I know, I should have done this earlier, but I was in the flow).
 
 ## Why Small Tools Matter
-
-<!-- Bigger point: the best use of AI might be solving the annoying things, not the ambitious things -->
 
 When I started vibecoding, my goals were huge. I was going to build massive SaaS projects, make a fortune, and have a million concurrent users. But I soon realized I lack the engineering experience and the cash lying about to just quit my job, buy "Claude Max," and vibe away. So, I started with small tools—things that were annoying and time-consuming but manageable. Sometimes it’s the things that are too stupid to exist yet too expensive to buy that are the most satisfying to build yourself.
 

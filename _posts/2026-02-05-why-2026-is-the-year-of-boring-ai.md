@@ -3,35 +3,36 @@ layout: post
 title: "Why 2026 Is the Year of Boring AI"
 date: 2026-02-05
 categories: [essays]
+published: false
 ---
 
 The most exciting thing happening in AI right now is that it's getting boring.
 
-<!-- INTRO: Frame the shift from "wow" to "does it work?" - this is a feature, not a bug -->
+{% comment %} INTRO: Frame the shift from "wow" to "does it work?" - this is a feature, not a bug {% endcomment %}
 
 ## The Hype Hangover
 
-<!-- 2023-2025 recap: demos that amazed, pilots that stalled, the gap between "impressive" and "useful" -->
+{% comment %} 2023-2025 recap: demos that amazed, pilots that stalled, the gap between "impressive" and "useful" {% endcomment %}
 
 ## What Boring Looks Like
 
-<!-- Concrete examples of AI becoming infrastructure: not the headline, just the thing that works -->
+{% comment %} Concrete examples of AI becoming infrastructure: not the headline, just the thing that works {% endcomment %}
 
 ## The Pragmatism Test
 
-<!-- How enterprises are now evaluating AI: ROI, reliability, integration cost, not just capability benchmarks -->
+{% comment %} How enterprises are now evaluating AI: ROI, reliability, integration cost, not just capability benchmarks {% endcomment %}
 
 ## Why This Is Good News
 
-<!-- Boring technology is trusted technology - when was the last time you thought about your database? -->
+{% comment %} Boring technology is trusted technology - when was the last time you thought about your database? {% endcomment %}
 
 ## The Work That Remains
 
-<!-- What "boring" requires: better tooling, clearer boundaries, honest capability assessments -->
+{% comment %} What "boring" requires: better tooling, clearer boundaries, honest capability assessments {% endcomment %}
 
 ## What I'm Building Toward
 
-<!-- Personal perspective on what this means for how you're approaching AI at Knox Analytics -->
+{% comment %} Personal perspective on what this means for how you're approaching AI at Knox Analytics {% endcomment %}
 
 ---
 

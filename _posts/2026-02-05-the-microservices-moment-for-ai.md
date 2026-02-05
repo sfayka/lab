@@ -3,35 +3,36 @@ layout: post
 title: "The Microservices Moment for AI"
 date: 2026-02-05
 categories: [essays]
+published: false
 ---
 
 Something familiar is happening in AI right now.
 
-<!-- INTRO: Set up the parallel - readers who lived through the monolith-to-microservices transition will recognize the pattern -->
+{% comment %} INTRO: Set up the parallel - readers who lived through the monolith-to-microservices transition will recognize the pattern {% endcomment %}
 
 ## The Monolith Phase
 
-<!-- Talk about 2024-2025: single-purpose agents, the "one model to rule them all" mentality, the appeal of the all-knowing assistant -->
+{% comment %} Talk about 2024-2025: single-purpose agents, the "one model to rule them all" mentality, the appeal of the all-knowing assistant {% endcomment %}
 
 ## Why Monoliths Break Down
 
-<!-- Where single agents hit walls: context limits, reliability at scale, the "jack of all trades" problem -->
+{% comment %} Where single agents hit walls: context limits, reliability at scale, the "jack of all trades" problem {% endcomment %}
 
 ## The Orchestration Shift
 
-<!-- Multi-agent systems, specialized agents with clear boundaries, the emergence of agent-to-agent protocols -->
+{% comment %} Multi-agent systems, specialized agents with clear boundaries, the emergence of agent-to-agent protocols {% endcomment %}
 
 ## What We Learned From Software
 
-<!-- Draw on microservices lessons: service boundaries, failure isolation, independent deployment, the coordination tax -->
+{% comment %} Draw on microservices lessons: service boundaries, failure isolation, independent deployment, the coordination tax {% endcomment %}
 
 ## What's Different This Time
 
-<!-- Where the analogy breaks down - agents have judgment, context matters differently, the "conversation" problem -->
+{% comment %} Where the analogy breaks down - agents have judgment, context matters differently, the "conversation" problem {% endcomment %}
 
 ## What I'm Watching
 
-<!-- Concrete things to pay attention to: MCP adoption, orchestration frameworks, how enterprises are actually deploying this -->
+{% comment %} Concrete things to pay attention to: MCP adoption, orchestration frameworks, how enterprises are actually deploying this {% endcomment %}
 
 ---
 
