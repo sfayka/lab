@@ -17,7 +17,7 @@ It was functional. It just wasn't *good*. You know the difference the moment you
 
 "It works" is not the same as "it feels good to use."
 
-I spent weeks trying to fix this with better prompts. I tried describing visual taste in words. I tried providing reference screenshots. I tried asking the agent to research design trends.
+I spent hours trying to fix this with better prompts. I tried describing visual taste in words. I tried providing reference screenshots (BTW screenshots on MacOS are not great. For my 9-5 I use Snagit and I should just buy another license). I tried asking the agent to research design trends.
 
 None of it worked.
 
@@ -27,17 +27,11 @@ Here's what finally did: **I stopped asking the agent to design anything**.
 
 ## The Problem: AI-Generated UI Looks Like Developer UI
 
-Knox Bot can write a performant data aggregation pipeline without breaking a sweat.
+Knox Bot can write a performant data aggregation pipeline without breaking a sweat, well, maybe more like a data aggregation pipeline that works after some iteration and testing. Want to be honest here, it's not quite at the 1-shot level yet. Sonnet and Opus are amazing models, but we aren't at that point yet (I think we will be there this year, btw, 2026 is the year to get your AI skills ready for the future). 
 
-But ask it to design a landing page and you get something that looks like a SaaS product from 2015.
+But ask it to design a landing page and you get something that looks like a SaaS product from 2015 (or Geocities, iykyk)!
 
-Not broken. Just... bland.
-
-The spacing is uniform but uninspired. The colors are inoffensive but forgettable. The layout is sensible but generic.
-
-It's the visual equivalent of writing technically correct prose with zero voice.
-
-And no amount of prompting fixes this.
+Not broken. Just... bland. The spacing is uniform but uninspired. The colors are inoffensive but forgettable. The layout is sensible but generic. It's the visual equivalent of writing technically correct prose with zero voice. And no amount of prompting fixes this.
 
 ## Why Prompting Doesn't Fix It
 
@@ -49,15 +43,13 @@ Here's what I tried first:
 
 The agent picked generic blues and grays. Everything was slightly rounded. Nothing was wrong. Nothing stood out.
 
-"Modern" to an LLM means "the most common patterns in my training data."
-
-The most common patterns are mediocre.
+"Modern" to an LLM means "the most common patterns in my training data." The problem is, most common patterns are mediocre, at best. 
 
 **2. Web research**
 
 > "Research current design trends. Look at what top SaaS companies are doing."
 
-The agent summarized blog posts about design trends and then... still made the same choices. Because reading about good design doesn't teach taste.
+The agent summarized blog posts about design trends and then... still made the same choices. Because reading about good design doesn't teach taste. As we were taught as children, beauty is in the eyes of the beholder, and art is hyper subjective. 
 
 **3. Iterative refinement**
 
@@ -66,24 +58,20 @@ The agent summarized blog posts about design trends and then... still made the s
 > "The green is too bright. Mute it."
 > "Wait, now it looks washed out..."
 
-After 20 rounds of this, I'd improved it from "clearly bad" to "acceptable but forgettable."
+After numerous rounds of this, I'd improved it from "clearly bad" to "slightly less terrible."
 
-That's the ceiling with prompting alone.
-
-You cannot describe visual taste in words. Taste is curation. It's knowing what to leave out, when to break the grid, which subtle detail elevates the whole thing.
-
-LLMs don't have taste. They have pattern matching.
+That's the ceiling with prompting alone. You cannot describe visual taste in words. Taste is curation. It's knowing what to leave out, when to break the grid, which subtle detail elevates the whole thing. LLMs don't have taste. They have pattern matching. They have training data from GitHub. 
 
 ## The Solution: Separate Design from Implementation
 
 Here's what works:
 
-1. **Design in v0.dev** — use it for visual iteration
+1. **Design in v0.dev** — use it for visual iteration (because v0 is trained on beautiful UIs, it generates them with a 1-shot prompt)
 2. **Push to a reference repo** — the design becomes the spec
-3. **Agent implements faithfully** — match the reference exactly
+3. **Agent implements faithfully** — match the reference exactly (if anything deviates that's a bug)
 4. **Design system constrains future work** — lock down the aesthetic defaults
 
-v0 generates polished UI. The agent implements complex logic.
+v0 generates polished UI. The agent implements complex logic like implementing and then tying that implementation into the existing structure (end-points, buttons, links, etc.)
 
 Neither does the other's job.
 
@@ -97,19 +85,15 @@ I gave v0 this prompt:
 
 > "Travel planning app landing page. Warm, inviting, professional. Hero section, features grid, testimonials, CTA."
 
-10 minutes and a few regenerations later, I had a landing page that looked like a real designer made it.
+~10 minutes and a few regenerations later, I had a landing page that looked like a real designer made it. It followed what v0 considers best practice, scrolling was smooth, images and text looked fantastic. 
 
 Clean typography hierarchy. Cohesive color palette (forest green, terracotta, warm neutrals). Professional imagery. Proper spacing.
 
-Everything I couldn't get Knox Bot to produce in 50 prompts.
+Everything I couldn't get Knox Bot to produce in 50 prompts!
 
 ### Step 2: Push to a Reference Repo
 
-v0 gives you a working Next.js app. I pushed it to GitHub:
-
-```bash
-git clone https://github.com/sfayka/travel-together-design.git
-```
+v0 gives you a working Next.js app. I pushed it to GitHub.
 
 This is now the **source of truth** for what the UI should look like.
 
@@ -117,7 +101,7 @@ This is now the **source of truth** for what the UI should look like.
 
 Now Knox Bot's job is simple:
 
-> "Replace our landing page with the v0 design from `travel-together-design`. Match layout, colors, typography, and spacing exactly. Any differences are bugs."
+> "Replace our landing page with the v0 design from the repo. Match layout, colors, typography, and spacing exactly. Any differences are bugs."
 
 The agent:
 - Copied components from the reference
@@ -177,12 +161,9 @@ The agent can't produce ugly output when the defaults are locked down.
 
 Here's the counterintuitive part: **more rules produce better output**.
 
-Most people think AI agents need freedom to be creative.
+Most people think AI agents need freedom to be creative. Wrong.
 
-Wrong.
-
-Unconstrained agents produce generic output because they default to the statistical average.
-
+Unconstrained agents produce generic output because they default to the statistical average. It's just math people, probability. 
 Constrained agents produce consistent, high-quality output because the defaults are locked down.
 
 The design system is how you constrain aesthetic decisions:
