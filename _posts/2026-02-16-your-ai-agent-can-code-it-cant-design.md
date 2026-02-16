@@ -15,7 +15,7 @@ It was functional. It just wasn't *good*. You know the difference the moment you
 
 "It works" is not the same as "it feels good to use."
 
-I spent hours trying to fix this with better prompts. I tried describing visual taste in words. I tried providing reference screenshots (BTW, screenshots on MacOS are not great. For my day job I use Snagit and I should just buy another license for this). I tried asking the agent to research design trends.
+I spent hours trying to fix this with better prompts. I tried describing visual taste in words. I tried providing reference screenshots. I tried asking the agent to research design trends.
 
 None of it worked.
 
@@ -99,9 +99,15 @@ This becomes the **source of truth** for what the UI should look like. Not a moo
 
 Now Knox Bot's job is dead simple:
 
-> "Replace our landing page with the v0 design from the reference repo. Match layout, colors, typography, and spacing exactly. Any differences are bugs."
+> "Clone the reference repo and read through the components. Summarize what you see—color palette, typography, layout approach. Confirm you understand the design before writing any code."
 
-That's it. That's the whole prompt.
+I wait for the summary. If it misses something, I correct it now.
+
+Then:
+
+> "Now replace our landing page with this design. Match layout, colors, typography, and spacing exactly. Any differences are bugs."
+
+This two-phase approach (read and confirm, then implement) prevents the agent from misinterpreting the design or filling gaps with its own assumptions.
 
 The agent:
 - Copied components from the reference
@@ -162,41 +168,9 @@ Unconstrained agents produce generic output because they default to the statisti
 
 Constrained agents produce consistent, high-quality output because the defaults are locked down. You're not giving the agent freedom—you're giving it guardrails.
 
-Here's how you constrain aesthetic decisions:
+The two-file system from Step 4 does this: workspace-level philosophy (never use pure black, always pair cool primary with warm accent) guides all projects, while project-level tokens (exact HSL values, specific fonts) lock in the implementation.
 
-**Workspace-level (DESIGN-SYSTEM.md)**
-
-This is your taste codified. It applies to every project at Knox Analytics.
-
-```markdown
-## Color Philosophy
-Never use pure black (#000) or pure white (#fff).
-Always use warm neutrals (hsl with 20-40° hue).
-Primary colors should feel natural (greens, blues, earth tones).
-
-## Typography
-Headings: serif fonts only (warmth, authority).
-Body: sans-serif fonts only (readability).
-Never use system fonts (Arial, Helvetica) — they signal "unfinished."
-```
-
-These aren't specific values. They're guardrails. Think of them as the "house style."
-
-**Project-level (DESIGN-TOKENS.md)**
-
-This is the implementation. Specific colors, fonts, spacing values for this particular app.
-
-```markdown
-primary: hsl(153, 50%, 32%)
-accent: hsl(24, 70%, 55%)
-heading-font: 'DM Serif Display'
-body-font: 'DM Sans'
-spacing-unit: 0.25rem (4px base)
-```
-
-When Knox Bot builds a new feature, it checks the design system for philosophy, uses the project tokens for implementation, and only makes decisions within those constraints.
-
-Result? Every new feature feels cohesive with the rest of the app. No invention. Just faithful application of established rules.
+When Knox Bot builds a new feature, it checks the design system for philosophy, uses the project tokens for implementation, and only makes decisions within those constraints. Every new feature feels cohesive. No invention. Just faithful application of established rules.
 
 ## What Changed
 
@@ -263,23 +237,9 @@ It's specialized agents with clear boundaries, orchestrated together:
 
 Each tool does what it's actually good at. None of them try to do everything. It's the Unix philosophy but for AI agents.
 
-## The Takeaway
+---
 
-If your AI agent's UI looks like a developer built it (because one did), you have two options:
-
-**Option 1:** Keep writing better prompts and hoping for different results.
-
-**Option 2:** Stop asking the agent to design anything.
-
-I chose option 2.
-
-v0 handles the design. Knox Bot handles the implementation. The design system keeps them aligned.
-
-No more developer UI.
-
-No more prompt negotiation.
-
-Just clean separation of concerns.
+If your AI agent's UI looks like a developer built it (because one did), stop asking it to design. Use v0 for design, your agent for implementation, and a design system to keep them aligned.
 
 ---
 
