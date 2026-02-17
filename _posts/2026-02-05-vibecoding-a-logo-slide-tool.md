@@ -3,6 +3,7 @@ layout: post
 title: "Vibecoding a Logo Slide Tool"
 date: 2026-02-05
 categories: [essays]
+published: false
 ---
 
 My coworker mentioned a tool he used to have—something that made building logo slides painless. Search for logos, drag them into a grid, done. He missed it. I decided to build it.
