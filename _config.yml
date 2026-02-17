@@ -1,14 +1,27 @@
 title: Knox Analytics Lab
-email: 
+email: hello@knoxanalytics.com
 description: >-
-  Lab notes, essays, and experiments from Knox Analytics.
+  Lab notes, essays, and experiments from Knox Analytics. Practical AI, honest analysis, no fluff.
 baseurl: ""
 url: "https://lab.knoxanalytics.com"
+author:
+  name: Sean Fay
+  url: https://knoxanalytics.com
+twitter:
+  username: knoxanalytics
+  card: summary_large_image
+logo: /assets/images/og-image.png
+social:
+  name: Knox Analytics
+  links:
+    - https://knoxanalytics.com
 
 theme: minima
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
 minima:
   skin: auto
