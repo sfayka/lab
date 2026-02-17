@@ -1,246 +1,184 @@
 ---
 layout: post
-title: "Your AI Agent Can Code. It Can't Design. Here's How I Fixed That."
-date: 2026-02-16
+title: "I Use Two AI Agents as My Design and Engineering Team — Here's the Workflow"
+date: 2026-02-17
 categories: [essays]
 ---
 
-Knox Bot — my OpenClaw coding agent — rebuilt an entire Next.js travel planning app in a few hours.
+Most AI coding tools can generate a decent UI if you describe what you want. They can also write functional backend code. But ask one tool to do both — design something beautiful *and* wire it into your existing codebase — and the result is mediocre on both fronts.
 
-Authentication worked. Database queries were clean. API routes were fast. Tests passed.
+The better approach: use two specialized tools and build a clean handoff between them. One handles design. The other handles engineering. Neither tries to do the other's job.
 
-But the UI looked like a developer built it. Because one did.
+The tricky part isn't choosing the tools. It's the handoff — the moment the design leaves one tool and enters the other. Get that wrong and the engineering agent "improves" your design until it's unrecognizable. Get it right and you have two specialized tools working together like they were built for each other.
 
-It was functional. It just wasn't *good*. You know the difference the moment you see it. Everything technically correct but visually generic. The spacing slightly off. The colors don't feel cohesive. The typography hierarchy flat.
-
-"It works" is not the same as "it feels good to use."
-
-I spent hours trying to fix this with better prompts. I tried describing visual taste in words. I tried providing reference screenshots. I tried asking the agent to research design trends.
-
-None of it worked.
-
-Here's what finally did: **I stopped asking the agent to design anything**.
+Here's the exact protocol I use. All of it. No hand-waving.
 
 ---
 
-## The Problem: AI-Generated UI Looks Like Developer UI
+## The Setup
 
-Knox Bot can write a performant data aggregation pipeline without breaking a sweat, well, maybe more like a data aggregation pipeline that works after some iteration and testing. Want to be honest here, it's not quite at the 1-shot level yet. Sonnet and Opus are amazing models, but we aren't at that point yet (I think we will be there this year, btw, 2026 is the year to get your AI skills ready for the future). 
+Two tools:
 
-But ask it to design a landing page and you get something that looks like a SaaS product from 2015 (or Geocities, iykyk)!
+- **[v0.dev](https://v0.dev)** — design. It's trained on beautiful UIs and generates them with a single prompt. 10 minutes of iteration and you have something that looks like a real designer made it.
+- **Knox Bot via [OpenClaw](https://openclaw.ai)** — engineering. It takes the finished design and implements it in your actual codebase — wired to your database, integrated with your auth flow, matching your existing architecture.
 
-Not broken. Just... bland. The spacing is uniform but uninspired. The colors are inoffensive but forgettable. The layout is sensible but generic. It's the visual equivalent of writing technically correct prose with zero voice. And no amount of prompting fixes this.
+Neither tries to do the other's job. That's the whole setup.
 
-## Why Prompting Doesn't Fix It
-
-Here's what I tried first:
-
-**1. Abstract direction**
-
-> "Make this look modern and elegant. Use a professional color scheme."
-
-The agent picked generic blues and grays. Everything was slightly rounded. Nothing was wrong. Nothing stood out.
-
-"Modern" to an LLM means "the most common patterns in my training data." The problem is, most common patterns are mediocre, at best. 
-
-**2. Web research**
-
-> "Research current design trends. Look at what top SaaS companies are doing."
-
-The agent summarized blog posts about design trends and then... still made the same choices. Because reading about good design doesn't teach taste. As we were taught as children, beauty is in the eyes of the beholder, and art is hyper subjective. 
-
-**3. Iterative refinement**
-
-> "The spacing feels too tight. Try increasing it."
-> "Actually, now it feels too loose. Go back."
-> "The green is too bright. Mute it."
-> "Wait, now it looks washed out..."
-
-After numerous rounds of this, I'd improved it from "clearly bad" to "slightly less terrible."
-
-That's the ceiling with prompting alone. You cannot describe visual taste in words. Taste is curation. It's knowing what to leave out, when to break the grid, which subtle detail elevates the whole thing. LLMs don't have taste. They have pattern matching. They have training data from GitHub. 
-
-## The Solution: Separate Design from Implementation
-
-Here's what works:
-
-1. **Design in v0.dev** — use it for visual iteration (because v0 is trained on beautiful UIs, it generates them with a 1-shot prompt)
-2. **Push to a reference repo** — the design becomes the spec
-3. **Agent implements faithfully** — match the reference exactly (if anything deviates that's a bug)
-4. **Design system constrains future work** — lock down the aesthetic defaults
-
-v0 generates polished UI. The agent implements complex logic like implementing and then tying that implementation into the existing structure (end-points, buttons, links, etc.)
-
-Neither does the other's job.
+The rest is the handoff.
 
 ---
 
-## The Workflow in Practice
+## The Handoff Protocol
 
-### Step 1: Design in v0
+### Step 1: Export v0 to a Reference Repo
 
-I gave v0 this prompt:
+v0 gives you a working Next.js app. Push it to GitHub as-is:
 
-> "Travel planning app landing page. Warm, inviting, professional. Hero section, features grid, testimonials, CTA."
-
-~10 minutes and a few regenerations later, I had a landing page that looked like a real designer made it. It followed what v0 considers best practice, scrolling was smooth, images and text looked fantastic. 
-
-Clean typography hierarchy. Cohesive color palette (forest green, terracotta, warm neutrals). Professional imagery. Proper spacing.
-
-Everything I couldn't get Knox Bot to produce in 50 prompts!
-
-### Step 2: Push to a Reference Repo
-
-v0 gives you a working Next.js app. I pushed it to GitHub (you could use any version control, really).
-
-This becomes the **source of truth** for what the UI should look like. Not a mood board, not a Figma file that drifts out of sync—a working implementation.
-
-### Step 3: Agent Implements
-
-Now Knox Bot's job is dead simple:
-
-> "Clone the reference repo and read through the components. Summarize what you see—color palette, typography, layout approach. Confirm you understand the design before writing any code."
-
-I wait for the summary. If it misses something, I correct it now.
-
-Then:
-
-> "Now replace our landing page with this design. Match layout, colors, typography, and spacing exactly. Any differences are bugs."
-
-This two-phase approach (read and confirm, then implement) prevents the agent from misinterpreting the design or filling gaps with its own assumptions.
-
-The agent:
-- Copied components from the reference
-- Matched colors precisely (`hsl(153, 50%, 32%)`, not "forest green" or "greenish")
-- Used the exact same fonts (DM Sans, DM Serif Display)
-- Replicated spacing and layout pixel-perfect
-
-Zero aesthetic decisions. Just faithful implementation. And when there were discrepancies? I called them bugs, not "style preferences." Framing matters.
-
-### Step 4: Extract the Design System
-
-Once the landing page was done, I had Knox Bot document the design decisions. This is where the magic happens—you're basically teaching the agent what "good" looks like for your specific project.
-
-**DESIGN-SYSTEM.md** (workspace-level, applies to all Knox Analytics projects):
-
-```markdown
-# Design System
-
-## Color Philosophy
-- Primary: Bold, natural tones (forest green, deep blue)
-- Accent: Warm, inviting (terracotta, amber)
-- Neutrals: Warm grays, never pure black/white
-
-## Typography Scale
-- xs: 0.75rem (12px)
-- sm: 0.875rem (14px)
-- base: 1rem (16px)
-- lg: 1.125rem (18px)
-- xl: 1.25rem (20px)
-...
+```bash
+git init
+git remote add origin https://github.com/you/project-design.git
+git add .
+git commit -m "v0 reference design"
+git push -u origin main
 ```
 
-**DESIGN-TOKENS.md** (project-level, specific values for this particular app):
+This repo is now the **source of truth** for what the UI should look like. Not a Figma file that drifts. Not screenshots the agent can't reliably access. A working implementation it can clone, read, and reference component by component.
+
+### Step 2: Extract Design Tokens
+
+Pull the exact values from v0's output and write them to `DESIGN-TOKENS.md` at your project root:
 
 ```markdown
 ## Colors
 primary: hsl(153, 50%, 32%)      # Forest green
-accent: hsl(24, 70%, 55%)        # Terracotta
+accent: hsl(24, 70%, 55%)        # Terracotta  
 neutral-50: hsl(30, 25%, 97%)    # Warm off-white
-...
+foreground: hsl(0, 0%, 8%)       # Near-black (never pure #000)
 
 ## Typography
 heading-font: 'DM Serif Display'
 body-font: 'DM Sans'
+heading-weight: 700
+body-weight: 400
+
+## Spacing
+section-padding: 96px
+card-padding: 32px
+gap-default: 24px
 ```
 
-Now when Knox Bot builds new features, it doesn't invent aesthetics. It has a philosophy to guide choices (workspace-level) and specific tokens to implement (project-level).
+Not "forest green." The exact HSL value. Not "large padding." The pixel value.
 
-The agent literally can't produce ugly output when the defaults are locked down. It's like putting bumpers on a bowling lane.
+This matters because the agent will build new features after the initial implementation. When it needs to pick a color for a status badge, a hover state, an error message — it uses the tokens. No guessing, no inventing, no drift.
 
-## The Design System Layer: Constraints, Not Freedom
+### Step 3: Give the Agent a Design System
 
-Here's the counterintuitive part: **more rules produce better output**.
+`DESIGN-TOKENS.md` covers *this project*. But you're building more than one thing. Create `DESIGN-SYSTEM.md` at the workspace level (the folder where your agent works across all projects) to capture taste that applies everywhere:
 
-Most people think AI agents need freedom to be creative. Wrong. Dead wrong.
+```markdown
+## Color Philosophy
+Never use pure black (#000) or pure white (#fff).
+Pair cool primary colors with warm accents.
+Warm palettes need warm grays — add 5–10% saturation from your primary hue.
 
-Unconstrained agents produce generic output because they default to the statistical average. It's just math, people. Probability. The model has seen a million medium-quality UIs and three really good ones. Guess which one it's going to output?
+## Typography
+Headings: display or serif (warmth, authority).
+Body: clean sans-serif (readability above all else).
+Never mix more than two font families.
 
-Constrained agents produce consistent, high-quality output because the defaults are locked down. You're not giving the agent freedom—you're giving it guardrails.
+## Spacing
+Use a 4px base scale: 4, 8, 12, 16, 24, 32, 48, 64, 96.
+Never use arbitrary values like mt-[13px]. If you're writing that, something's wrong with the scale.
+```
 
-The two-file system from Step 4 does this: workspace-level philosophy (never use pure black, always pair cool primary with warm accent) guides all projects, while project-level tokens (exact HSL values, specific fonts) lock in the implementation.
+This is your house style. The agent applies it to everything it builds, even when there's no reference repo to clone.
 
-When Knox Bot builds a new feature, it checks the design system for philosophy, uses the project tokens for implementation, and only makes decisions within those constraints. Every new feature feels cohesive. No invention. Just faithful application of established rules.
+### Step 4: Two-Phase Verification
 
-## What Changed
+Don't tell the agent to "implement the v0 design." Too vague.
 
-Before this workflow:
+**Phase 1 — Read and confirm:**
 
-- Every new feature was a design negotiation (exhausting)
-- Knox Bot would guess at colors and spacing (badly)
-- I'd spend hours tweaking prompts to get "acceptable" (never great)
-- The app looked like 5 different people built it (because effectively, it was)
+> "Clone the reference repo at [URL]. Read through the components and design tokens. Summarize what you see: color palette, typography choices, layout approach, key components. Confirm understanding before writing any code."
 
-After:
+Wait for the summary. Check it. If the agent misses something — a font, a color, a layout detail — correct it now, before a single line of code is written.
 
-- Design happens in v0 (~10 minutes, done)
-- Implementation happens in code (automated, faithful, fast)
-- New features automatically match the existing aesthetic (no thinking required)
-- "Does it match the reference?" is an objective yes/no question (finally!)
+**Phase 2 — Implement with one critical constraint:**
 
-The difference isn't just aesthetic. It's velocity. I stopped fighting with prompts and started shipping features.
+> "Now implement this design in our app. Match layout, colors, typography, and spacing exactly. If anything looks different from the v0 reference, that's a bug."
 
-Turns out, when you stop asking your agent to do things it's bad at, you get more done. Who knew?
+That last sentence is the most important part of this entire protocol.
 
----
+Without it, the agent will improve things. It will "balance" the hero, "optimize" the contrast ratio, "rationalize" the spacing. All reasonable decisions. All wrong. You didn't ask for judgment calls. You asked for faithful implementation.
 
-## The Bigger Lesson: AI Agents Need Constraints, Not Freedom
-
-The trend in AI tooling right now is toward more autonomy. Agents that can build entire features end-to-end, start to finish.
-
-But here's the thing: autonomy without constraints produces mediocre results.
-
-Here's what I've learned building with Knox Bot:
-
-**Good AI agents are specialists, not generalists.**
-
-Knox Bot should:
-- Implement complex application logic
-- Write tests
-- Handle edge cases
-- Refactor for performance
-- Integrate APIs
-
-Knox Bot should not:
-- Design user interfaces
-- Choose color palettes
-- Create visual hierarchy
-- Decide on typography
-
-Those last ones? Those are curation problems, not code generation problems. And LLMs are terrible curators.
-
-**More rules = better output.**
-
-Unconstrained agent → statistical average → mediocre.
-
-Constrained agent → defined boundaries → consistent quality.
-
-The design system is how you define those boundaries. Simple as that.
-
-**The future isn't one agent that does everything.**
-
-It's specialized agents with clear boundaries, orchestrated together:
-
-- v0 generates visual designs (trained on beautiful UIs)
-- Knox Bot implements application logic (trained on functional code)
-- The design system maintains consistency (your taste, documented)
-
-Each tool does what it's actually good at. None of them try to do everything. It's the Unix philosophy but for AI agents.
+"That's a bug" removes the agent's latitude to make aesthetic decisions. It's not being mean — it's being precise.
 
 ---
 
-If your AI agent's UI looks like a developer built it (because one did), stop asking it to design. Use v0 for design, your agent for implementation, and a design system to keep them aligned.
+## Gotchas I Actually Hit
+
+These aren't hypothetical. Each one cost me at least a round of debugging before I figured out the fix.
+
+### Without "that's a bug," your agent will redesign your site
+
+First time through, I left out the constraint. I told Knox Bot to implement the v0 design and let it run.
+
+It made the hero section "more balanced." It adjusted the primary green to "a more accessible shade." It updated the spacing to "follow proper 8px grid discipline."
+
+Every single change was defensible. Knox Bot could justify each one. And the end result looked nothing like what v0 had produced — the visual cohesion was gone, replaced by a committee of individually reasonable decisions.
+
+I added one line to the prompt: *"If anything looks different from the v0 reference, that's a bug."*
+
+Second implementation: zero drift. Same design, faithfully translated. One sentence changed the entire outcome.
+
+This is the single most important thing I learned building this workflow. Coding agents are trained to make things better. When it comes to design, "better" is the enemy of "consistent." You have to explicitly tell them that faithful reproduction is the goal, not improvement.
+
+### "Use the v0 design" means nothing to your agent
+
+I told Knox Bot to "use the v0 design." Seemed clear to me. It wasn't.
+
+Knox Bot didn't clone the reference repo. It tried to reconstruct what a v0 design might look like based on its training data — and produced something that was approximately, generically wrong. Think "plausible v0 output" instead of "your specific v0 output."
+
+The fix: don't gesture at context. Provide it. "Clone the repo at [this specific URL]. Read the components in [this specific directory]. Use these exact values."
+
+Every piece of context you assume the agent has is a piece of context it will hallucinate instead.
+
+### v0 output is a prototype, not a drop-in
+
+v0 gives you a fresh Next.js app with its own routing, its own component structure, its own conventions. Your actual app has authentication, a database schema, established patterns, existing components.
+
+The first time, I didn't make this distinction clear. Knox Bot tried to import v0's component tree wholesale — bringing in routing conventions that conflicted with ours and component patterns that didn't match the existing codebase.
+
+Be explicit: "Take the *visual design* from v0 — the layout, colors, typography, spacing. Implement it in our codebase using our existing auth, database schema, and routing. Don't copy v0's code structure. Use ours."
+
+The agent's job is translation, not transplant.
+
+### Design tokens prevent taste creep on future features
+
+After implementing this workflow on Travel Together, Knox Bot built a trip member management feature. It needed colors for status indicators — active, pending, removed.
+
+Without tokens, it would've guessed. With tokens, it used `accent` for active states and `neutral-600` for inactive. No prompting required. Consistent by default.
+
+This is the compounding value of the design system: it gets more useful the longer you use it. Every new feature inherits the aesthetic without you having to re-explain it.
 
 ---
 
-*Sean builds AI systems and autonomous workflows at Knox Analytics. Knox Bot is employee #2.*
+## The Pattern (Beyond Just v0 + Knox Bot)
+
+This isn't really about v0 and Knox Bot specifically. It's about a structure that works whenever you're combining specialized AI tools:
+
+1. **Use the tool that's actually good at the job** — not the tool that's "good enough." v0 is trained on beautiful UIs. Use it for UIs. Your coding agent is trained on functional code. Use it for code.
+
+2. **Create structured artifacts at the handoff** — reference repo, design tokens, design system. Vibes don't transfer between tools. Documented specs do.
+
+3. **Lock down the second tool's aesthetic latitude** — the "that's a bug" framing. Whatever the first tool produced, the second tool's job is to faithfully express it, not improve it.
+
+The same structure would apply to other tool pairings — Figma for design and Cursor for engineering, a research tool for discovery and a writing tool for synthesis, an image generator for brand visuals and an agent for copy. The specific tools change. The handoff discipline holds.
+
+---
+
+The handoff is the whole game. Get it right once and it compounds — every new feature stays consistent, every new project inherits the aesthetic without effort, and you stop having conversations with your agent about kerning.
+
+---
+
+*Sean builds AI systems and autonomous workflows at Knox Analytics.*
