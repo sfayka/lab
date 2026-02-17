@@ -5,88 +5,59 @@ date: 2026-02-17
 categories: [essays]
 ---
 
-I rebuilt a travel planning app with two AI agents: one for design, one for engineering.
+You've heard the pitch: use v0 for design, a coding agent for engineering, and never ask one AI to do both.
 
-Not because I wanted to experiment with multi-agent workflows. Because asking one AI to do both produced mediocre results.
+Fine. But knowing *what* to do is the easy part. The hard part is the handoff — the moment the design leaves v0 and enters your codebase. Get that wrong and the agent "improves" your design until it's unrecognizable. Get it right and you have two specialized tools working together like they were built for each other.
 
-Most people try to get a single AI coding agent to design *and* build. That's a mistake. Design and engineering are different skills, even for AI. When you ask Claude or GPT to "make it look professional," you get technically correct code with generic, uninspired UI.
-
-Here's what actually works: Use [v0.dev](https://v0.dev) as your designer and an autonomous coding agent (I use Knox Bot via [OpenClaw](https://openclaw.ai)) as your engineer. But the magic isn't in the tools—it's in the handoff between them.
+Here's the exact protocol I use. All of it. No hand-waving.
 
 ---
 
-## The Problem: "I'll Know It When I See It" Isn't a Spec
+## The Setup
 
-I'm not a designer. I know good UI when I see it, but I can't describe it in words.
+Two tools:
 
-When I asked Knox Bot to "make the landing page look modern and professional," it gave me this:
+- **[v0.dev](https://v0.dev)** — design. It's trained on beautiful UIs and generates them with a single prompt. 10 minutes of iteration and you have something that looks like a real designer made it.
+- **Knox Bot via [OpenClaw](https://openclaw.ai)** — engineering. It takes the finished design and implements it in your actual codebase — wired to your database, integrated with your auth flow, matching your existing architecture.
 
-- Generic blues and grays
-- Slightly rounded corners (because that's "modern")
-- Uniform spacing
-- Sensible but forgettable layout
+Neither tries to do the other's job. That's the whole setup.
 
-Nothing was *wrong*. It just looked like every other developer-built SaaS site from 2015.
-
-I tried iterating:
-
-> "Make it warmer."  
-> "More like Airbnb."  
-> "Bigger hero."  
-> "Actually, smaller hero."
-
-After 20 rounds, I'd nudged it from "clearly bad" to "acceptable but bland."
-
-That's the ceiling when you ask a coding agent to design. It doesn't have taste. It has pattern matching. And the pattern it's matching is "the average UI in GitHub repos."
+The rest is the handoff.
 
 ---
 
-## The Solution: Specialized Tools for Specialized Jobs
-
-Here's what works:
-
-**v0.dev handles design.** It's trained on beautiful UIs, so it generates them in one shot. You iterate conversationally: "warmer colors," "bigger hero," "more like Stripe's pricing page." Within 10 minutes, you have something that looks like a real designer made it.
-
-**Knox Bot handles engineering.** It takes the finished design and implements it faithfully in your actual codebase. Not a standalone prototype—the real thing, wired up to your database, integrated with your auth flow, matching your existing architecture.
-
-Neither tries to do the other's job.
-
-The trick is the handoff.
-
----
-
-## The Handoff Protocol: The Part That Actually Matters
-
-This is where most people screw it up. They get a nice design from v0, then ask their coding agent to "implement something like this," and watch the design drift as the agent "improves" things.
-
-Here's what works:
+## The Handoff Protocol
 
 ### Step 1: Export v0 to a Reference Repo
 
 v0 gives you a working Next.js app. Push it to GitHub as-is:
 
 ```bash
-git clone https://v0.dev/chat/xyz/code
-cd travel-together-design
-git remote add origin https://github.com/you/travel-together-design.git
+git init
+git remote add origin https://github.com/you/project-design.git
+git add .
+git commit -m "v0 reference design"
 git push -u origin main
 ```
 
-This repo is now the **source of truth** for what the UI should look like. Not a Figma file that drifts. Not screenshots. A working implementation.
+This repo is now the **source of truth** for what the UI should look like. Not a Figma file that drifts. Not screenshots the agent can't reliably access. A working implementation it can clone, read, and reference component by component.
 
-### Step 2: Create Design Tokens
+### Step 2: Extract Design Tokens
 
-Pull the exact values from v0's output and document them in `DESIGN-TOKENS.md`:
+Pull the exact values from v0's output and write them to `DESIGN-TOKENS.md` at your project root:
 
 ```markdown
 ## Colors
 primary: hsl(153, 50%, 32%)      # Forest green
 accent: hsl(24, 70%, 55%)        # Terracotta  
 neutral-50: hsl(30, 25%, 97%)    # Warm off-white
+foreground: hsl(0, 0%, 8%)       # Near-black (never pure #000)
 
 ## Typography
 heading-font: 'DM Serif Display'
 body-font: 'DM Sans'
+heading-weight: 700
+body-weight: 400
 
 ## Spacing
 section-padding: 96px
@@ -94,149 +65,105 @@ card-padding: 32px
 gap-default: 24px
 ```
 
-Not "forest green"—the exact HSL value. Not "large padding"—the pixel value.
+Not "forest green." The exact HSL value. Not "large padding." The pixel value.
 
-Why? Because this prevents the agent from making taste decisions later. When it builds a new feature, it doesn't pick colors. It uses the tokens.
+This matters because the agent will build new features after the initial implementation. When it needs to pick a color for a status badge, a hover state, an error message — it uses the tokens. No guessing, no inventing, no drift.
 
-### Step 3: Give the Agent Taste Constraints
+### Step 3: Give the Agent a Design System
 
-Create `DESIGN-SYSTEM.md` in your workspace (the folder where the agent works on all your projects). This is taste codified:
+`DESIGN-TOKENS.md` covers *this project*. But you're building more than one thing. Create `DESIGN-SYSTEM.md` at the workspace level (the folder where your agent works across all projects) to capture taste that applies everywhere:
 
 ```markdown
 ## Color Philosophy
 Never use pure black (#000) or pure white (#fff).
-Primary colors should feel natural (greens, blues, earth tones).
-Always pair cool primary with warm accent.
+Pair cool primary colors with warm accents.
+Warm palettes need warm grays — add 5–10% saturation from your primary hue.
 
 ## Typography
-Headings: serif fonts only (warmth, authority).
-Body: sans-serif fonts only (readability).
-Never use system fonts (Arial, Helvetica)—they signal "unfinished."
+Headings: display or serif (warmth, authority).
+Body: clean sans-serif (readability above all else).
+Never mix more than two font families.
+
+## Spacing
+Use a 4px base scale: 4, 8, 12, 16, 24, 32, 48, 64, 96.
+Never use arbitrary values like mt-[13px]. If you're writing that, something's wrong with the scale.
 ```
 
-These aren't project-specific values. They're your house style. The agent applies them to everything it builds for you.
+This is your house style. The agent applies it to everything it builds, even when there's no reference repo to clone.
 
-### Step 4: Two-Phase Verification (This Is Critical)
+### Step 4: Two-Phase Verification
 
-Don't just tell the agent to "implement the v0 design." That's too vague.
-
-Instead, use a two-phase approach:
+Don't tell the agent to "implement the v0 design." Too vague.
 
 **Phase 1 — Read and confirm:**
 
-> "Clone the v0 reference repo at [URL]. Read through the components and design tokens. Summarize what you see: color palette, typography, layout approach, key components. Confirm you understand the design before writing any code."
+> "Clone the reference repo at [URL]. Read through the components and design tokens. Summarize what you see: color palette, typography choices, layout approach, key components. Confirm understanding before writing any code."
 
-Wait for the agent to respond. It will summarize what it sees. Check that summary. If it misses something, correct it now.
+Wait for the summary. Check it. If the agent misses something — a font, a color, a layout detail — correct it now, before a single line of code is written.
 
-**Phase 2 — Implement with a key constraint:**
+**Phase 2 — Implement with one critical constraint:**
 
-> "Now implement this design in our app. Match layout, colors, typography, and spacing exactly. **If anything looks different from the v0 reference, that's a bug.**"
+> "Now implement this design in our app. Match layout, colors, typography, and spacing exactly. If anything looks different from the v0 reference, that's a bug."
 
-That last line is critical. It reframes aesthetic differences as bugs, not "improvements" or "style choices."
+That last sentence is the most important part of this entire protocol.
 
-Without that line, the agent will drift. It will "improve" spacing, "optimize" color contrast, "simplify" layouts. Those aren't improvements. They're drift.
+Without it, the agent will improve things. It will "balance" the hero, "optimize" the contrast ratio, "rationalize" the spacing. All reasonable decisions. All wrong. You didn't ask for judgment calls. You asked for faithful implementation.
 
----
-
-## Real-World Gotchas I Actually Hit
-
-### 1. Agents follow instructions literally
-
-I told Knox Bot to "use the v0 design." It didn't clone the repo. It tried to remember what v0 designs look like from training data.
-
-I had to say: "Clone the repo at [URL]."
-
-Don't assume. Be explicit.
-
-### 2. The "that's a bug" line prevents drift
-
-First time I did this, I didn't include "if it's different, that's a bug."
-
-Knox Bot made the hero section "more balanced," changed the green to "a more accessible shade," and adjusted spacing to "follow 8px grid discipline."
-
-All reasonable. All destroyed the cohesion.
-
-Second time, I added the line. Zero drift.
-
-### 3. Design tokens prevent taste creep
-
-When the agent built a new feature (trip member management), it needed to pick colors for status indicators.
-
-Without tokens, it would've guessed. With tokens, it used `accent` for active states and `neutral-600` for inactive. Consistent without asking.
-
-### 4. v0 produces standalone components
-
-v0's output is a fresh Next.js app. Your app already has auth, a database, routing conventions.
-
-The agent's job isn't copy-pasting v0's code. It's *adapting* the design to your existing stack.
-
-Be clear: "Take the visual design from v0, implement it in our codebase with our existing auth, DB schema, and routing."
+"That's a bug" removes the agent's latitude to make aesthetic decisions. It's not being mean — it's being precise.
 
 ---
 
-## Why This Generalizes
+## Gotchas I Actually Hit
 
-This isn't just "the v0 + OpenClaw workflow."
+### Agents follow instructions literally (this is a feature, not a bug)
 
-It's a pattern: **use the best specialized tool for each job, then build a structured bridge between them.**
+I told Knox Bot to "use the v0 design." It didn't clone the repo. It tried to reconstruct what v0 designs look like from training data — and got it approximately wrong.
 
-Today it's v0 for design and Knox Bot for engineering. Tomorrow it might be:
+I had to say: "Clone the repo at [specific URL]."
 
-- Figma for design + Cursor for engineering  
-- Midjourney for brand visuals + Claude for copywriting  
-- Perplexity for research + GPT for synthesis
+Don't assume context. Be explicit about every step you want the agent to take.
 
-The pattern stays the same:
+### Without "that's a bug," drift is inevitable
 
-1. Use the tool that's *actually good* at the job (not the tool that's "good enough")
-2. Create a structured handoff (reference artifacts, not vibes)
-3. Give the second tool constraints that prevent it from undoing the first tool's work
+First implementation, I left out the constraint. Knox Bot made the hero "more balanced," adjusted the green to "a more accessible shade," and updated spacing to "follow 8px grid discipline."
 
-Most people use one AI tool for everything because it's simpler. It's also mediocre.
+All defensible decisions. All destroyed the visual cohesion.
 
-Specialized tools + structured handoffs = better results.
+Added the line. Second implementation: zero drift. Same constraint, 10x better outcome.
 
----
+### v0 output is a standalone prototype, not a drop-in
 
-## What Changed for Me
+v0 gives you a fresh Next.js app. Your app already has authentication, a database schema, established routing conventions, existing components.
 
-Before this workflow:
+The agent's job isn't to copy v0's code. It's to take the *visual design* from v0 and express it in your existing stack.
 
-- Spent hours writing design prompts that never quite worked
-- Got "acceptable but bland" UI after 20+ iterations  
-- Every new feature was a design negotiation with the agent
-- The app looked like three different people built it
+Be explicit: "Take the visual design from v0, implement it in our codebase using our existing auth, database schema, and routing. Don't copy v0's code structure — use ours."
 
-After:
+### Design tokens prevent taste creep on future features
 
-- Design in v0: 10 minutes
-- Implementation: automated and faithful
-- New features automatically match existing aesthetic  
-- "Does it match the reference?" is a yes/no question
+Three weeks after the initial implementation, Knox Bot built a trip member management feature. It needed colors for status indicators — active, pending, removed.
 
-The difference isn't just aesthetic. It's velocity.
+Without tokens, it would've guessed. With tokens, it used `accent` for active states and `neutral-600` for inactive. No prompting required. Consistent by default.
 
-I stopped arguing with AI about kerning and started shipping features.
+This is the compounding value of the design system: it gets more useful the longer you use it.
 
 ---
 
-## The Takeaway
+## The Pattern (Beyond Just v0 + Knox Bot)
 
-Don't ask one AI to be both designer and engineer.
+This isn't really about v0 and Knox Bot specifically. It's about a structure that works whenever you're combining specialized AI tools.
 
-Use v0 for design. Use an autonomous agent for engineering. Build a structured handoff between them.
+1. **Use the tool that's actually good at the job** — not the tool that's "good enough." v0 is trained on beautiful UIs. Use it for UIs. Your coding agent is trained on functional code. Use it for code.
 
-The handoff is the hard part:
+2. **Create structured artifacts at the handoff** — reference repo, design tokens, design system. Vibes don't transfer between tools. Documented specs do.
 
-- Reference repo (source of truth)  
-- Design tokens (exact values)
-- Design system (taste constraints)  
-- Two-phase verification (read, then build)  
-- "That's a bug" instruction (prevents drift)
+3. **Lock down the second tool's aesthetic latitude** — the "that's a bug" framing. Whatever the first tool produced, the second tool's job is to faithfully express it, not improve it.
 
-Get that right, and you have a design + engineering team that actually works together.
+Tomorrow it might be Figma for design and Cursor for engineering. Perplexity for research and Claude for synthesis. Midjourney for brand visuals and an agent for copy. The tools change. The pattern holds.
 
-Miss it, and you have two tools producing inconsistent output.
+---
+
+The handoff is the whole game. Get it right once and it compounds — every new feature stays consistent, every new project inherits the aesthetic without effort, and you stop having conversations with your agent about kerning.
 
 ---
 
