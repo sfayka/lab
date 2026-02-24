@@ -57,13 +57,15 @@ The key difference is behavioral variability at runtime. Services are largely de
 
 So boundary design now has to cover both **system contracts** (APIs, permissions, logs) and **language contracts** (instructions, acceptance criteria, escalation rules). Prompt quality matters, but it is not enough by itself. Operational quality is what keeps the system trustworthy.
 
+There’s also an economic shift happening in parallel. As coding agents get better, token and inference usage becomes a first-class engineering cost, not just a background API line item. Payroll is still a major fixed cost, but marginal delivery cost is increasingly metered by context size, retries, model tier, and tool usage. In other words: architecture choices now have direct cost physics attached to them.
+
 ## What I’m watching in 2026
 
 Three signals matter more than benchmark debates:
 
 1. **Protocol adoption over framework hype** — standards beat trend cycles.
 2. **Checkpoint design** — teams that define human approval boundaries early ship faster with fewer incidents.
-3. **Agent observability** — if you can’t inspect decisions, replay failures, and audit tool access, you have a demo, not a production system.
+3. **Agent observability + cost visibility** — if you can’t inspect decisions, replay failures, audit tool access, and forecast token spend, you have a demo, not a production system.
 
 If 2025 was “look what one model can do,” 2026 is “show me your operating model.” That’s the microservices moment for AI.
 
@@ -79,8 +81,10 @@ And it naturally sets up Part 2: why the teams that win this year are embracing 
 
 - Martin Fowler — *Microservices* (architecture principles and tradeoffs): <https://martinfowler.com/articles/microservices.html>
 - Kubernetes docs — *What is Kubernetes?* (operational model for distributed services): <https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/>
-- Anthropic — *Introducing the Model Context Protocol* (standardized model-tool interfaces): <https://www.anthropic.com/news/model-context-protocol>
 - MCP official docs — protocol specification and implementation guidance: <https://modelcontextprotocol.io/introduction>
+- OpenAI API pricing — token and tool-call pricing mechanics: <https://openai.com/api/pricing/>
+- FinOps Foundation — *GenAI FinOps: How Token Pricing Really Works*: <https://www.finops.org/wg/genai-finops-how-token-pricing-really-works/>
+- OpenReview (2025) — token consumption patterns in agentic coding tasks: <https://openreview.net/forum?id=1bUeVB3fov>
 - Stanford HAI — *AI Index Report* (enterprise and ecosystem trend context): <https://aiindex.stanford.edu/report/>
 
 ---
