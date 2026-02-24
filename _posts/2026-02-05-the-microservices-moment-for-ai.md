@@ -10,134 +10,64 @@ published: false
 
 Companion: *Why 2026 Is the Year of Boring AI*.
 
-We’ve seen this movie before.
+If you were around for monolith-to-microservices, this phase in AI should feel familiar. The first wave is always magical: one giant thing appears to do everything, demos look incredible, and teams convince themselves architecture can wait. Then production reality shows up and the bill comes due.
 
-Phase 1 is magical. One giant thing does everything. Demos crush. People clap.
+That’s where we are now.
 
-Phase 2 is where the bill arrives.
+For the last 18 months, a lot of teams tried to run with a single “do-everything” agent: one prompt surface, one orchestration layer, one place to stuff every tool, policy, and workflow. It works long enough to create confidence, then starts failing in ways that are annoyingly predictable: context overload, role confusion, fragile changes, and regressions spilling into unrelated tasks.
 
-That’s where AI is now.
-
-For the last 18 months, most teams tried to build a “do-everything” agent. One brain. One prompt surface. One place to stuff every tool, every policy, every workflow.
-
-It works. Until it doesn’t.
-
-And when it breaks, it breaks in the same ways monoliths broke in software:
-
-- blurry boundaries,
-- fragile deploys,
-- hard-to-debug failures,
-- and one change causing three unrelated regressions.
-
-Not because the models are bad.
-
-Because architecture still matters.
+This is not a model-quality problem. It’s an operating-model problem.
 
 ## The monolith phase was inevitable
 
-Of course we started with monolithic agents.
+Monolithic agents were the obvious starting point. They’re fast to prototype, easy to explain to non-technical teams, and great for proving demand. “Ask one assistant for anything” is a clean onboarding story.
 
-They’re fast to prototype. Easy to explain. Fun to demo.
-
-“Ask one assistant for anything” is a great onboarding story.
-
-But inside real companies, “anything” is not a use case. It’s five departments, seven systems, conflicting permissions, and a CFO asking what happens when it’s wrong.
-
-The gap between demo AI and production AI is still mostly operational.
-
-Same as always.
+But “anything” is not an enterprise use case. Real workflows involve multiple teams, conflicting permissions, mixed systems of record, and accountability requirements that can’t be hand-waved away. Once those constraints hit, a single giant agent becomes a liability.
 
 ## Why single-agent systems stall in production
 
-You can usually trace failures back to four patterns:
+In practice, most failures cluster around four patterns:
 
-1. **Context sprawl**  
-   The agent needs too much state to make one decision. Quality drops as prompts become junk drawers. Just like with any LLM, context is king, and prompts matter.
+1. **Context sprawl** — too much state in one place, so decision quality degrades.
+2. **Role confusion** — the same agent plans, executes, and validates, which destroys separation of duties.
+3. **Blast radius** — one orchestration or prompt change causes unrelated breakage.
+4. **Governance drag** — security and audit controls become hard to reason about.
 
-2. **Role confusion**  
-   A single agent is asked to plan, execute, review, and approve. That’s how bad decisions get a false sense of confidence.
-
-3. **Failure blast radius**  
-   One prompt or tool regression can ripple across unrelated tasks because everything shares one orchestration surface. Innevitibily one agent does something that breaks something else, and that breaks yet another, and now you have cascading failures, and nobody, not even the LLM is able to know what caused this avalanche of failure.
-
-4. **Governance pain**  
-   Security, auditability, and policy controls become harder when one “smart” worker handles everything end-to-end. In addition, how does the LLM know what Bobby from accounting is allowed to see in his HR file, or can he see Susan's HR file? How would the LLM know what's allowed and frowned upon, let along what's illegal, and for that matter, what's illegal where?
-
-If this sounds familiar, yes. It’s the monolith story with different nouns.
+If that sounds like old monolith pain with new terminology, that’s because it is.
 
 ## The shift: orchestration over omniscience
 
-The better pattern is **boring** and **powerful**:
+The better pattern is less flashy and more durable: scoped agents, explicit handoffs, narrow permissions, and deterministic checkpoints where humans can intervene.
 
-- small, scoped agents,
-- explicit handoffs,
-- narrow tool permissions,
-- deterministic checkpoints where humans can review.
+Think planner, researcher, writer, reviewer. Not one “genius intern” that does everything, but a small team with clear jobs and clear interfaces.
 
-**Think planner, researcher, writer, reviewer.**
-
-Not one genius intern. More like a small team with clear jobs. The infrastructure is catching up to this model. Fast.
-
-Anthropic’s **Model Context Protocol (MCP)** gives a standard way to connect models to tools and data sources without custom glue for every integration. That’s a real step toward stable interfaces instead of one-off hacks.
-
-And the ecosystem is pushing harder on agent frameworks that separate planning from execution and make workflows inspectable.
-
-This is the interesting part.
-
-Not “which model is +3 points on a benchmark.” That was **so** 2025!
+That’s also where the infrastructure is headed. Standards like **Model Context Protocol (MCP)** reduce integration chaos and push teams toward more stable tool boundaries. The win isn’t novelty; it’s less bespoke glue and more predictable operations.
 
 ## What software got right (and wrong) the first time
 
-Microservices gave us real wins:
+Microservices gave software teams genuine advantages: clearer ownership, better failure isolation, and independent deployability. They also introduced coordination tax, observability complexity, and plenty of premature decomposition.
 
-- independent deployability,
-- clearer ownership,
-- failure isolation,
-- and better scaling for uneven workloads.
+AI teams are about to relearn both halves of that story. Splitting one messy agent into twelve messy agents doesn’t improve architecture; it multiplies ambiguity.
 
-But they also gave us coordination tax, distributed tracing pain, and a lot of premature complexity. AI teams are about to relearn both halves. If you split one messy agent into twelve messy agents, you didn’t solve architecture. You multiplied ambiguity.
-
-Service boundaries matter. So do interface contracts. So do rollback paths.
-
-Same rules. New stack.
+Boundaries, contracts, rollback paths, and observability still decide whether the system survives contact with production.
 
 ## What’s different this time
 
-There’s one big wrinkle: agents generate behavior at runtime.
+The key difference is behavioral variability at runtime. Services are largely deterministic. Agents are not.
 
-Microservices don’t “interpret” your intent. Agents do.
-
-So your boundary design has to cover both:
-
-- system contracts (APIs, permissions, logs), and
-- language contracts (instructions, acceptance criteria, escalation rules).
-
-This is why prompt quality is not enough.
-
-You need operational quality.
+So boundary design now has to cover both **system contracts** (APIs, permissions, logs) and **language contracts** (instructions, acceptance criteria, escalation rules). Prompt quality matters, but it is not enough by itself. Operational quality is what keeps the system trustworthy.
 
 ## What I’m watching in 2026
 
-Three signals matter more than hype threads:
+Three signals matter more than benchmark debates:
 
-1. **Protocol adoption over framework hype**  
-   Standards like MCP are more important than whichever orchestration framework is trending this week.
+1. **Protocol adoption over framework hype** — standards beat trend cycles.
+2. **Checkpoint design** — teams that define human approval boundaries early ship faster with fewer incidents.
+3. **Agent observability** — if you can’t inspect decisions, replay failures, and audit tool access, you have a demo, not a production system.
 
-2. **Human checkpoint design**  
-   Teams that define where humans approve, not just where agents act, will ship safer and faster.
+If 2025 was “look what one model can do,” 2026 is “show me your operating model.” That’s the microservices moment for AI.
 
-3. **Observability for agent workflows**  
-   If you can’t inspect decisions, replay failures, and audit tool access, you don’t have a production system. You have a demo.
-
-If 2025 was “look what one model can do,” 2026 is “show me the operating model.”
-
-That’s the microservices moment.
-
-And it sets up Part 2: why this year is about boring AI that actually survives operations.
-
-Not flashy.
-
-Foundational.
+And it naturally sets up Part 2: why the teams that win this year are embracing boring AI on purpose.
 
 ---
 
