@@ -15,13 +15,3 @@ title: Lab
   </p>
 </div>
 
-## Latest
-
-<ul class="post-list">
-{% for post in site.posts limit:5 %}
-  <li>
-    <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
-    <div class="post-meta">{{ post.date | date: "%B %d, %Y" }}</div>
-  </li>
-{% endfor %}
-</ul>
