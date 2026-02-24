@@ -6,7 +6,7 @@ categories: [essays]
 published: false
 ---
 
-**AI Operating Model Series — Part 1 of 2**
+## **AI Operating Model Series — Part 1 of 2**
 
 Companion: *Why 2026 Is the Year of Boring AI*.
 
@@ -77,11 +77,11 @@ And it naturally sets up Part 2: why the teams that win this year are embracing 
 
 ## References
 
-- Martin Fowler — *Microservices* (architecture principles and tradeoffs): https://martinfowler.com/articles/microservices.html
-- Kubernetes docs — *What is Kubernetes?* (operational model for distributed services): https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
-- Anthropic — *Introducing the Model Context Protocol* (standardized model-tool interfaces): https://www.anthropic.com/news/model-context-protocol
-- MCP official docs — protocol specification and implementation guidance: https://modelcontextprotocol.io/introduction
-- Stanford HAI — *AI Index Report* (enterprise and ecosystem trend context): https://aiindex.stanford.edu/report/
+- Martin Fowler — *Microservices* (architecture principles and tradeoffs): <https://martinfowler.com/articles/microservices.html>
+- Kubernetes docs — *What is Kubernetes?* (operational model for distributed services): <https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/>
+- Anthropic — *Introducing the Model Context Protocol* (standardized model-tool interfaces): <https://www.anthropic.com/news/model-context-protocol>
+- MCP official docs — protocol specification and implementation guidance: <https://modelcontextprotocol.io/introduction>
+- Stanford HAI — *AI Index Report* (enterprise and ecosystem trend context): <https://aiindex.stanford.edu/report/>
 
 ---
 
