@@ -3,110 +3,159 @@ layout: post
 title: "The Microservices Moment for AI"
 date: 2026-02-05
 categories: [essays]
+published: false
 ---
 
-If you were around for monolith to microservices, you have seen this movie before.
+**AI Operating Model Series — Part 1 of 2**
 
-AI is at that same turning point now.
+Companion: *Why 2026 Is the Year of Boring AI*.
 
-The first wave was one big assistant doing everything:
+We’ve seen this movie before.
 
-- one giant prompt,
-- one huge context window,
-- one "smart" layer handling every workflow.
+Phase 1 is magical. One giant thing does everything. Demos crush. People clap.
 
-Great for prototypes.
+Phase 2 is where the bill arrives.
 
-Rough in production.
+That’s where AI is now.
 
-## The Monolith Pattern Was Always Temporary
+For the last 18 months, most teams tried to build a “do-everything” agent. One brain. One prompt surface. One place to stuff every tool, every policy, every workflow.
 
-Early on, everyone wanted one agent to handle everything. That was a rational first move.
+It works. Until it doesn’t.
 
-It helped teams ship quickly and prove demand.
+And when it breaks, it breaks in the same ways monoliths broke in software:
+- blurry boundaries,
+- fragile deploys,
+- hard-to-debug failures,
+- and one change causing three unrelated regressions.
 
-But once real business load shows up, the cracks are obvious:
+Not because the models are bad.
 
-- unrelated tasks pollute context,
-- changes for one flow break another,
-- debugging becomes guesswork,
-- permissions sprawl,
-- reliability drifts over time.
+Because architecture still matters.
 
-Centralization feels efficient until it starts carrying too much weight.
+## The monolith phase was inevitable
 
-## The Shift: Orchestrated Specialists
+Of course we started with monolithic agents.
 
-The more stable pattern is specialized agents with clear boundaries.
+They’re fast to prototype. Easy to explain. Fun to demo.
 
-Think:
+“Ask one assistant for anything” is a great onboarding story.
 
-- classifier,
-- retrieval,
-- drafting,
-- QA/policy validation,
-- human escalation.
+But inside real companies, “anything” is not a use case. It’s five departments, seven systems, conflicting permissions, and a CFO asking what happens when it’s wrong.
 
-Each stage gets clear inputs, outputs, permissions, and ownership.
+The gap between demo AI and production AI is still mostly operational.
 
-That architecture is less magical, but a lot more operable.
+Same as always.
 
-## Lessons We Already Learned in Software
+## Why single-agent systems stall in production
 
-The old microservices lessons still apply here:
+You can usually trace failures back to four patterns:
 
-1. Boundaries matter more than elegance.
-2. Failure isolation is a feature.
-3. Explicit interfaces beat hidden coupling.
-4. Independent deployment improves velocity.
-5. Observability is mandatory.
+1. **Context sprawl**  
+   The agent needs too much state to make one decision. Quality drops as prompts become junk drawers.
 
-Ignore these and "multi-agent" becomes distributed confusion.
+2. **Role confusion**  
+   A single agent is asked to plan, execute, review, and approve. That’s how bad decisions get a false sense of confidence.
 
-Use them and orchestration becomes an advantage.
+3. **Failure blast radius**  
+   One prompt or tool regression can ripple across unrelated tasks because everything shares one orchestration surface.
 
-## Where AI Is Different
+4. **Governance pain**  
+   Security, auditability, and policy controls become harder when one “smart” worker handles everything end-to-end.
 
-This is not a perfect 1:1 analogy.
+If this sounds familiar, yes. It’s the monolith story with different nouns.
 
-Services are deterministic most of the time. Agents are probabilistic.
+## The shift: orchestration over omniscience
 
-That changes operations:
+The better pattern is boring and powerful:
 
-- output can drift without code changes,
-- "correct" can be contextual,
-- policy and prompt design become runtime concerns.
+- small, scoped agents,
+- explicit handoffs,
+- narrow tool permissions,
+- deterministic checkpoints where humans can review.
 
-So yes, borrow microservices architecture. But add tighter evaluation loops and deliberate human checkpoints.
+Think planner, researcher, writer, reviewer.
 
-## A Practical Move for SMB Teams
+Not one genius intern. More like a small team with clear jobs.
 
-If you are moving from pilot to production, do this first:
+The infrastructure is catching up to this model. Fast.
 
-1. Take one overloaded AI workflow.
-2. Split it into two specialized agents.
-3. Define handoff contracts.
-4. Add logging for failure modes, latency, and human overrides.
-5. Assign a real owner to each stage.
+Anthropic’s **Model Context Protocol (MCP)** gives a standard way to connect models to tools and data sources without custom glue for every integration. That’s a real step toward stable interfaces instead of one-off hacks.
 
-This one move usually reveals where your architecture is brittle and where real ROI lives.
+And the ecosystem is pushing harder on agent frameworks that separate planning from execution and make workflows inspectable.
 
-## The Knox Analytics View
+This is the interesting part.
 
-At Knox Analytics, we help SMB teams build AI systems that are not just intelligent, but operable.
+Not “which model is +3 points on a benchmark.”
 
-Our focus is simple:
+## What software got right (and wrong) the first time
 
-- AI strategy tied to business outcomes,
-- AI software built for production reality,
-- AI orchestration with clear boundaries and accountability.
+Microservices gave us real wins:
+- independent deployability,
+- clearer ownership,
+- failure isolation,
+- and better scaling for uneven workloads.
 
-The future is not one super-agent.
+But they also gave us coordination tax, distributed tracing pain, and a lot of premature complexity.
 
-It is coordinated specialists doing specific work reliably.
+AI teams are about to relearn both halves.
 
-If your team is ready to move from demos to operations, start with us at [knoxanalytics.com](https://knoxanalytics.com) and follow our experiments at [lab.knoxanalytics.com](https://lab.knoxanalytics.com).
+If you split one messy agent into twelve messy agents, you didn’t solve architecture. You multiplied ambiguity.
+
+Service boundaries matter. So do interface contracts. So do rollback paths.
+
+Same rules. New stack.
+
+## What’s different this time
+
+There’s one big wrinkle: agents generate behavior at runtime.
+
+Microservices don’t “interpret” your intent. Agents do.
+
+So your boundary design has to cover both:
+- system contracts (APIs, permissions, logs), and
+- language contracts (instructions, acceptance criteria, escalation rules).
+
+This is why prompt quality is not enough.
+
+You need operational quality.
+
+## What I’m watching in 2026
+
+Three signals matter more than hype threads:
+
+1. **Protocol adoption over framework hype**  
+   Standards like MCP are more important than whichever orchestration framework is trending this week.
+
+2. **Human checkpoint design**  
+   Teams that define where humans approve, not just where agents act, will ship safer and faster.
+
+3. **Observability for agent workflows**  
+   If you can’t inspect decisions, replay failures, and audit tool access, you don’t have a production system. You have a demo.
+
+If 2025 was “look what one model can do,” 2026 is “show me the operating model.”
+
+That’s the microservices moment.
+
+And it sets up Part 2: why this year is about boring AI that actually survives operations.
+
+Not flashy.
+
+Foundational.
 
 ---
 
-*Sean builds AI systems and autonomous workflows at Knox Analytics.*
+## Series links
+
+- **Part 2:** *Why 2026 Is the Year of Boring AI* (`/lab/why-2026-is-the-year-of-boring-ai`)
+
+## References
+
+- Martin Fowler — *Microservices* (architecture principles and tradeoffs): https://martinfowler.com/articles/microservices.html
+- Kubernetes docs — *What is Kubernetes?* (operational model for distributed services): https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
+- Anthropic — *Introducing the Model Context Protocol* (standardized model-tool interfaces): https://www.anthropic.com/news/model-context-protocol
+- MCP official docs — protocol specification and implementation guidance: https://modelcontextprotocol.io/introduction
+- Stanford HAI — *AI Index Report* (enterprise and ecosystem trend context): https://aiindex.stanford.edu/report/
+
+---
+
+*This is part of my ongoing exploration of how AI is reshaping how we build software. More at [lab.knoxanalytics.com](https://lab.knoxanalytics.com).*
