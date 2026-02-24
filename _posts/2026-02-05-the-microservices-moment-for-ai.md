@@ -6,7 +6,7 @@ categories: [essays]
 published: false
 ---
 
-**AI Operating Model Series — Part 1 of 2**
+## **AI Operating Model Series — Part 1 of 2**
 
 Companion: *Why 2026 Is the Year of Boring AI*.
 
@@ -23,6 +23,7 @@ For the last 18 months, most teams tried to build a “do-everything” agent. O
 It works. Until it doesn’t.
 
 And when it breaks, it breaks in the same ways monoliths broke in software:
+
 - blurry boundaries,
 - fragile deploys,
 - hard-to-debug failures,
@@ -51,33 +52,31 @@ Same as always.
 You can usually trace failures back to four patterns:
 
 1. **Context sprawl**  
-   The agent needs too much state to make one decision. Quality drops as prompts become junk drawers.
+   The agent needs too much state to make one decision. Quality drops as prompts become junk drawers. Just like with any LLM, context is king, and prompts matter.
 
 2. **Role confusion**  
    A single agent is asked to plan, execute, review, and approve. That’s how bad decisions get a false sense of confidence.
 
 3. **Failure blast radius**  
-   One prompt or tool regression can ripple across unrelated tasks because everything shares one orchestration surface.
+   One prompt or tool regression can ripple across unrelated tasks because everything shares one orchestration surface. Innevitibily one agent does something that breaks something else, and that breaks yet another, and now you have cascading failures, and nobody, not even the LLM is able to know what caused this avalanche of failure.
 
 4. **Governance pain**  
-   Security, auditability, and policy controls become harder when one “smart” worker handles everything end-to-end.
+   Security, auditability, and policy controls become harder when one “smart” worker handles everything end-to-end. In addition, how does the LLM know what Bobby from accounting is allowed to see in his HR file, or can he see Susan's HR file? How would the LLM know what's allowed and frowned upon, let along what's illegal, and for that matter, what's illegal where?
 
 If this sounds familiar, yes. It’s the monolith story with different nouns.
 
 ## The shift: orchestration over omniscience
 
-The better pattern is boring and powerful:
+The better pattern is **boring** and **powerful**:
 
 - small, scoped agents,
 - explicit handoffs,
 - narrow tool permissions,
 - deterministic checkpoints where humans can review.
 
-Think planner, researcher, writer, reviewer.
+**Think planner, researcher, writer, reviewer.**
 
-Not one genius intern. More like a small team with clear jobs.
-
-The infrastructure is catching up to this model. Fast.
+Not one genius intern. More like a small team with clear jobs. The infrastructure is catching up to this model. Fast.
 
 Anthropic’s **Model Context Protocol (MCP)** gives a standard way to connect models to tools and data sources without custom glue for every integration. That’s a real step toward stable interfaces instead of one-off hacks.
 
@@ -85,21 +84,18 @@ And the ecosystem is pushing harder on agent frameworks that separate planning f
 
 This is the interesting part.
 
-Not “which model is +3 points on a benchmark.”
+Not “which model is +3 points on a benchmark.” That was **so** 2025!
 
 ## What software got right (and wrong) the first time
 
 Microservices gave us real wins:
+
 - independent deployability,
 - clearer ownership,
 - failure isolation,
 - and better scaling for uneven workloads.
 
-But they also gave us coordination tax, distributed tracing pain, and a lot of premature complexity.
-
-AI teams are about to relearn both halves.
-
-If you split one messy agent into twelve messy agents, you didn’t solve architecture. You multiplied ambiguity.
+But they also gave us coordination tax, distributed tracing pain, and a lot of premature complexity. AI teams are about to relearn both halves. If you split one messy agent into twelve messy agents, you didn’t solve architecture. You multiplied ambiguity.
 
 Service boundaries matter. So do interface contracts. So do rollback paths.
 
@@ -112,6 +108,7 @@ There’s one big wrinkle: agents generate behavior at runtime.
 Microservices don’t “interpret” your intent. Agents do.
 
 So your boundary design has to cover both:
+
 - system contracts (APIs, permissions, logs), and
 - language contracts (instructions, acceptance criteria, escalation rules).
 
@@ -150,11 +147,11 @@ Foundational.
 
 ## References
 
-- Martin Fowler — *Microservices* (architecture principles and tradeoffs): https://martinfowler.com/articles/microservices.html
-- Kubernetes docs — *What is Kubernetes?* (operational model for distributed services): https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/
-- Anthropic — *Introducing the Model Context Protocol* (standardized model-tool interfaces): https://www.anthropic.com/news/model-context-protocol
-- MCP official docs — protocol specification and implementation guidance: https://modelcontextprotocol.io/introduction
-- Stanford HAI — *AI Index Report* (enterprise and ecosystem trend context): https://aiindex.stanford.edu/report/
+- Martin Fowler — *Microservices* (architecture principles and tradeoffs): <https://martinfowler.com/articles/microservices.html>
+- Kubernetes docs — *What is Kubernetes?* (operational model for distributed services): <https://kubernetes.io/docs/concepts/overview/what-is-kubernetes/>
+- Anthropic — *Introducing the Model Context Protocol* (standardized model-tool interfaces): <https://www.anthropic.com/news/model-context-protocol>
+- MCP official docs — protocol specification and implementation guidance: <https://modelcontextprotocol.io/introduction>
+- Stanford HAI — *AI Index Report* (enterprise and ecosystem trend context): <https://aiindex.stanford.edu/report/>
 
 ---
 
