@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Microservices Moment for AI</title>
+</head>
+<body>
+  <article>
+    <h1>The Microservices Moment for AI</h1>
+    <h2>One giant AI assistant works for demos. Specialized orchestration works for production.</h2>
+
+    <p>If you were around for monolith to microservices, the pattern in AI feels familiar.</p>
+    <p>The first phase of AI systems was monolithic:</p>
+    <ul>
+      <li>one big assistant,</li>
+      <li>one giant prompt,</li>
+      <li>one layer trying to do everything.</li>
+    </ul>
+    <p>That was fine for prototypes. But once business load increases, it starts to break.</p>
+
+    <h2>Where monolithic agents fail</h2>
+    <p>The failure modes are predictable:</p>
+    <ul>
+      <li>context pollution,</li>
+      <li>prompt changes with side effects,</li>
+      <li>hard-to-isolate issues,</li>
+      <li>broad permissions,</li>
+      <li>reliability drift over time.</li>
+    </ul>
+    <p>This is not just a prompt problem. It is an architecture problem.</p>
+
+    <h2>The shift that is working now</h2>
+    <p>The stronger pattern is orchestrated specialists.</p>
+    <p>Instead of one agent doing everything, split roles:</p>
+    <ul>
+      <li>classification,</li>
+      <li>retrieval,</li>
+      <li>drafting,</li>
+      <li>QA/policy review,</li>
+      <li>human escalation.</li>
+    </ul>
+    <p>Each stage needs clear inputs, outputs, permissions, and ownership.</p>
+    <p>Less magic. Better operations.</p>
+
+    <h2>The software lessons still apply</h2>
+    <p>The old rules still matter:</p>
+    <ol>
+      <li>Clear boundaries beat clever internals.</li>
+      <li>Failure isolation lowers risk.</li>
+      <li>Explicit contracts reduce coupling.</li>
+      <li>Independent deployment improves speed.</li>
+      <li>Observability is mandatory.</li>
+    </ol>
+    <p>Ignore these and multi-agent architecture becomes distributed confusion.</p>
+
+    <h2>Where AI needs extra discipline</h2>
+    <p>AI is probabilistic.</p>
+    <p>So unlike traditional services, output quality can drift without code changes, and "correct" can depend on context.</p>
+    <p>That means orchestration needs:</p>
+    <ul>
+      <li>ongoing evaluation loops,</li>
+      <li>deliberate human-in-the-loop checkpoints.</li>
+    </ul>
+    <p>Without those, even clean architecture fails in operations.</p>
+
+    <h2>A practical SMB starting point</h2>
+    <p>If you are moving from pilot to production, do one thing this quarter:</p>
+    <ol>
+      <li>Take one overloaded AI workflow.</li>
+      <li>Split it into two specialized agents.</li>
+      <li>Define handoff contracts.</li>
+      <li>Log failure modes, latency, and human overrides.</li>
+      <li>Assign real ownership.</li>
+    </ol>
+    <p>That alone usually exposes where your system is brittle and where ROI is truly generated.</p>
+
+    <h2>Final thought</h2>
+    <p>The future is not one super-agent.</p>
+    <p>The future is coordinated specialists doing specific work reliably.</p>
+    <p>At Knox Analytics, this is how we help SMB teams operationalize AI: strategy tied to business outcomes, software built for production, and orchestration designed to stay maintainable.</p>
+
+    <p>Learn more: <a href="https://knoxanalytics.com">https://knoxanalytics.com</a></p>
+    <p>More writing and experiments: <a href="https://lab.knoxanalytics.com">https://lab.knoxanalytics.com</a></p>
+  </article>
+</body>
+</html>
