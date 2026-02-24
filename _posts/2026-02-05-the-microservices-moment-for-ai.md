@@ -3,7 +3,7 @@ layout: post
 title: "The Microservices Moment for AI"
 date: 2026-02-05
 categories: [essays]
-published: false
+published: true
 ---
 
 ## **AI Operating Model Series — Part 1 of 2**
