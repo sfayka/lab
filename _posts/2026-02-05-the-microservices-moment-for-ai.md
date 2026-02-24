@@ -3,37 +3,110 @@ layout: post
 title: "The Microservices Moment for AI"
 date: 2026-02-05
 categories: [essays]
-published: false
 ---
 
-Something familiar is happening in AI right now.
+If you were around for monolith to microservices, you have seen this movie before.
 
-{% comment %} INTRO: Set up the parallel - readers who lived through the monolith-to-microservices transition will recognize the pattern {% endcomment %}
+AI is at that same turning point now.
 
-## The Monolith Phase
+The first wave was one big assistant doing everything:
 
-{% comment %} Talk about 2024-2025: single-purpose agents, the "one model to rule them all" mentality, the appeal of the all-knowing assistant {% endcomment %}
+- one giant prompt,
+- one huge context window,
+- one "smart" layer handling every workflow.
 
-## Why Monoliths Break Down
+Great for prototypes.
 
-{% comment %} Where single agents hit walls: context limits, reliability at scale, the "jack of all trades" problem {% endcomment %}
+Rough in production.
 
-## The Orchestration Shift
+## The Monolith Pattern Was Always Temporary
 
-{% comment %} Multi-agent systems, specialized agents with clear boundaries, the emergence of agent-to-agent protocols {% endcomment %}
+Early on, everyone wanted one agent to handle everything. That was a rational first move.
 
-## What We Learned From Software
+It helped teams ship quickly and prove demand.
 
-{% comment %} Draw on microservices lessons: service boundaries, failure isolation, independent deployment, the coordination tax {% endcomment %}
+But once real business load shows up, the cracks are obvious:
 
-## What's Different This Time
+- unrelated tasks pollute context,
+- changes for one flow break another,
+- debugging becomes guesswork,
+- permissions sprawl,
+- reliability drifts over time.
 
-{% comment %} Where the analogy breaks down - agents have judgment, context matters differently, the "conversation" problem {% endcomment %}
+Centralization feels efficient until it starts carrying too much weight.
 
-## What I'm Watching
+## The Shift: Orchestrated Specialists
 
-{% comment %} Concrete things to pay attention to: MCP adoption, orchestration frameworks, how enterprises are actually deploying this {% endcomment %}
+The more stable pattern is specialized agents with clear boundaries.
+
+Think:
+
+- classifier,
+- retrieval,
+- drafting,
+- QA/policy validation,
+- human escalation.
+
+Each stage gets clear inputs, outputs, permissions, and ownership.
+
+That architecture is less magical, but a lot more operable.
+
+## Lessons We Already Learned in Software
+
+The old microservices lessons still apply here:
+
+1. Boundaries matter more than elegance.
+2. Failure isolation is a feature.
+3. Explicit interfaces beat hidden coupling.
+4. Independent deployment improves velocity.
+5. Observability is mandatory.
+
+Ignore these and "multi-agent" becomes distributed confusion.
+
+Use them and orchestration becomes an advantage.
+
+## Where AI Is Different
+
+This is not a perfect 1:1 analogy.
+
+Services are deterministic most of the time. Agents are probabilistic.
+
+That changes operations:
+
+- output can drift without code changes,
+- "correct" can be contextual,
+- policy and prompt design become runtime concerns.
+
+So yes, borrow microservices architecture. But add tighter evaluation loops and deliberate human checkpoints.
+
+## A Practical Move for SMB Teams
+
+If you are moving from pilot to production, do this first:
+
+1. Take one overloaded AI workflow.
+2. Split it into two specialized agents.
+3. Define handoff contracts.
+4. Add logging for failure modes, latency, and human overrides.
+5. Assign a real owner to each stage.
+
+This one move usually reveals where your architecture is brittle and where real ROI lives.
+
+## The Knox Analytics View
+
+At Knox Analytics, we help SMB teams build AI systems that are not just intelligent, but operable.
+
+Our focus is simple:
+
+- AI strategy tied to business outcomes,
+- AI software built for production reality,
+- AI orchestration with clear boundaries and accountability.
+
+The future is not one super-agent.
+
+It is coordinated specialists doing specific work reliably.
+
+If your team is ready to move from demos to operations, start with us at [knoxanalytics.com](https://knoxanalytics.com) and follow our experiments at [lab.knoxanalytics.com](https://lab.knoxanalytics.com).
 
 ---
 
-*This is part of my ongoing exploration of how AI is reshaping how we build software. More at [lab.knoxanalytics.com](https://lab.knoxanalytics.com).*
+*Sean builds AI systems and autonomous workflows at Knox Analytics.*
