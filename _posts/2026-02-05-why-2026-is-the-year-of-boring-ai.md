@@ -43,6 +43,8 @@ Serious operators are asking better questions now:
 
 If a vendor can’t answer those clearly, it’s usually still a demo product in enterprise packaging.
 
+There’s also a finance reality hiding underneath all this: as coding agents improve, token and inference spend becomes part of the engineering P&L, not just an API footnote. Teams that scale agentic workflows without cost controls end up with volatile margins and surprise bills. Teams that treat token economics as an operating discipline ship with fewer shocks.
+
 ## Why this is good news for builders
 
 “Boring” markets reward discipline. They reward teams that can define a workflow, instrument outcomes, set ownership boundaries, and keep improving without creating organizational noise.
@@ -60,6 +62,7 @@ Making AI boring in the best way still requires real engineering and operational
 - **Human checkpoints** with explicit accountability
 - **Change management** so teams actually adopt what you built
 - **Rollback paths** for model/provider regressions
+- **Token cost governance** (budgets, monitoring, and guardrails on premium usage)
 
 Boring AI is not “set it and forget it.” It’s managed systems that keep delivering value after launch week.
 
@@ -83,7 +86,9 @@ If it saves time, survives edge cases, and stays maintainable, it wins. That’s
 - McKinsey — *The State of AI* (enterprise usage patterns and value capture): https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai
 - NBER — *Generative AI at Work* (measured productivity effects in real workflows): https://www.nber.org/papers/w31161
 - MIT Sloan Management Review + BCG — *How People Are Really Using Gen AI in 2025* (organizational usage behavior): https://sloanreview.mit.edu/projects/how-people-are-really-using-gen-ai-in-2025/
-- OECD — AI policy and trustworthy AI deployment guidance: https://oecd.ai/
+- OpenAI API pricing — token and tool-call pricing mechanics: https://openai.com/api/pricing/
+- GitHub Docs — Copilot premium requests and budget controls: https://docs.github.com/en/billing/concepts/product-billing/github-copilot-premium-requests
+- FinOps Foundation — *GenAI FinOps: How Token Pricing Really Works*: https://www.finops.org/wg/genai-finops-how-token-pricing-really-works/
 
 ---
 
