@@ -8,11 +8,21 @@ published: true
 
 **AI Operating Model Series — Part 2 of 2**
 
-Companion: *The Microservices Moment for AI*.
+Companion: [*The Microservices Moment for AI*]({% post_url 2026-02-05-the-microservices-moment-for-ai %}).
 
-The most useful shift in AI right now is not another flashy demo. It’s the market moving from “wow” to “does this work every day without drama?” That may sound less exciting, but it’s exactly what needs to happen.
+Part 2 of my AI Operating Model series starts with a claim that sounds backward:
+
+AI is getting boring.
+
+Good.
+
+I run Knox Analytics, and the highest-signal shift I am seeing in 2026 is that teams are moving from demo excitement to operational discipline.
 
 Part 1 made the architecture case: giant do-everything agents are giving way to scoped systems and explicit orchestration. Part 2 is the operational consequence of that shift.
+
+The question is no longer "Can this model do something impressive?"
+
+The better question is "Can this system reliably help my team every week without creating new chaos?"
 
 ## The hype hangover was predictable
 
@@ -74,11 +84,15 @@ The winners won’t be whoever sounds smartest in public. The winners will be te
 
 If it saves time, survives edge cases, and stays maintainable, it wins. That’s the bar.
 
+If this resonates, read Part 1 and pressure-test your own operating model: ownership, checkpoints, reliability, and cost governance.
+
+If your team is moving from pilots to production, that is exactly the work we do at Knox Analytics.
+
 ---
 
 ## Series links
 
-- **Part 1:** *The Microservices Moment for AI* (`/lab/the-microservices-moment-for-ai`)
+- **Part 1:** [*The Microservices Moment for AI*]({% post_url 2026-02-05-the-microservices-moment-for-ai %})
 
 ## References
 

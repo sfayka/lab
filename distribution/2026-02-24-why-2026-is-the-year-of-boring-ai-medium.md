@@ -2,15 +2,17 @@
 
 ## The best AI teams in 2026 are not chasing hype. They are building reliable operations.
 
+Part 2 of my AI Operating Model series starts with a claim that sounds backward:
+
 AI is getting boring.
 
 Good.
 
-I run Knox Analytics, and the most useful shift I am seeing this year is simple: teams are finally moving from demo excitement to operational discipline.
+I run Knox Analytics, and the highest-signal shift I am seeing in 2026 is that teams are moving from demo excitement to operational discipline.
 
 The question is no longer "Can this model do something impressive?"
 
-The better question is "Can this system reliably help my team every week?"
+The better question is "Can this system reliably help my team every week without creating new chaos?"
 
 ## The demo era had a ceiling
 
@@ -70,7 +72,9 @@ In 2026, the winners will not be the teams with the flashiest AI demo.
 
 They will be the teams with the most reliable AI operations.
 
-If your team is moving from pilots to production, that is the work we do at Knox Analytics.
+If this resonates, read Part 1 (*The Microservices Moment for AI*) and then pressure-test your own operating model: ownership, checkpoints, reliability, and cost governance.
+
+If your team is moving from pilots to production, that is exactly the work we do at Knox Analytics.
 
 Learn more: [https://knoxanalytics.com](https://knoxanalytics.com)
 
