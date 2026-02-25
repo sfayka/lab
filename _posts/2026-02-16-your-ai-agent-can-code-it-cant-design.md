@@ -3,6 +3,7 @@ layout: post
 title: "Your AI Agent Can Code. It Can't Design. Here's How I Fixed That."
 date: 2026-02-16
 categories: [essays]
+published: true
 ---
 
 Knox Bot — my OpenClaw coding agent — rebuilt an entire Next.js travel planning app in a few hours.

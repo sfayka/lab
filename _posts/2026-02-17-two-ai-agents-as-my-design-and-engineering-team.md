@@ -3,6 +3,7 @@ layout: post
 title: "I Use Two AI Agents as My Design and Engineering Team — Here's the Workflow"
 date: 2026-02-17
 categories: [essays]
+published: true
 ---
 
 Most AI coding tools can generate a decent UI if you describe what you want. They can also write functional backend code. But ask one tool to do both — design something beautiful *and* wire it into your existing codebase — and the result is mediocre on both fronts.

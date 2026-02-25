@@ -3,6 +3,7 @@ layout: post
 title: "Hardening Openclaw for my 2nd Employee"
 date: 2026-02-15
 categories: [essays]
+published: true
 ---
 
 ## I Set Up OpenClaw as an Autonomous Business Agent — Here’s How I Secured It
