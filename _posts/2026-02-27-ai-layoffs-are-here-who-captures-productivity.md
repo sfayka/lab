@@ -10,36 +10,36 @@ Block just made the subtext explicit.
 
 Per [Reuters](https://www.reuters.com/business/blocks-fourth-quarter-profit-rises-announces-over-4000-job-cuts-2026-02-26/) and [CNN](https://www.cnn.com/2026/02/26/business/block-layoffs-ai-jack-dorsey), the company said it plans to cut **more than 4,000 jobs** — roughly **40%** of its workforce — while openly framing the move around AI-enabled productivity. Not “macro uncertainty.” Not “portfolio optimization.” AI.
 
-That phrasing matters.
+That phrasing matters.  
 Because it kills the polite fiction.
 
-For two years, executives said AI would “augment teams.”
+For two years, executives said AI would “augment teams.”  
 Now we’re getting the operator version: smaller teams, different workflows, harder output targets.
 
-And yes — this has real human cost. Families, careers, mortgages, visas.
+And yes — this has real human cost. Families, careers, mortgages, visas.  
 If you can’t hold that in frame, don’t write about this topic.
 
 But founders still have to answer the business question:
 
 **If AI compresses the labor required for core work, who keeps the upside?**
 
-Your customers won’t wait for your ethics committee.
+Your customers won’t wait for your ethics committee.  
 Your competitors won’t either.
 
-The bad response is obvious: slash headcount, post a thread, call it transformation.
+The bad response is obvious: slash headcount, post a thread, call it transformation. Back in the day (yeah, I’m aging myself) in the Valley, there was a company I won’t name. Pre-dot-com and into the dot-com era, everyone knew the pattern: hire a wave, staff up a big project, realize they overhired, then cut a wave. Rinse, repeat. Year after year. Same movie, different quarter.  
 The better response is harder: redesign how work gets done, then resize based on evidence.
 
-That’s the split now.
-Not “AI believer” vs “AI skeptic.”
+That’s the split now.  
+Not “AI believer” vs “AI skeptic.”  
 **Workflow redesigners vs spreadsheet cutters.**
 
 ---
 
 Most companies still confuse tools with systems.
 
-They buy copilots.
-They run one prompt workshop.
-They declare victory.
+They buy copilots.  
+They run one prompt workshop.  
+They declare victory.  
 Nothing moves in cycle time, margin, or quality.
 
 Then six months later: “AI didn’t deliver.”
@@ -54,17 +54,17 @@ The companies telegraphing serious moves are doing more than buying software:
 - [Dow](https://www.reuters.com/business/world-at-work/companies-cutting-jobs-investments-shift-toward-ai-2026-02-25/) explicitly linked cuts to automation and AI-driven process streamlining.
 - [Amazon](https://www.reuters.com/business/world-at-work/amazon-targets-many-30000-corporate-job-cuts-sources-say-2025-10-27/) has signaled corporate reductions tied to AI/automation of routine work.
 
-Different sectors. Same pressure gradient.
+Different sectors. Same pressure gradient. (Different logos, same boardroom math.)
 
-Still, don’t overread causality.
-Some of these cuts are also margin cleanup, org simplification, and post-hiring-binge correction.
+Still, don’t overread causality.  
+Some of these cuts are also margin cleanup, org simplification, and post-hiring-binge correction.  
 AI is not the only variable. It is the forcing function.
 
 ---
 
 So what should a founder do this week?
 
-Not “adopt AI.”
+Not “adopt AI.”  
 That sentence is now meaningless.
 
 Use this four-part operating framework instead.
@@ -83,7 +83,7 @@ If you can’t place a workflow in one of these buckets, you don’t understand 
 
 ## 2) Move from role-based planning to throughput-based planning
 
-Legacy org design asks: “How many people in function X?”
+Legacy org design asks: “How many people in function X?”  
 AI-era planning asks: “How many units of quality output per week?”
 
 Examples:
@@ -101,7 +101,7 @@ If AI doesn’t improve a throughput metric, you don’t have a productivity gai
 
 This is where most teams fail.
 
-They automate first.
+They automate first.  
 Then discover quality drift, hallucinated outputs, compliance risk, and invisible rework.
 
 Build control rails up front:
@@ -112,8 +112,8 @@ Build control rails up front:
 - rollback paths,
 - owner accountability per workflow.
 
-Smaller teams only work if process reliability rises.
-Otherwise you cut capacity and increase chaos at the same time.
+Smaller teams only work if process reliability rises.  
+Otherwise you cut capacity and increase chaos at the same time. (Old Silicon Valley lesson: speed without controls is just expensive rework.)
 
 **Output this week:** control checklist for your top 3 AI-assisted workflows.
 
@@ -129,20 +129,20 @@ Be explicit:
 - how reskilling decisions get made,
 - what support exists if roles are eliminated.
 
-This is not HR theater.
+This is not HR theater.  
 It is operational risk management.
 
-Fearful orgs hide problems.
+Fearful orgs hide problems.  
 Hidden problems kill AI rollouts faster than bad prompts.
 
 **Output this week:** one-page internal memo, plain language, no corporate euphemisms.
 
 ---
 
-None of this makes layoffs “good.”
+None of this makes layoffs “good.”  
 It makes leadership accountable.
 
-A bad AI restructuring externalizes pain and calls it innovation.
+A bad AI restructuring externalizes pain and calls it innovation.  
 A good one proves, with numbers, that productivity gains were real, reinvestment happened, and quality didn’t collapse.
 
 Founders who dodge this will drift into reactive cuts later, under worse conditions, with fewer options.
@@ -151,7 +151,7 @@ Founders who do the hard redesign work now will run leaner and ship faster — w
 
 That’s the honest line.
 
-AI is changing labor economics.
+AI is changing labor economics.  
 The only real decision is whether you capture the upside through better systems, or burn trust for a short-term margin pop and call it strategy.
 
 **Productivity will be captured either way. Decide by whom.**
