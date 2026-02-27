@@ -6,117 +6,85 @@ categories: [essays]
 published: false
 ---
 
-We kept building the wrong things.
+We kept building the wrong things. Not broken things — impressive things. Cool demos, fast prototypes, features that looked great in a thread and did basically nothing for the business.
 
-Not broken things. Impressive things.
+That's the trap with AI right now. The hard part usually isn't building. It's deciding what actually deserves to be built.
 
-Cool demos. Fast prototypes. Features that looked great in a thread and did nothing for the business.
-
-The hardest part of AI isn't building. It's choosing.
-
-So we tried something different.
-
-We asked the agent what we should build next.
+So we tried something different and asked the agent what we should build next.
 
 ---
 
 ## The problem
 
-Small teams don't get many bets.
+When you're a small team, every build is a bet. One miss can burn a month, two can burn a quarter, and you can still feel productive the whole time because the velocity looks good on paper.
 
-One wrong build can burn a month. Two wrong builds can burn a quarter. You can stay busy the whole time and still move backward.
-
-The normal playbook wasn't helping:
+Our default playbook wasn't giving us enough signal:
 
 - Market research was slow and expensive.
-- X was noisy and addicted to hype.
-- Customer calls were gold, but only for known pain.
-- Competitor analysis assumes you already know the field.
+- X was noisy and optimized for whatever was hot this week.
+- Customer calls were useful, but mostly surfaced problems people already knew they had.
+- Competitor analysis assumes you already know who to benchmark against.
 
-We needed broader signal. Fast.
-
-Not vibes. Signal.
+We needed broader signal, faster — and something better than gut feel plus vibes.
 
 ---
 
 ## The approach
 
-We gave the agent a narrow brief:
+We gave the agent a very specific brief:
 
 > "Survey the current AI tools landscape for small businesses and agencies. Focus on: what tools exist, what problems they claim to solve, what the most common complaints are in reviews and forums, and where there are obvious gaps between what users need and what's currently available. Prioritize Reddit, HN, G2, and Capterra. Return a structured gap analysis."
 
-Then let it run multi-step research: search, read, cluster complaints, synthesize.
+Then we let it do a multi-step run: search, read, cluster complaints, and synthesize themes.
 
-No one-shot magic prompt. Just disciplined grunt work at machine speed.
+Not a one-shot "tell me the answer" prompt. More like assigning a very fast junior analyst that doesn't get tired after 30 tabs.
 
-It came back with a structured report.
-
-Better than expected.
+The output came back cleaner than I expected.
 
 ---
 
 ## What came back
 
-Three buckets: **saturated**, **emerging**, **underserved**.
+The report organized everything into three buckets: **saturated**, **emerging**, and **underserved**.
 
-**Saturated** (skip): AI writing tools, chatbot builders, meeting summarizers.
+**Saturated** was exactly what you'd expect: AI writing tools, chatbot builders, meeting summarizers. Crowded categories, low edge, hard to stand out unless you have a wedge.
 
-No surprise. Too many players. Too little edge.
+**Emerging** included AI-native CRM, field-service ops tooling, and agent-to-agent workflow products. Interesting spaces, but still a lot of "looks good in demo" products where real-world reliability isn't there yet.
 
-**Emerging** (watch): AI-native CRM, field-service ops tooling, agent-to-agent workflows.
+**Underserved** was where things got useful:
 
-Messy category. Early products. A lot of "works in demo" energy.
+1. **Integration as the product.** Not another wrapper — actual connective tissue across ugly real stacks (Sheets + legacy CRM + random inbox workflows).
+2. **Explainability for non-technical operators.** Owners trusted outputs, but couldn't defend decisions to stakeholders.
+3. **Intake-layer tooling.** Proposal generation, scoping, and onboarding had obvious pain and thin tooling.
 
-**Underserved** (interesting):
-
-1. **Integration as the product.** Not another wrapper. Real connective tissue across ugly stacks (Sheets + legacy CRM + duct-taped email).
-2. **Explainability for non-technical teams.** Owners trusted outputs but couldn't defend decisions to stakeholders.
-3. **Intake-layer tooling.** Proposals, scoping, onboarding. High pain. Thin tooling.
-
-That's where the air was.
+That was the first section that felt like real build guidance instead of market commentary.
 
 ---
 
 ## Signal vs. noise
 
-Honest split: about 60% was obvious.
+Honest read: about 60% of the report was obvious in hindsight. "Writing tools are crowded" isn't exactly a moonshot insight.
 
-"Writing tools are crowded" wasn't exactly a revelation.
+But even the obvious part helped because it turned hand-wavy assumptions into structured evidence, which made decision conversations much less fuzzy.
 
-But seeing the obvious written as structured evidence changed the conversation. Harder to ignore. Easier to act.
+The other 40% was the value. Not because the information was hidden, but because we weren't naturally looking there.
 
-The other 40% was the win.
+Field-service ops is a good example. We already suspected the category was messy, but we hadn't seen how consistent the complaints were across forums and reviews. Different people, different contexts, same friction pattern.
 
-Not because it was hidden. Because we weren't looking there.
-
-The field-service angle is a good example. We knew it was messy. We didn't know how consistently people were complaining across channels.
-
-Same pain. Different people. Different geos. Same wording.
-
-That's not noise.
-
-That's a market telling you where it's still broken.
+When that happens repeatedly, it's usually not noise. It's the market telling you where systems are still broken.
 
 ---
 
 ## The meta point
 
-Yes, we used AI to decide what AI to build.
+Yes, we used AI to decide what AI to build. Slightly ridiculous. Also practical.
 
-A little ridiculous. Also extremely practical.
+If you're building AI products and not applying them to your own prioritization decisions, you're skipping one of the best feedback loops you have.
 
-If you're building tools and not running them on your own decisions first, you're skipping your best feedback loop.
+That said, this only worked because the agent had context from real client work. Without that, you'll still get polished output, but it can drift into generic advice quickly.
 
-One caveat: this only worked because the agent had context from real client work. Without context, you get generic output dressed up as insight.
+The report didn't hand us a roadmap. It gave us a better set of questions, and that was enough to choose the next build with more confidence.
 
-The report wasn't a roadmap.
-
-It was a sharper set of questions.
-
-And when you're deciding what to build next, better questions are the whole game.
-
-We picked the intake-layer tool.
-
-Akino Solar is the first real test.
+We picked the intake-layer tool. Akino Solar is the first real test.
 
 That's the loop.
