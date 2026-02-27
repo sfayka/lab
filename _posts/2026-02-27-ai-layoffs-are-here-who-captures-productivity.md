@@ -26,8 +26,8 @@ But founders still have to answer the business question:
 Your customers won’t wait for your ethics committee.  
 Your competitors won’t either.
 
-The bad response is obvious: slash headcount, post a thread, call it transformation. Back in the day (yeah, I’m aging myself) in the Valley, there was a company I won’t name. Pre-dot-com and into the dot-com era, everyone knew the pattern: hire a wave, staff up a big project, realize they overhired, then cut a wave. Rinse, repeat. Year after year. Same movie, different quarter.  
-The better response is harder: redesign how work gets done, then resize based on evidence.
+The bad response is obvious: slash headcount, post a thread, call it transformation. Back in the day (yeah, I’m aging myself) in the Valley, there was a company I won’t name. Pre-dot-com and into the dot-com era, everyone knew the pattern: hire a wave, staff up a big project, realize they overhired, then cut a wave. Rinse, repeat. Year after year. Same movie, different quarter. Slashing *before* you validate real throughput gains is the same mistake in new packaging.  
+The better response is harder: redesign how work gets done, validate the gains, then resize based on evidence.
 
 That’s the split now.  
 Not “AI believer” vs “AI skeptic.”  
@@ -37,6 +37,7 @@ Not “AI believer” vs “AI skeptic.”
 
 Most companies still confuse tools with systems.
 
+They think adding a copilot will magically make everyone 10x. It doesn’t. AI is only as good as the prompt and context it gets — and most leadership teams don’t use the tools deeply enough to see where they break.  
 They buy copilots.  
 They run one prompt workshop.  
 They declare victory.  
@@ -57,7 +58,7 @@ The companies telegraphing serious moves are doing more than buying software:
 Different sectors. Same pressure gradient. (Different logos, same boardroom math.)
 
 Still, don’t overread causality.  
-Some of these cuts are also margin cleanup, org simplification, and post-hiring-binge correction.  
+Some of these cuts are also margin cleanup, org simplification, and post-hiring-binge correction. In a lot of cases, this looks more like an 80/20 split: 80% cost reset and org cleanup, 20% real productivity improvement.  
 AI is not the only variable. It is the forcing function.
 
 ---
@@ -102,7 +103,7 @@ If AI doesn’t improve a throughput metric, you don’t have a productivity gai
 This is where most teams fail.
 
 They automate first.  
-Then discover quality drift, hallucinated outputs, compliance risk, and invisible rework.
+Then discover quality drift, hallucinated outputs, compliance risk, invisible rework — and the babysitting tax. AI systems are built to be helpful, but in real workflows they often need constant steering, retries, and human judgment calls.
 
 Build control rails up front:
 
@@ -143,7 +144,7 @@ None of this makes layoffs “good.”
 It makes leadership accountable.
 
 A bad AI restructuring externalizes pain and calls it innovation.  
-A good one proves, with numbers, that productivity gains were real, reinvestment happened, and quality didn’t collapse.
+A good one proves, with numbers, that productivity gains were real, reinvestment happened, and quality didn’t collapse. Because if leadership cuts hard, then has to rehire six months later when the AI “boon” underdelivers, everyone loses: the team, the brand, and investor trust.
 
 Founders who dodge this will drift into reactive cuts later, under worse conditions, with fewer options.
 
