@@ -85,6 +85,5 @@ That said, this only worked because the agent had context from real client work.
 
 The report didn't hand us a roadmap. It gave us a better set of questions, and that was enough to choose the next build with more confidence.
 
-We picked the intake-layer tool. Akino Solar is the first real test.
 
 That's the loop.
