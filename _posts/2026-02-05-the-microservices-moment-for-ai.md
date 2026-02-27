@@ -8,7 +8,7 @@ published: true
 
 ## **AI Operating Model Series — Part 1 of 2**
 
-Companion: *Why 2026 Is the Year of Boring AI*.
+Companion: [*Why 2026 Is the Year of Boring AI*]({% post_url 2026-02-05-why-2026-is-the-year-of-boring-ai %}).
 
 If you were around for monolith-to-microservices, this phase in AI should feel familiar. The first wave is always magical: one giant thing appears to do everything, demos look incredible, and teams convince themselves architecture can wait. Then production reality shows up and the bill comes due.
 
@@ -71,11 +71,13 @@ If 2025 was “look what one model can do,” 2026 is “show me your operating 
 
 And it naturally sets up Part 2: why the teams that win this year are embracing boring AI on purpose.
 
+Continue to Part 2 here: [*Why 2026 Is the Year of Boring AI*]({% post_url 2026-02-05-why-2026-is-the-year-of-boring-ai %}).
+
 ---
 
 ## Series links
 
-- **Part 2:** *Why 2026 Is the Year of Boring AI* (`/lab/why-2026-is-the-year-of-boring-ai`)
+- **Part 2:** [*Why 2026 Is the Year of Boring AI*]({% post_url 2026-02-05-why-2026-is-the-year-of-boring-ai %})
 
 ## References
 

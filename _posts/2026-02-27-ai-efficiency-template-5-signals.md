@@ -3,7 +3,7 @@ layout: post
 title: "The New ‘AI Efficiency’ Template: 5 Signals a Restructuring Is Strategy (Not Panic)"
 date: 2026-02-27
 categories: [essays]
-published: false
+published: true
 ---
 
 “AI efficiency” is now the most overloaded phrase in corporate language.
