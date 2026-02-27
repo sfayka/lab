@@ -26,7 +26,7 @@ But founders still have to answer the business question:
 Your customers won’t wait for your ethics committee.
 Your competitors won’t either.
 
-The bad response is obvious: slash headcount, post a thread, call it transformation.
+The bad response is obvious: slash headcount, post a thread, call it transformation. Back in the day (I'm aging myself here) in "the valley" there was a company who I will not name, that had a reputation amongst those in the area (pre-dot.com and into the dot.com era). This reputation was as follows: Company A would hire a ton of people, worked on a project, realized they hired way too many, then layoff a ton of people. This would happen, seemingly without fail, year after year. 
 The better response is harder: redesign how work gets done, then resize based on evidence.
 
 That’s the split now.
