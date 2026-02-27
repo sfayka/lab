@@ -3,7 +3,7 @@ layout: post
 title: "I Asked My AI Agent What We Should Build Next. Here's What Happened."
 date: 2026-02-23
 categories: [essays]
-published: false
+published: true
 ---
 
 We kept building the wrong things. Not broken things — impressive things. Cool demos, fast prototypes, features that looked great in a thread and did basically nothing for the business.
