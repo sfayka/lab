@@ -3,7 +3,7 @@ layout: post
 title: "AI Layoffs Are Here. The Honest Question Isn’t ‘Will Jobs Change?’ — It’s ‘Who Captures the Productivity?’"
 date: 2026-02-27
 categories: [essays]
-published: false
+published: true
 ---
 
 Block just made the subtext explicit.
