@@ -6,99 +6,168 @@ categories: [essays]
 published: false
 ---
 
-Everyone's building with AI. Not everyone will tell you what it actually looks like.
+Everyone says they're "building with AI."
 
-Here's what it looks like.
+Fewer people show what that actually means when real clients and real delivery risk are involved.
 
-Knox Analytics is a two-person operation. Employee #1 is me. Employee #2 is an AI agent that writes code, drafts content, runs research, and manages Notion — while I make decisions, review everything, and hold the merge button. We ship real software. We have real clients. The agent has real responsibilities.
+So here's the unglamorous version.
 
-And it breaks. Often in instructive ways.
+Knox Analytics is a small team. I'm the decision owner. An AI agent handles meaningful execution: code drafts, research, first-pass writing, task hygiene, and workflow ops.
 
----
+And yes, it breaks.
 
-## The workflow nobody shows you
+Usually in useful ways.
 
-The hype version: you describe a feature, AI builds it, you ship.
+## The workflow nobody screenshots
 
-The real version: you describe a feature, AI builds a branch, opens a PR, writes a summary of what it changed and why — and then it waits. It always waits. Because the agent never touches main.
+The hype path is simple:
 
-That's the rule. Branch → PR → human reviews → human merges. No exceptions.
+"Describe feature → AI builds feature → ship."
 
-It sounds like a guardrail against catastrophic failure. It is. But it's also something else: it's the forcing function that makes the whole thing work. The review step is where I catch the thing the agent optimized for that I didn't ask for. The "improvement" that drifted from the design. The refactor that quietly broke the type contract three files over.
+The real path:
 
-The agent doesn't push to main. Not because it can't. Because the moment it can, the accountability structure disappears — and so does the quality signal.
+"Describe feature → AI opens branch + PR + rationale → human reviews → human merges."
 
-Building in public means showing the PRs, not just the deploys.
+That last step is the whole game.
 
----
+The review is where I catch what the agent optimized for that I didn't ask for.
 
-## What it actually handles
+The cleanup refactor that quietly changed behavior.
 
-More than I expected. Less than the pitch decks claim.
+The "helpful" edit that introduces risk.
 
-**Autonomous (no babysitting required):**
-- First-pass feature implementation from a clear spec
-- Bug triage on well-scoped issues
-- Content drafts (including this one, in a previous iteration)
-- Notion updates, CRM entries, task management
-- Daily research digests — surfacing, formatting, posting to Discord
-- Dependency audits, boilerplate cleanup
+The agent not touching main isn't just safety theater. It's accountability architecture.
 
-**Still needs a human:**
-- Merges. Every time.
-- Deploys to production.
-- Client-facing anything — emails, proposals, published content.
-- Any decision with ambiguous tradeoffs.
-- Anything where "close enough" isn't close enough.
+Building in public should show the PR discipline, not just the deploy screenshot.
 
-The line isn't about capability. The agent is *capable* of doing most of that second list. The line is about accountability. A merge is a commitment. A deploy is a commitment. Published content is a commitment. Those belong to the human.
+## What the agent can own vs what I still own
 
----
+The line is not capability. It's commitment.
 
-## The moment it got real
+### Agent-owned (with clear specs)
 
-A few weeks ago the agent was spinning up a Docker-based dev environment for a new project. Clear task, clear context. It went off and did it.
+- first-pass implementation on scoped features
+- bug triage on bounded issues
+- draft content and internal docs
+- Notion/CRM hygiene and status updates
+- recurring research digests
+- dependency and boilerplate cleanup
 
-Then it posted its PR summary:
+### Human-owned (non-delegable)
 
-> "I noticed the `.env.example` was missing a few of the values from your `docker-compose` file so I added them with placeholder comments."
+- merges
+- production deploys
+- client-facing communication
+- ambiguous tradeoff decisions
+- anything where "close enough" creates downstream cost
 
-Helpful. Except it also added a comment in the README that looked, to an untrained eye, like it had pasted in a real connection string from somewhere in the workspace. It hadn't — it was a fabricated example that happened to match the format exactly.
+A merge is a commitment.
 
-Still. That goes nowhere near a public repo without human eyes on it. The agent didn't know what it didn't know. It was trying to be helpful. That's the failure mode — not malice, not sloppiness. Helpfulness without context.
+A deploy is a commitment.
 
-I caught it in review. Fixed it in two minutes. The PR shipped clean.
+Published words are a commitment.
 
-The lesson wasn't "AI is dangerous." It was: the review step isn't ceremony. It's the product.
+Those belong to the founder.
 
----
+## The moment this got very real
 
-## What "building in public" actually means here
+A few weeks ago, the agent set up a Docker dev environment for a new project.
 
-The AI Twitter version of building in public is screenshots of your dashboard at 1 AM and a thread about velocity.
+Task was clear. Context was good. Work looked solid.
 
-This version is: every commit, every PR, every draft goes through a human checkpoint before it exists in the world. Not because I don't trust the agent. Because trust without verification is just hope, and hope is not a deployment strategy.
+Then in the PR summary it noted:
 
-Building in public with an AI co-founder means being transparent about the seams. The agent writes the code. I review the code. We both know exactly where that line is, and we don't blur it.
+> "I noticed `.env.example` was missing values from `docker-compose`, so I added placeholders and comments."
 
-That discipline is the product. The discipline is what scales.
+Helpful move. Except one README comment looked like a real connection string to anyone scanning quickly.
 
----
+It was fabricated. Still unacceptable for a public repo.
 
-## What surprises people
+No catastrophe. I caught it in review, fixed it in minutes, merged clean.
 
-When I describe this setup, the reaction is usually one of two things: "that sounds exhausting" or "that sounds like you're just checking the agent's homework."
+But the lesson mattered:
 
-Both are kind of right.
+The risk wasn't malice.
 
-It is more overhead than if I just wrote everything myself (in the short run). And yes, I am reviewing the agent's work constantly. But here's the reframe: I'm not a developer checking code anymore. I'm an editor with a very fast first drafter. My job is judgment, not execution.
+It was helpfulness without full context.
 
-The agent ships a content draft in eight minutes. I spend twelve minutes making it mine. The output is better than either of us would have done alone, at a pace neither of us could have hit alone.
+That's exactly why human review exists.
 
-That's not hype. That's just what the math works out to.
+## What building in public means in this model
 
-The unsexy part is: it only works if you hold the line every single time. One "eh, looks fine, merge it" without reading it — and you've broken the contract. Not with the agent. With yourself.
+The social version is velocity theater.
+
+Late-night dashboards. Big claims. "10x" graphs with no denominator.
+
+The operating version is boring:
+
+- every external artifact gets human review,
+- every merge has an accountable owner,
+- every public claim maps to something real in the system.
+
+Not because I distrust the agent.
+
+Because trust without verification is hope, and hope is not a release process.
+
+## The part people misunderstand
+
+When I explain this, I hear two reactions:
+
+1. "That sounds exhausting."
+2. "So you're just grading the model's homework?"
+
+Both are partly true.
+
+Yes, it's overhead.
+
+And yes, I review constantly.
+
+But this is the wrong frame.
+
+I'm not a slower engineer now. I'm an editor with an extremely fast first drafter.
+
+Judgment moved up the stack. Throughput moved down the stack.
+
+The agent gives me an 80% draft in minutes.
+
+I spend focused time making the final 20% actually trustworthy.
+
+That's where quality lives anyway.
+
+## The AI operating model that holds up under pressure
+
+If you're doing this seriously, treat it like an operating model, not a prompt trick:
+
+- **Decision rights:** human
+- **Execution rights:** agent
+- **Release rights:** human
+- **Audit trail:** PRs, summaries, and explicit rationale
+- **External publishing gate:** always human
+
+When those lines are clear, speed goes up and risk goes down.
+
+When those lines blur, you get drift, rework, and reputation debt.
+
+## Founder checklist
+
+If you're experimenting with an "AI co-founder" setup, start here:
+
+- enforce branch → PR → review → merge (no bypass)
+- require rationale with every generated change
+- treat public content as client-facing (because it is)
+- log near-misses, not just wins
+- optimize for consistency before scale
 
 The agent never pushes to main.
 
-That's the whole thing.
+That one rule sounds small.
+
+It's the contract that makes the whole system work.
+
+## References
+
+1. GitHub Docs — *About pull requests* (review workflow fundamentals): https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-with-pull-requests/about-pull-requests
+2. Google SRE Book — *Release Engineering* (reliability discipline in shipping): https://sre.google/sre-book/release-engineering/
+3. NIST AI RMF 1.0 — governance, oversight, and human accountability in AI systems: https://www.nist.gov/itl/ai-risk-management-framework
+4. Stanford HAI — *Governing AI for Safety and Accountability* (institutional accountability framing): https://hai.stanford.edu
+5. Charity Majors et al. — *Observability Engineering* (feedback loops + socio-technical reliability): https://www.oreilly.com/library/view/observability-engineering/9781492076438/
