@@ -3,7 +3,7 @@ layout: post
 title: "Harness, Hygiene, and Human Gates"
 date: 2026-03-05
 categories: [essays]
-published: false
+published: true
 ---
 
 ## What We Learned While Stabilizing Knox Bot

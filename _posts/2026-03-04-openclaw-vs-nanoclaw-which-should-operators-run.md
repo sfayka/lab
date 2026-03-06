@@ -3,7 +3,7 @@ layout: post
 title: "OpenClaw vs NanoClaw: Which One Should a Technical Operator Actually Run?"
 date: 2026-03-04
 categories: [essays]
-published: false
+published: true
 ---
 
 I used to run these evaluations like a procurement spreadsheet.

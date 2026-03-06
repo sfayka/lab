@@ -3,7 +3,7 @@ layout: post
 title: "The Next 90 Days in Agentic AI: 5 Bets on OpenAI vs Anthropic (and What Would Prove Me Wrong)"
 date: 2026-03-04
 categories: [essays]
-published: false
+published: true
 ---
 
 I don’t love prediction posts.
