@@ -6,156 +6,152 @@ categories: [essays]
 published: false
 ---
 
-For two years, most AI conversations were capability theater.
+For a while, we all got to hide in model talk.
 
-Who has the better model. Bigger context window. Cleaner benchmark chart. Better demo thread.
+Context windows. Benchmarks. New releases. Great threads.
 
-Useful phase. Necessary even.
+I’m not dunking on that phase. We learned a lot there.
 
-But it’s not the phase we’re in now.
+But the signal this week wasn’t a benchmark jump. It was operating-model decisions tied to AI productivity claims. That’s a different category of signal, and founders should treat it differently.
 
-The signal from the last week wasn’t a benchmark jump. It was workforce and operating-model moves tied directly to AI productivity claims. That changes the founder question from “Should we use agents?” to “Can we redesign workflows faster than competitors can redesign cost structure?”
-
-That’s a different game.
+When this moves from “tooling” to “org chart,” the rules change.
 
 ---
 
-## The signal worth paying attention to
+## The signal that matters
 
-Reuters reported two related developments this week:
+Reuters reported two related things in the last week:
 
 1. Block announced major workforce cuts tied to AI-enabled operating changes (Feb 26, 2026).
-2. Reuters’ broader reporting showed multiple companies linking restructuring to AI/automation investment shifts (updated Feb 27; based on Feb 25 reporting).
+2. Reuters also showed a broader pattern of companies linking restructuring to AI/automation investment shifts (updated Feb 27; based on Feb 25 reporting).
 
-This is no longer theoretical “someday” displacement talk.
+That doesn’t mean every claim is pure truth. Some of this is always narrative engineering for markets.
 
-Public companies are already making structural bets.
-
-Now, yes — some of this is narrative management for investors. Always is. But when the same pattern repeats across multiple firms and sectors, you should treat it as a market-level transition, not PR noise.
+But when multiple firms in different sectors pull the same lever, you should assume we’re in a transition period, not a headline cycle.
 
 ---
 
-## Why this is an agentic operations story (not just a layoffs story)
+## Why this is an operations story, not a “layoffs story”
 
-When executives say a smaller team can do more with AI tools, they’re making an orchestration claim.
+When leaders say a smaller team can do more with AI, what they’re really saying is: we think our workflows can absorb this change.
+
+That’s an orchestration claim.
 
 Not a chatbot claim.
 
-The value is in execution loops:
-- triage,
-- routing,
-- approval handoffs,
+The value shows up in repeat loops:
+- intake and triage,
+- routing and handoff,
+- approvals,
 - exception handling,
-- follow-up reliability.
+- follow-through.
 
-That’s where org design and workflow architecture collide.
+If those loops are clean, you can increase throughput without breaking quality.
 
-If the architecture is weak, quality degrades and rework explodes.
-
-If the architecture is strong, margin can expand without delivery collapse.
-
-No one gets the upside for free.
+If those loops are messy, you get hidden queue debt and customer pain that arrives three weeks later (usually on a Monday morning, because of course it does).
 
 ---
 
-## What SMB operators should do differently
+## What SMB operators should do (and stop doing)
 
-### 1) Don’t copy enterprise headcount moves
+### 1) Stop copy-pasting enterprise headcount logic
 
-You don’t have their margin cushion or capital access.
+You don’t have enterprise margin cushion.
 
-If you cut first and redesign later, you create hidden queue debt. It won’t show up in a deck. It will show up in missed follow-ups, messy handoffs, and customer frustration three weeks later.
+If you cut before redesigning decision flow, you don’t “unlock efficiency.” You move failure upstream and make it harder to see.
 
-### 2) Treat workflow ownership as the bottleneck
+### 2) Put a human owner on each AI-touched workflow
 
-Most SMB teams are still debating vendors while no one owns the new process boundary.
+Most small teams are still arguing about vendors while workflow ownership is undefined.
 
-Backward.
+That is backwards.
 
-If nobody owns the decision path, tool choice won’t save you.
+If no one owns the path, no tool will save you.
 
 ### 3) Measure workflow outcomes, not AI activity
 
-Track cycle time, quality, and recovery behavior per workflow.
+Track:
+- cycle time,
+- quality/rework,
+- recovery behavior when outputs fail.
 
-If you only track labor savings, you’ll miss slow-motion failure until clients feel it.
+If your dashboard is only “hours saved,” you’re probably missing silent failure.
 
-### 4) Stop selling “AI efficiency” as a slogan
+### 4) If you’re a consultancy, retire “AI efficiency” as a vague pitch
 
-For consulting firms, this phrase is now overloaded to the point of useless.
-
-Translate it into operating mechanics:
+Translate into specifics:
 - decision rights,
 - escalation paths,
 - instrumentation,
-- and governance cadence.
+- governance cadence.
 
-If you can’t do that, you’re not selling transformation. You’re selling prompts.
-
----
-
-## What this means for consulting firms (including us)
-
-The opportunity is larger than model integration work.
-
-The higher-value wedge is orchestration architecture plus change management:
-
-- map the current workflow,
-- define human checkpoints,
-- set agent boundaries,
-- implement guardrails,
-- instrument outcomes,
-- iterate weekly.
-
-That’s where clients feel real business value.
-
-It’s also harder to commoditize than “we can connect your stack to AI.”
+If you can’t do that, clients hear “prompts” even when you mean “operations.”
 
 ---
 
-## What to do this week (not next quarter)
+## Build-in-public version (good / bad / ugly)
 
-Use this on one workflow. Just one.
+### Good
 
-- [ ] Pick a revenue-adjacent workflow (sales follow-up, onboarding, support triage, collections).
-- [ ] Draw the full decision path from input to shipped output.
-- [ ] Mark every approval hop and owner.
-- [ ] Remove one FYI approval that adds delay but not risk reduction.
-- [ ] Define one fallback path for low-confidence or failed agent output.
-- [ ] Set 3 metrics for 30 days: cycle time, quality score, exception rate.
+When we tightened one workflow at a time, quality and throughput both improved. Not magical. Just cleaner decision boundaries and fewer ambiguous handoffs.
+
+### Bad
+
+We initially over-indexed on the tooling layer. We had strong components and weak ownership. Predictable result: drift.
+
+### Ugly
+
+The most expensive mistakes were quiet ones. No dramatic outage. Just compounding rework and trust erosion until the team felt slower despite “more AI.”
+
+That’s why this is an org chart conversation now.
+
+---
+
+## What to do this week (one workflow, no theater)
+
+Use this on one revenue-adjacent workflow.
+
+- [ ] Pick one workflow (sales follow-up, onboarding, support triage, collections).
+- [ ] Draw the path from input to shipped output.
+- [ ] Label every approval hop and owner.
+- [ ] Remove one FYI approval that adds delay without reducing risk.
+- [ ] Define fallback behavior for low-confidence agent output.
+- [ ] Track 3 metrics for 30 days: cycle time, quality score, exception rate.
 - [ ] Run a weekly kill/keep/scale review.
 
-If you don’t have weekly decisions, you don’t have an operating model.
+If you can’t make a weekly decision, you don’t have an operating model yet.
 
-You have a pilot with a nice deck.
+You have a pilot.
 
 ---
 
-## The failure pattern to avoid
+## Failure pattern to avoid
 
-The most dangerous move this quarter is simple:
+Most dangerous move this quarter:
 
 > announce AI efficiency before instrumenting AI reliability.
 
-It sounds decisive. It photographs well. It fails quietly.
+It sounds decisive in board updates.
+
+It feels good for a week.
+
+Then reality collects the debt.
 
 Evidence first. Narrative second.
-
-Every time.
 
 ---
 
 ## Bottom line
 
-The market signal is clear: AI is being treated as a structural operating lever now.
+AI is being treated as a structural operating lever now. That part is clear.
 
-For SMBs, that’s not a cue to panic-cut.
+For SMBs, this is not a cue to panic-cut.
 
-It’s a cue to out-execute.
+It’s a cue to execute better than bigger players where you can: tighter loops, clearer ownership, faster learning cycles.
 
 Redesign one workflow. Measure it. Prove it. Then scale.
 
-That’s how you stay in the game while everyone else debates slogans.
+That’s the game.
 
 ---
 
