@@ -3,7 +3,7 @@ layout: post
 title: "Why Manager / Worker Agents Beat One Big Autonomous Bot"
 date: 2026-03-05
 categories: [essays]
-published: false
+published: true
 ---
 
 I wanted one super-agent. One thread, one brain, one place to talk to. It looked elegant on paper and felt efficient in week one. The same agent could plan work, execute work, summarize work, and validate work. In chat, that looked like velocity. In reality, it slowly became a polite chaos engine because the same system doing the work was also grading the work.

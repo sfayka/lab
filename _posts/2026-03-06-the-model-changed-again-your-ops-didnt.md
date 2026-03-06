@@ -3,7 +3,7 @@ layout: post
 title: "The Model Changed Again. Your Ops Didn’t."
 date: 2026-03-06
 categories: [essays]
-published: false
+published: true
 ---
 
 Every model release now creates the same emotional arc on teams like ours. First, everyone is excited. Then, a week later, someone asks why quality slipped on support replies, why latency is suddenly inconsistent, or why costs jumped without any obvious product gain. We’ve been through that cycle more than once, and it took us too long to admit the underlying issue wasn’t “the model changed.” The issue was that our operating loop never matured past “pick one and hope.”
