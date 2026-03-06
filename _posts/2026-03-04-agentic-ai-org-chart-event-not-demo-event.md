@@ -6,152 +6,152 @@ categories: [essays]
 published: false
 ---
 
-*Draft date: 2026-03-02*  
-*Topic window: past 7 days*
+For a while, we all got to hide in model talk.
 
-The market signal this week wasn’t a model benchmark.
+Context windows. Benchmarks. New releases. Great threads.
 
-It was workforce and operating-model moves tied directly to AI productivity claims.
+I’m not dunking on that phase. We learned a lot there.
 
-That matters for founders because it changes the question.
+But the signal this week wasn’t a benchmark jump. It was operating-model decisions tied to AI productivity claims. That’s a different category of signal, and founders should treat it differently.
 
-Not “Should we use agents?”
-
-“Can we redesign workflows faster than competitors can cut cost?”
+When this moves from “tooling” to “org chart,” the rules change.
 
 ---
 
-## The high-signal event
+## The signal that matters
 
-In the last week, Reuters reported two related signals:
+Reuters reported two related things in the last week:
 
-1. **Block announced major workforce cuts tied to AI-enabled operating changes** (Feb 26, 2026).
-2. **A broader Reuters fact pattern showed multiple firms linking restructuring to AI/automation investments** (updated Feb 27, based on Feb 25 reporting).
+1. Block announced major workforce cuts tied to AI-enabled operating changes (Feb 26, 2026).
+2. Reuters also showed a broader pattern of companies linking restructuring to AI/automation investment shifts (updated Feb 27; based on Feb 25 reporting).
 
-This is not abstract future talk. Public companies are making structural bets now.
+That doesn’t mean every claim is pure truth. Some of this is always narrative engineering for markets.
 
-And yes, some of this is narrative management. But the pattern is real.
+But when multiple firms in different sectors pull the same lever, you should assume we’re in a transition period, not a headline cycle.
 
 ---
 
-## Why this is an agentic AI story (not just a layoff story)
+## Why this is an operations story, not a “layoffs story”
 
-Agentic systems shift value from raw output generation to process execution:
+When leaders say a smaller team can do more with AI, what they’re really saying is: we think our workflows can absorb this change.
 
-- triage,
-- routing,
-- draft-to-approval loops,
+That’s an orchestration claim.
+
+Not a chatbot claim.
+
+The value shows up in repeat loops:
+- intake and triage,
+- routing and handoff,
+- approvals,
 - exception handling,
-- follow-up consistency.
+- follow-through.
 
-That’s exactly where org redesign shows up.
+If those loops are clean, you can increase throughput without breaking quality.
 
-When leaders say “smaller teams can do more with intelligence tools,” they’re making an orchestration claim. Not a chatbot claim.
-
-If that claim is wrong, quality collapses.
-
-If it’s right, margin expands.
-
-No middle ground for long.
+If those loops are messy, you get hidden queue debt and customer pain that arrives three weeks later (usually on a Monday morning, because of course it does).
 
 ---
 
-## Implications for SMB operators
+## What SMB operators should do (and stop doing)
 
-### 1) You can’t copy enterprise headcount moves
+### 1) Stop copy-pasting enterprise headcount logic
 
-You don’t have their balance sheet.
+You don’t have enterprise margin cushion.
 
-If you cut before redesigning decision flow, you create brittle operations and hidden queue debt.
+If you cut before redesigning decision flow, you don’t “unlock efficiency.” You move failure upstream and make it harder to see.
 
-### 2) Workflow ownership now matters more than tool selection
+### 2) Put a human owner on each AI-touched workflow
 
-Most SMB teams are still debating vendors while nobody owns the new process boundary.
+Most small teams are still arguing about vendors while workflow ownership is undefined.
 
-That’s backwards.
+That is backwards.
 
-### 3) “AI productivity” must be measured at workflow level
+If no one owns the path, no tool will save you.
 
-Track cycle time, quality, and error recovery per workflow.
+### 3) Measure workflow outcomes, not AI activity
 
-If you only track labor savings, you’ll miss silent failure until customers feel it.
+Track:
+- cycle time,
+- quality/rework,
+- recovery behavior when outputs fail.
 
-### 4) Consulting firms need a stronger point of view
+If your dashboard is only “hours saved,” you’re probably missing silent failure.
 
-Clients are asking for “AI efficiency.” That phrase is now overloaded.
+### 4) If you’re a consultancy, retire “AI efficiency” as a vague pitch
 
-Your job is to translate it into:
+Translate into specifics:
 - decision rights,
 - escalation paths,
 - instrumentation,
-- and governance.
+- governance cadence.
 
-If you can’t do that, you’re selling prompts in a market that needs operating design.
-
----
-
-## What this means for AI consulting firms (including us)
-
-The opportunity is bigger than model integration.
-
-The real wedge is **orchestration architecture + change management**:
-
-- map current workflow,
-- identify human checkpoints,
-- define agent boundaries,
-- implement guardrails,
-- instrument outcomes,
-- tune weekly.
-
-That’s consulting work with hard business value.
-
-And it is much harder to commoditize than “we can add AI to your stack.”
+If you can’t do that, clients hear “prompts” even when you mean “operations.”
 
 ---
 
-## What to do this week (checklist)
+## Build-in-public version (good / bad / ugly)
 
-Use this with one workflow. Not ten.
+### Good
 
-- [ ] Pick one revenue-adjacent workflow (sales follow-up, onboarding, support triage, collections).
-- [ ] Draw the current decision path from input to shipped output.
-- [ ] Mark every approval hop and owner.
-- [ ] Remove one “FYI approval” that adds delay but no risk reduction.
-- [ ] Define one fallback path when the agent fails/confidence drops.
-- [ ] Set 3 metrics for 30 days: cycle time, quality score, exception rate.
-- [ ] Run weekly review with a kill/keep/scale decision.
+When we tightened one workflow at a time, quality and throughput both improved. Not magical. Just cleaner decision boundaries and fewer ambiguous handoffs.
 
-If you don’t have weekly decisions, you don’t have an operating model.
+### Bad
 
-You have a pilot with nice screenshots.
+We initially over-indexed on the tooling layer. We had strong components and weak ownership. Predictable result: drift.
+
+### Ugly
+
+The most expensive mistakes were quiet ones. No dramatic outage. Just compounding rework and trust erosion until the team felt slower despite “more AI.”
+
+That’s why this is an org chart conversation now.
+
+---
+
+## What to do this week (one workflow, no theater)
+
+Use this on one revenue-adjacent workflow.
+
+- [ ] Pick one workflow (sales follow-up, onboarding, support triage, collections).
+- [ ] Draw the path from input to shipped output.
+- [ ] Label every approval hop and owner.
+- [ ] Remove one FYI approval that adds delay without reducing risk.
+- [ ] Define fallback behavior for low-confidence agent output.
+- [ ] Track 3 metrics for 30 days: cycle time, quality score, exception rate.
+- [ ] Run a weekly kill/keep/scale review.
+
+If you can’t make a weekly decision, you don’t have an operating model yet.
+
+You have a pilot.
 
 ---
 
 ## Failure pattern to avoid
 
-The most dangerous move right now:
+Most dangerous move this quarter:
 
-> Announce AI efficiency before instrumenting AI reliability.
+> announce AI efficiency before instrumenting AI reliability.
 
-Looks decisive. Feels modern. Breaks quietly.
+It sounds decisive in board updates.
 
-You need evidence before narrative.
+It feels good for a week.
 
-Every time.
+Then reality collects the debt.
+
+Evidence first. Narrative second.
 
 ---
 
 ## Bottom line
 
-This week’s market signal is clear: AI is now being treated as a structural operating lever.
+AI is being treated as a structural operating lever now. That part is clear.
 
-For SMBs, that’s not a reason to panic-cut.
+For SMBs, this is not a cue to panic-cut.
 
-It’s a reason to out-execute.
+It’s a cue to execute better than bigger players where you can: tighter loops, clearer ownership, faster learning cycles.
 
-Redesign one workflow. Measure it. Prove it. Then expand.
+Redesign one workflow. Measure it. Prove it. Then scale.
 
-That’s how you stay in the game.
+That’s the game.
 
 ---
 
