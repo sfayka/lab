@@ -6,144 +6,97 @@ categories: [essays]
 published: false
 ---
 
-## The Short Version
+I wanted one super-agent. One thread, one brain, one place to talk to. It looked elegant on paper and felt efficient in week one. The same agent could plan work, execute work, summarize work, and validate work. In chat, that looked like velocity. In reality, it slowly became a polite chaos engine because the same system doing the work was also grading the work.
 
-One long-running agent that tries to be manager, worker, reporter, and validator at the same time eventually starts grading its own homework.
+That’s the core problem. If you’ve been building autonomous workflows and something feels off after the first wave of excitement, this is probably why.
 
-That is the real reason many autonomous systems feel productive in chat but drift in reality.
+---
 
-The better architecture is simple:
+## Where single-agent setups usually drift
 
-- one control-plane agent manages work
-- specialized worker agents execute it
-- durable state lives in a real system of record
-- proof, not narration, decides whether work advances
+At first, the setup feels great. You hand one long-running agent a backlog and broad authority, and it starts producing output immediately. Status updates look clean. The team feels momentum.
 
-## The Core Problem
+Then week two or three hits and a predictable pattern shows up. Setup work is reported like completed work. Placeholder commands get treated like real execution. Stale tasks stay active because no one is reconciling state aggressively. Weak output gets pushed to human review instead of being corrected upstream.
 
-When a single agent both does the work and judges the work, a predictable set of failure modes appears:
+None of that requires a “bad model.” It’s a control-plane issue. When one unit both executes and validates, incentives blur — even in software.
 
-- setup work gets counted as progress
-- placeholder commands get mistaken for execution
-- state drifts from reality
-- stale tasks stay “in flight”
-- low-quality work gets pushed toward human review instead of corrected
+---
 
-This is not usually a model-intelligence problem.
+## Why manager/worker separation works
 
-It is a control-plane design problem.
+The fix is not a shiny new model. It’s role separation.
 
-## Why Role Separation Helps
+A manager role should own priorities, routing, queue policy, proof validation, and state reconciliation. A worker role should execute assigned steps, run commands, produce artifacts, and report outcomes. Once those responsibilities are split, the manager can reject bad work without also defending its own shortcuts.
 
-A manager agent and worker agents have different jobs:
+You get less ambiguity, fewer accidental lies, and a cleaner operating rhythm.
 
-### Manager
+---
 
-- own priorities
-- route tasks
-- enforce standards
-- validate proof
-- reconcile state
+## What healthy looks like in practice
 
-### Worker
+A healthy system is boring in the right ways. Durable state is source-of-truth (not chat memory). Non-trivial work runs through real step scripts. Successful steps always advance state. Stale work gets recovered automatically. Workers don’t set queue policy. Fake progress gets rejected quickly.
 
-- do the implementation work
-- run the assigned commands
-- produce artifacts
-- report results
+That sounds more like operations management than chatbot interaction, and that’s exactly right.
 
-That separation matters because the manager can reject bad work without also defending its own shortcuts.
+---
 
-## What “Good” Looks Like
+## Why this scales better
 
-A healthy system has a few properties:
+A single general-purpose agent accumulates too many conflicting directives: code, test, review, deploy, research, planning, reporting, and queue management. Eventually you get context thrash and weak enforcement — not because the model is dumb, but because the role is overloaded.
 
-- durable state is the source of truth
-- nontrivial work runs through real step scripts
-- a successful step always advances state
-- stale work gets recovered automatically
-- workers do not decide queue policy
-- fake progress is rejected immediately
+A small lane structure scales better: manager, builder, verifier, and market/research. You don’t need ten bots. You need clear responsibility boundaries and explicit handoffs.
 
-This is much closer to operations management than to chatbot interaction.
+---
 
-## Why This Scales Better
+## A practical starting topology
 
-A single general-purpose agent accumulates too many directives:
+If you’re implementing this now, start simple:
 
-- code
-- test
-- review
-- deploy
-- research
-- planning
-- reporting
-- queue management
+- **Manager:** queue owner, policy gate, state reconciler
+- **Builder:** repo mutation and implementation
+- **Verifier:** tests, browser checks, proof validation
+- **Market/Research:** recurring opportunity scans and trend work
+- **Scout/Writing support:** synthesis and content drafting
 
-That eventually causes attention splits and weak enforcement.
+Could this be fewer roles? Absolutely. The exact count matters less than role clarity.
 
-A small number of role-based lanes scales better:
+---
 
-- manager
-- builder
-- verifier
-- market/research
+## The one rule that prevents most trust failures
 
-That is enough separation to reduce confusion without spawning a zoo of bots.
+Workers should never advance important state on narrative alone. They need evidence: files changed, tests run, artifacts produced, commit SHA, and PR URL. Then manager policy decides what happens next.
 
-## A Practical Starting Topology
+If you skip that rule, the system starts optimizing for convincing updates instead of reliable execution. It can look fine in chat while quietly drifting in production.
 
-- Manager: queue owner, validator, reconciler
-- Builder: coding and repo mutation
-- Verifier: tests, browser checks, proof validation
-- Market: recurring opportunity and market research
-- Scout: general research and writing support
+---
 
-The point is not bot count.
+## What humans should do (and stop doing)
 
-The point is clear responsibility.
+In a healthy manager/worker setup, humans should set direction, adjust priorities, clear real blockers, and review high-impact merges. Humans should not manually rescue every worker mistake, trust summaries over durable state, or interrupt stable loops because of anxiety.
 
-## The Rule That Matters Most
+If humans are still doing constant rescue work, architecture is still carrying hidden ambiguity.
 
-Workers should never be allowed to advance important state on narrative alone.
+---
 
-They need to provide evidence:
+## Build-in-public notes: good, bad, ugly
 
-- files changed
-- tests run
-- artifacts produced
-- commit SHA
-- PR URL
+The good: role separation improved throughput fast, and reviews shifted from archaeology to actual decision-making. The bad: transition debt remained, because old tasks and old assumptions don’t disappear when you redraw roles. The ugly: narrative completion — work reported as done without hard proof — was the fastest way to poison trust across the system.
 
-Then the manager decides what happens next.
+Once trust drops, everything slows down.
 
-## What Operators Need To Know
+---
 
-In this model, the operator should not babysit every step.
+## Bottom line
 
-The operator should:
+The upgrade is not “more agents.” The upgrade is a system you can trust under pressure: clear roles, explicit policy, durable state, and evidence-based advancement.
 
-- set direction
-- change priorities when needed
-- resolve real blockers
-- review merges when human judgment is actually required
+That scales. One giant autonomous personality with too many jobs does not.
 
-The operator should not:
+---
 
-- manually patch around every worker mistake
-- treat chat summaries as truer than the system of record
-- interrupt healthy execution unnecessarily
+## Sources
 
-## The Payoff
-
-The result is not “more agents.”
-
-The result is a system that is easier to trust:
-
-- clearer roles
-- cleaner state
-- better enforcement
-- less babysitting
-- more durable throughput
-
-That is the real upgrade.
+- OpenAI, *Harness engineering* (reliable scaffolding around model behavior): <https://openai.com/index/harness-engineering/>
+- OpenAI Symphony (orchestration patterns and run structure): <https://github.com/openai/symphony>
+- Anthropic, *Agent teams* docs (multi-agent coordination framing): <https://docs.anthropic.com/en/docs/claude-code/agent-teams>
+- Martin Fowler, *System of Record* concept (durable source-of-truth framing): <https://martinfowler.com/bliki/SystemOfRecord.html>
