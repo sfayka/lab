@@ -6,150 +6,68 @@ categories: [essays]
 published: false
 ---
 
-Every model release now comes with the same mood swing.
+Every model release now creates the same emotional arc on teams like ours. First, everyone is excited. Then, a week later, someone asks why quality slipped on support replies, why latency is suddenly inconsistent, or why costs jumped without any obvious product gain. We’ve been through that cycle more than once, and it took us too long to admit the underlying issue wasn’t “the model changed.” The issue was that our operating loop never matured past “pick one and hope.”
 
-First: excitement. "This one finally thinks better." "This one is faster." "This one can do agent teams."  
-Then: confusion. "Why did quality drop on support replies?" "Why did latency jump?" "Why did cost spike this week?"
-
-We went through this loop more than once. (More than I want to admit.)
-
-At first, we treated model upgrades like software upgrades. Pick the newest one, swap it in, move on.
-
-That worked for about five minutes.
-
-Because the model wasn’t the real system.
-
-Our operations were.
-
-And our operations were underbuilt.
+At the beginning, we treated model upgrades like normal dependency upgrades: pick the newest strong model, swap it in, and move on. That approach sounds clean in a meeting. It fails in production because one model almost never maps cleanly to every workflow you run.
 
 ---
 
 ## 1) We tried “pick one model and ship.” It broke in three weeks.
 
-The original plan was simple: choose one strong model, use it everywhere, and standardize the stack.
+The original plan was simple and very founder-friendly: standardize on one model, reduce decision overhead, keep architecture tidy. In practice, it broke fast. The same model that performed well on longer strategic writing drifted on support drafts under tighter latency constraints. Sales summaries became too verbose when we needed crisp call notes. Engineering-oriented work improved while operational writing got noisier.
 
-Sounds clean. Very founder-friendly. Fewer decisions, less complexity.
+None of these failures were dramatic enough to trigger an obvious incident. That’s what made them expensive. We saw extra review passes, more hidden cleanup, jittery response timing, and cost drift that only became obvious at month-end.
 
-In practice, it broke fast.
+When that happens, teams usually say “AI is unreliable.” The better diagnosis is less exciting and more useful: no routing policy, no evaluation baseline, and no rollback triggers. We were asking one model to be equally good across workflows with different quality, speed, and cost constraints.
 
-The first thing that failed was consistency by task type. The same model that looked great on long-form strategy prompts would produce mediocre support drafts under tighter latency budgets. Then sales-summary outputs got verbose when we needed crisp bullets. Then coding-heavy tasks improved while operational writing regressed.
-
-Nothing was catastrophic. That made it worse.
-
-It was death by small misses:
-- extra review passes,
-- hidden rework,
-- jittery response times,
-- and cost drift nobody noticed until month-end.
-
-The team reaction was predictable: "AI is unreliable."
-
-The better diagnosis was less dramatic: we had no routing logic, no eval baseline, and no rollback rules. We were asking one model to be universally good across workflows with different constraints.
-
-That’s not strategy. That’s wishful abstraction.
-
-The model wasn’t flaky.
-
-Our process was.
+That isn’t strategy. That’s wishful simplification.
 
 ---
 
-## 2) The release treadmill got faster, and that changes the game
+## 2) The release treadmill got faster, and strategy has to adapt
 
-Model releases are not slowing down. If anything, the product surface is fragmenting faster.
+Model surfaces are fragmenting quickly. OpenAI now explicitly separates usage profiles (Instant vs Thinking vs Pro), which makes the speed/depth tradeoff a product choice instead of a hidden tuning detail. Anthropic keeps pushing on longer-context and team-style workflows, while GitHub rolls stronger model options into Copilot plans that reset developer expectations almost immediately.
 
-OpenAI now explicitly separates usage profiles (Instant vs Thinking vs Pro), which productizes the speed-depth tradeoff instead of hiding it behind one default model choice. Anthropic is leaning harder into longer-context and team-style agent workflows. GitHub keeps rolling stronger top-tier models into Copilot offerings, which resets team expectations almost immediately.
+You can ignore release notes if you want, but your team won’t and your clients won’t. The market behavior now rewards adaptive routing, not model loyalty.
 
-You can ignore the release notes if you want.
+In practical terms, "pick one best model" keeps getting weaker as an operating strategy. Best-fit routing by job is stronger:
+- a fast default lane for routine throughput,
+- a deeper reasoning lane for high-stakes tasks,
+- explicit fallback behavior when either quality or latency drifts.
 
-Your developers won’t. Your clients won’t. Your competitors definitely won’t.
-
-The practical implication: "pick one best model" is becoming less useful each quarter.
-
-What matters now is best-fit routing by job:
-- fast tier for routine throughput,
-- deeper tier for high-stakes reasoning,
-- strict fallback when either quality or latency slips.
-
-In other words, multi-model operations beats model loyalty.
-
-If your AI strategy is one model name in a config file, you don’t have an AI strategy. You have a preference.
+If your AI strategy is one model name in a config file, you don’t really have a strategy. You have a preference.
 
 ---
 
-## 3) The founder model-ops playbook (minimum viable, no ML team required)
+## 3) A minimum viable model-ops loop (without building an ML org)
 
-You do not need a platform team to stabilize this.
+You don’t need a platform team to stabilize this. You need a repeatable loop.
 
-You need a loop.
+### Step 1: Build a small eval set from your real work
 
-Here’s the smallest version that actually works.
+Pick four task types that actually show up every week: support response draft, sales-call summary, proposal/SOW draft, and one edge-case reasoning task that usually causes friction. Use your real prompts and real constraints. Synthetic benchmarks are useful for marketing. They’re weak for operational decisions.
 
-### Step 1: Build a tiny eval set from real work
+### Step 2: Score candidates on four dimensions
 
-Pick four task types you actually run every week:
-1. support response draft,
-2. sales-call summary,
-3. proposal/statement-of-work draft,
-4. one edge-case reasoning task that usually causes friction.
+For each task, score quality, latency, cost, and consistency. Keep scoring lightweight (1–5 plus notes is enough), but make it repeatable. The goal here is not scientific precision. The goal is fewer expensive surprises.
 
-Use your real prompts. Not benchmark theater prompts.
+### Step 3: Route by workflow using concrete model lanes
 
-If you test with synthetic tasks, you’ll get synthetic confidence.
+This is where teams get leverage quickly. A practical example using Anthropic model lanes:
 
-### Step 2: Score each candidate model on four dimensions
+- **Everyday default lane:** Sonnet for routine operational throughput.
+- **Heavy reasoning lane:** Opus for high-stakes analysis, synthesis, or complex decision support.
+- **Lightweight/background lane:** Haiku for heartbeat checks, low-risk research sweeps, or simple recurring summaries.
 
-For each task, score:
-- **quality** (does this need heavy human rewrite?),
-- **latency** (does this fit the workflow SLA?),
-- **cost** (is this sustainable at actual volume?),
-- **consistency** (does quality hold across repeated runs?).
-
-Keep this lightweight. A simple 1–5 rubric plus notes is enough to start.
-
-The goal is not scientific purity.
-
-The goal is fewer bad surprises.
-
-### Step 3: Route by job, not by hype
-
-Set routing rules that reflect business constraints:
-- default fast model for the 80% routine lane,
-- deeper reasoning model only for high-stakes branches,
-- explicit "do not auto-run" zones for sensitive tasks.
-
-If everything goes to the expensive/deep tier, your cost profile explodes.
-
-If everything goes to the fast tier, quality debt explodes.
-
-Either way, you pay.
+That kind of lane design gives you control over cost and latency without flattening quality.
 
 ### Step 4: Add rollback triggers before you need them
 
-Define automatic fallback behavior upfront:
-- if median latency exceeds threshold X for Y hours,
-- if quality scores dip below threshold,
-- if error/retry rate crosses threshold,
-
-…route to backup model or pause specific automations.
-
-Rollback is not a failure signal.
-
-No rollback plan is.
+Define fallback behavior in advance: if median latency crosses threshold X for Y hours, or if quality score drops below threshold, auto-route to backup model or pause specific automations. Rollback isn’t an embarrassment. Missing rollback is.
 
 ### Step 5: Run a weekly 30-minute review
 
-Not daily panic-checking release notes.
-
-Weekly, same agenda:
-- what changed,
-- what degraded,
-- what improved,
-- what to reroute,
-- what to leave alone.
-
-This is where teams either build leverage or build noise.
+Don’t do daily panic checks. Do one disciplined weekly review: what improved, what degraded, what rerouted, what stayed stable. This is where teams either build compounding leverage or drown in model-chasing noise.
 
 Systems beat screenshots.
 
@@ -157,27 +75,11 @@ Systems beat screenshots.
 
 ## 4) What to implement this quarter
 
-If you want a concrete monthly plan:
+If you want a concrete rollout path, keep it simple. Week one: define eval tasks and rubric from real queue work. Week two: test top 2–3 model options against that set. Week three: ship routing and fallback policy. Week four: measure drift, keep what works, cut what doesn’t, and document decisions.
 
-### Week 1
-Define eval tasks and scoring rubric. Pull examples from real queue work.
+Then move to monthly tuning, not weekly replatforming.
 
-### Week 2
-Test top 2–3 models against that set. Capture quality/latency/cost/consistency.
-
-### Week 3
-Ship routing + fallback logic. Keep it simple and explicit.
-
-### Week 4
-Monitor drift. Keep what works. Kill what doesn’t. Document changes.
-
-Then run monthly tune-ups, not weekly architecture rewrites.
-
-A common founder mistake here is full re-platforming on every major model launch.
-
-Don’t.
-
-Treat model vendors like changing infra dependencies: evaluate, migrate deliberately, preserve rollback, protect production.
+A common founder mistake is rebuilding architecture around every major release cycle. We’ve done versions of that. It feels proactive and usually burns time. Treat model vendors like other infrastructure dependencies: evaluate deliberately, migrate with rollback, and protect production continuity.
 
 You don’t need a lab.
 
@@ -185,30 +87,13 @@ You need a loop.
 
 ---
 
-## 5) Hard opinion: “model selection” consulting by itself is already stale
+## 5) Hard opinion: model selection alone is already stale consulting
 
-If a consultant’s core offer is "we’ll pick your model," that value is decaying quickly.
+If the core consulting offer is “we’ll pick your model,” that value is decaying fast. Model choice still matters, but the durable value has shifted to orchestration design, routing policy, evaluation discipline, reliability guardrails, and business integration with clear owners.
 
-The durable value is operational:
-- orchestration design,
-- routing policy,
-- eval discipline,
-- reliability guardrails,
-- and business integration with real owners.
-
-Model choice still matters.
-
-It just isn’t the moat.
+The teams that win this year won’t be the teams that guessed the best model in March. They’ll be the teams that built an operating cadence that still works in April, May, and June as the model landscape keeps moving.
 
 Execution cadence is the moat.
-
-The teams that win this year won’t be the teams that guessed the single best model in March.
-
-They’ll be the teams that built a repeatable system for adapting in April, May, and June without blowing up quality, margins, or trust.
-
-That’s less exciting than announcement-day hot takes.
-
-It’s also how businesses survive platform volatility.
 
 ---
 
