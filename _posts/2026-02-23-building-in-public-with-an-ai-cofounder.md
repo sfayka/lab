@@ -6,104 +6,170 @@ categories: [essays]
 published: false
 ---
 
-Everyone says they're "building with AI."
+People hear "AI co-founder" and imagine autopilot.
 
-Fewer people show what that actually means when real clients and real delivery risk are involved.
+That is not the job.
 
-So here's the unglamorous version.
+My agent can draft code, research a market, clean up task hygiene, write a first pass of a memo, and tee up a branch faster than I can context-switch into the work.
 
-Knox Analytics is a small team. I'm the decision owner. An AI agent handles meaningful execution: code drafts, research, first-pass writing, task hygiene, and workflow ops.
+It still does not get merge rights.
 
-And yes, it breaks.
+That is not because the model is dumb.
 
-Usually in useful ways.
-
-## The workflow nobody screenshots
-
-The hype path is simple:
-
-"Describe feature → AI builds feature → ship."
-
-The real path:
-
-"Describe feature → AI opens branch + PR + rationale → human reviews → human merges."
-
-That last step is the whole game.
-
-The review is where I catch what the agent optimized for that I didn't ask for.
-
-The cleanup refactor that quietly changed behavior.
-
-The "helpful" edit that introduces risk.
-
-The agent not touching main isn't just safety theater. It's accountability architecture.
-
-Building in public should show the PR discipline, not just the deploy screenshot.
-
-## What the agent can own vs what I still own
-
-The line is not capability. It's commitment.
-
-### Agent-owned (with clear specs)
-
-- first-pass implementation on scoped features
-- bug triage on bounded issues
-- draft content and internal docs
-- Notion/CRM hygiene and status updates
-- recurring research digests
-- dependency and boilerplate cleanup
-
-### Human-owned (non-delegable)
-
-- merges
-- production deploys
-- client-facing communication
-- ambiguous tradeoff decisions
-- anything where "close enough" creates downstream cost
-
-A merge is a commitment.
+It is because a merge is a commitment.
 
 A deploy is a commitment.
 
 Published words are a commitment.
 
-Those belong to the founder.
+And in a real business, commitments still belong to a human.
 
-## The moment this got very real
+That distinction matters more now because the white-collar AI conversation is getting weird fast. People are arguing about "replacement" when what is actually happening in a lot of knowledge work is role decomposition:
+
+- drafting moves down the stack,
+- judgment moves up the stack,
+- review becomes a first-class job,
+- accountability gets more valuable, not less.
+
+That is the operating model I am actually running.
+
+It is not glamorous. It works.
+
+## The workflow nobody screenshots
+
+The hype path looks like this:
+
+"Describe feature -> AI builds feature -> ship."
+
+The real path looks like this:
+
+"Describe feature -> AI opens branch + PR + rationale -> human reviews -> human merges."
+
+That last step is the whole game.
+
+Review is where I catch the thing the model optimized for that I did not ask for.
+
+The helpful refactor that quietly changed behavior.
+
+The clean-looking draft that invented a detail.
+
+The polished sentence that says more than I am willing to commit to publicly.
+
+The agent not touching `main` is not safety theater.
+
+It is accountability architecture.
+
+If you are serious about building with agents, show the review layer. Not just the deploy screenshot.
+
+## What the agent owns vs what I still own
+
+The line is not capability.
+
+The line is commitment.
+
+The agent can own:
+
+- first-pass implementation on scoped features,
+- bug triage on bounded issues,
+- draft content and internal docs,
+- recurring research digests,
+- status hygiene across tools,
+- cleanup work nobody should be doing by hand.
+
+I still own:
+
+- merges,
+- production deploys,
+- client-facing communication,
+- ambiguous tradeoff calls,
+- anything where "close enough" creates downstream cost.
+
+This is the part a lot of founders miss.
+
+They ask, "Can the agent do the task?"
+
+The better question is, "Who owns the consequence if the task is wrong?"
+
+That is the boundary.
+
+## The near-miss that made this real
 
 A few weeks ago, the agent set up a Docker dev environment for a new project.
 
-Task was clear. Context was good. Work looked solid.
+Task was clear. Context was good. The work looked solid.
 
-Then in the PR summary it noted:
+Then the PR summary included this:
 
 > "I noticed `.env.example` was missing values from `docker-compose`, so I added placeholders and comments."
 
-Helpful move. Except one README comment looked like a real connection string to anyone scanning quickly.
+Helpful move.
 
-It was fabricated. Still unacceptable for a public repo.
+Except one README comment looked like a real connection string to anyone scanning quickly.
 
-No catastrophe. I caught it in review, fixed it in minutes, merged clean.
+It was fabricated. Still unacceptable.
 
-But the lesson mattered:
+No catastrophe. I caught it in review, fixed it in a few minutes, merged clean.
 
-The risk wasn't malice.
+But the lesson mattered.
+
+The risk was not malice.
 
 It was helpfulness without full context.
 
-That's exactly why human review exists.
+That is a very normal model failure mode, by the way. Models want to complete the pattern in front of them. Sometimes that is exactly what you want. Sometimes it is how fake specifics end up in real artifacts.
 
-## What building in public means in this model
+That is why human review exists.
 
-The social version is velocity theater.
+## What this means for knowledge work
 
-Late-night dashboards. Big claims. "10x" graphs with no denominator.
+This is the part that feels most relevant right now.
 
-The operating version is boring:
+I do think agents will compress a lot of white-collar work.
+
+I also think the market is flattening too many categories into one scary sentence.
+
+There is a big difference between:
+
+- replacing repetitive drafting,
+- accelerating bounded execution,
+- and replacing accountable decision-makers.
+
+Those are not the same thing.
+
+What I am actually seeing is that agents are very good at generating a fast, useful first draft of many knowledge-work tasks. Code. Research. Summaries. Content. Triage. Cleanup. Internal coordination.
+
+What they are still bad at is carrying full business responsibility for the final answer.
+
+That does not mean jobs stay unchanged.
+
+It means the job shifts.
+
+The premium moves toward:
+
+- judgment,
+- review,
+- prioritization,
+- escalation,
+- narrative control,
+- and owning the consequences.
+
+That is still work. Important work.
+
+It is just higher in the stack than before.
+
+## The social version vs the operating version
+
+The social version of "AI co-founder" is velocity theater.
+
+Late-night screenshots. Big claims. A dashboard. Some "10x" chart with no denominator.
+
+The operating version is much more boring:
 
 - every external artifact gets human review,
 - every merge has an accountable owner,
-- every public claim maps to something real in the system.
+- every public claim maps to something real,
+- every near-miss gets logged,
+- and every system has a clear no-autonomy boundary.
 
 Not because I distrust the agent.
 
@@ -111,63 +177,79 @@ Because trust without verification is hope, and hope is not a release process.
 
 ## The part people misunderstand
 
-When I explain this, I hear two reactions:
+When I explain this setup, I usually get two reactions:
 
 1. "That sounds exhausting."
-2. "So you're just grading the model's homework?"
+2. "So you are just grading the model's homework."
 
 Both are partly true.
 
-Yes, it's overhead.
+Yes, it is overhead.
 
-And yes, I review constantly.
+And yes, I review a lot.
 
-But this is the wrong frame.
+But that framing still misses the point.
 
-I'm not a slower engineer now. I'm an editor with an extremely fast first drafter.
+I am not a slower engineer now.
 
-Judgment moved up the stack. Throughput moved down the stack.
+I am an editor with an extremely fast first drafter.
+
+Judgment moved up the stack.
+
+Throughput moved down the stack.
 
 The agent gives me an 80% draft in minutes.
 
 I spend focused time making the final 20% actually trustworthy.
 
-That's where quality lives anyway.
+That is where quality lives anyway.
 
-## The AI operating model that holds up under pressure
+## The operating model that holds up under pressure
 
-If you're doing this seriously, treat it like an operating model, not a prompt trick:
+If you are going to do this seriously, treat it like an operating model, not a prompt trick.
 
 - **Decision rights:** human
 - **Execution rights:** agent
 - **Release rights:** human
-- **Audit trail:** PRs, summaries, and explicit rationale
+- **Audit trail:** PRs, summaries, and rationale
 - **External publishing gate:** always human
 
 When those lines are clear, speed goes up and risk goes down.
 
 When those lines blur, you get drift, rework, and reputation debt.
 
+That last category matters more than people admit.
+
+An agent can save you ten hours and still cost you trust if it says the wrong thing to the wrong person in the wrong channel.
+
+That is not a model bug.
+
+That is a governance failure.
+
 ## Founder checklist
 
-If you're experimenting with an "AI co-founder" setup, start here:
+If you are experimenting with an "AI co-founder" setup, start here:
 
-- enforce branch → PR → review → merge (no bypass)
-- require rationale with every generated change
-- treat public content as client-facing (because it is)
-- log near-misses, not just wins
-- optimize for consistency before scale
+- enforce branch -> PR -> review -> merge,
+- require rationale with every generated change,
+- treat public content as client-facing,
+- log near-misses, not just wins,
+- optimize for consistency before scale.
 
-The agent never pushes to main.
+The agent never pushes to `main`.
 
 That one rule sounds small.
 
-It's the contract that makes the whole system work.
+It is the contract that makes the whole system work.
 
 ## References
 
-1. GitHub Docs — *About pull requests* (review workflow fundamentals): https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-with-pull-requests/about-pull-requests
-2. Google SRE Book — *Release Engineering* (reliability discipline in shipping): https://sre.google/sre-book/release-engineering/
-3. NIST AI RMF 1.0 — governance, oversight, and human accountability in AI systems: https://www.nist.gov/itl/ai-risk-management-framework
-4. Stanford HAI — *Governing AI for Safety and Accountability* (institutional accountability framing): https://hai.stanford.edu
-5. Charity Majors et al. — *Observability Engineering* (feedback loops + socio-technical reliability): https://www.oreilly.com/library/view/observability-engineering/9781492076438/
+- GitHub Docs - Pull request reviews: https://docs.github.com/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/about-pull-request-reviews
+- Google SRE Book - Release Engineering: https://sre.google/sre-book/release-engineering/
+- NIST - AI Risk Management Framework 1.0: https://www.nist.gov/itl/ai-risk-management-framework
+- Anthropic - Building Effective Agents: https://www.anthropic.com/engineering/building-effective-agents
+- Anthropic - The Anthropic Economic Index: https://www.anthropic.com/economic-index
+
+---
+
+*Sean builds AI systems and autonomous workflows at Knox Analytics.*
