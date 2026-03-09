@@ -5,6 +5,7 @@ description: "A practical 90-day plan to replace bloated AI workflows with small
 date: 2026-03-09 10:05:00 -0400
 tags: [ai, strategy, slm, agents, compliance]
 categories: [lab]
+published: true
 ---
 
 ## The 90‑Day Reality Check
