@@ -6,138 +6,123 @@ categories: [essays]
 published: false
 ---
 
-For a while, we all got to hide in model talk.
+For a while, we all got to hide in model talk. Context windows. Benchmarks. New releases. Great threads. That phase was useful, and I am not dunking on it. We learned a lot there.
 
-Context windows. Benchmarks. New releases. Great threads.
+But the signal now is different. The signal is not "this model got smarter." The signal is "leadership teams are starting to make org decisions based on the belief that agentic systems can absorb real work."
 
-I’m not dunking on that phase. We learned a lot there.
-
-But the signal this week wasn’t a benchmark jump. It was operating-model decisions tied to AI productivity claims. That’s a different category of signal, and founders should treat it differently.
-
-When this moves from “tooling” to “org chart,” the rules change.
+That is not a tooling event. That is an org chart event. And when this becomes an org chart conversation, the rules change.
 
 ---
 
 ## The signal that matters
 
-Reuters reported two related things in the last week:
+The cleanest signal in the last two weeks was Block. Per the Associated Press and broader market coverage, the company said it would cut more than 4,000 roles while explicitly tying the move to AI-enabled efficiency and operating changes. Not "macro softness." Not "portfolio simplification." AI.
 
-1. Block announced major workforce cuts tied to AI-enabled operating changes (Feb 26, 2026).
-2. Reuters also showed a broader pattern of companies linking restructuring to AI/automation investment shifts (updated Feb 27; based on Feb 25 reporting).
+That phrasing matters because it kills the polite fiction. For two years, the safe executive line was "AI augments people." Now the operator version is showing up: smaller teams, redesigned workflows, higher output expectations.
 
-That doesn’t mean every claim is pure truth. Some of this is always narrative engineering for markets.
+At the same time, Anthropic launched a new initiative to track when AI starts materially affecting labor markets, specifically because white-collar displacement risk is no longer theoretical. Its Economic Index had already pointed in this direction by showing AI usage clustering in software, writing, analysis, and other knowledge-work tasks.
 
-But when multiple firms in different sectors pull the same lever, you should assume we’re in a transition period, not a headline cycle.
+Different signals. Same direction. This is not a headline cycle anymore. It is a transition period.
 
 ---
 
-## Why this is an operations story, not a “layoffs story”
+## Why this is not really a layoffs story
 
-When leaders say a smaller team can do more with AI, what they’re really saying is: we think our workflows can absorb this change.
+It is tempting to turn this into a pure "AI layoffs are here" narrative. That is directionally true and strategically incomplete.
 
-That’s an orchestration claim.
+When leaders say a smaller team can do more with AI, what they are really saying is:
 
-Not a chatbot claim.
+> we believe our workflows can absorb the change.
 
-The value shows up in repeat loops:
+That is an orchestration claim, not a chatbot claim. The real value does not show up in one clever prompt. It shows up in repeat loops:
+
 - intake and triage,
 - routing and handoff,
+- draft generation,
 - approvals,
 - exception handling,
 - follow-through.
 
-If those loops are clean, you can increase throughput without breaking quality.
+If those loops are clean, a team can raise throughput without quality collapse. If those loops are messy, the same headcount cut just moves failure upstream and hides it for a few weeks. Then it shows up as queue debt, rework, customer frustration, and weird Monday-morning surprises.
 
-If those loops are messy, you get hidden queue debt and customer pain that arrives three weeks later (usually on a Monday morning, because of course it does).
-
----
-
-## What SMB operators should do (and stop doing)
-
-### 1) Stop copy-pasting enterprise headcount logic
-
-You don’t have enterprise margin cushion.
-
-If you cut before redesigning decision flow, you don’t “unlock efficiency.” You move failure upstream and make it harder to see.
-
-### 2) Put a human owner on each AI-touched workflow
-
-Most small teams are still arguing about vendors while workflow ownership is undefined.
-
-That is backwards.
-
-If no one owns the path, no tool will save you.
-
-### 3) Measure workflow outcomes, not AI activity
-
-Track:
-- cycle time,
-- quality/rework,
-- recovery behavior when outputs fail.
-
-If your dashboard is only “hours saved,” you’re probably missing silent failure.
-
-### 4) If you’re a consultancy, retire “AI efficiency” as a vague pitch
-
-Translate into specifics:
-- decision rights,
-- escalation paths,
-- instrumentation,
-- governance cadence.
-
-If you can’t do that, clients hear “prompts” even when you mean “operations.”
+That is why so much of the current white-collar fear feels slippery. People are arguing about agents replacing roles when the real question is whether the surrounding operating model is good enough to carry the load. Most of the time, it is not. Not yet.
 
 ---
 
-## Build-in-public version (good / bad / ugly)
+## What this means if you run a small company
 
-### Good
+If you run an SMB, you should pay attention to this shift. You should not copy it blindly.
 
-When we tightened one workflow at a time, quality and throughput both improved. Not magical. Just cleaner decision boundaries and fewer ambiguous handoffs.
+Enterprise companies can hide bad workflow redesign behind margin, brand, and sheer staffing depth for longer than you can. You do not have that cushion. If you cut first and redesign second, you are not unlocking efficiency. You are just making failure harder to see.
 
-### Bad
+That is the founder trap here. The pressure is real. Your clients see the same headlines. Your team sees them too. Everyone starts wondering whether "doing more with less" is now table stakes. Maybe it is. But "more with less" only works if three things are true:
 
-We initially over-indexed on the tooling layer. We had strong components and weak ownership. Predictable result: drift.
+1. A human clearly owns each AI-touched workflow.
+2. You can measure outcome quality, not just output volume.
+3. There is a defined fallback path when the agent gets it wrong.
 
-### Ugly
-
-The most expensive mistakes were quiet ones. No dramatic outage. Just compounding rework and trust erosion until the team felt slower despite “more AI.”
-
-That’s why this is an org chart conversation now.
+If any of those are missing, you do not have an AI operating model yet. You have optimism with a dashboard.
 
 ---
 
-## What to do this week (one workflow, no theater)
+## The mistake I expect to see everywhere this quarter
 
-Use this on one revenue-adjacent workflow.
-
-- [ ] Pick one workflow (sales follow-up, onboarding, support triage, collections).
-- [ ] Draw the path from input to shipped output.
-- [ ] Label every approval hop and owner.
-- [ ] Remove one FYI approval that adds delay without reducing risk.
-- [ ] Define fallback behavior for low-confidence agent output.
-- [ ] Track 3 metrics for 30 days: cycle time, quality score, exception rate.
-- [ ] Run a weekly kill/keep/scale review.
-
-If you can’t make a weekly decision, you don’t have an operating model yet.
-
-You have a pilot.
-
----
-
-## Failure pattern to avoid
-
-Most dangerous move this quarter:
+Here is the most dangerous move in the market right now:
 
 > announce AI efficiency before instrumenting AI reliability.
 
-It sounds decisive in board updates.
+It sounds decisive in a board update. It sounds modern in a town hall. It sounds great on LinkedIn. Then reality collects the debt.
 
-It feels good for a week.
+This is especially dangerous in white-collar workflows because the failures are usually quiet.
 
-Then reality collects the debt.
+A support agent escalates too late.
 
-Evidence first. Narrative second.
+A proposal draft misses a landmine in the scope.
+
+A follow-up sequence ships with the wrong tone.
+
+A research memo looks polished and points the team in the wrong direction.
+
+No dramatic outage. Just compounding trust erosion. Those are the expensive failures, not because they are loud, but because they are subtle enough to survive long enough to matter.
+
+---
+
+## What I would do this week
+
+One workflow. No theater. Pick something revenue-adjacent:
+
+- support triage,
+- sales follow-up,
+- onboarding,
+- proposal drafting,
+- collections,
+- renewal prep.
+
+Then do four things:
+
+1. Draw the path from input to shipped output.
+2. Put an accountable human owner on the path.
+3. Define fallback behavior for low-confidence agent output.
+4. Track three things for 30 days: cycle time, quality/rework, exception rate.
+
+That is enough to tell you whether you are looking at real leverage or just fancy autocomplete. If you cannot make a weekly keep/kill/scale decision from the data, you are still in pilot mode. That is fine. Just do not call it an operating model yet.
+
+---
+
+## The consultancy version of this
+
+If you sell AI services, retire the vague pitch immediately. "AI efficiency" is too fuzzy now. Clients hear "prompts." Teams hear "layoffs." Neither hears operating clarity.
+
+Translate the work into specifics:
+
+- decision rights,
+- escalation paths,
+- instrumentation,
+- governance cadence,
+- cost controls,
+- human review thresholds.
+
+That is the level the market is moving to. Because once AI becomes an org chart conversation, nobody cares that you can generate a beautiful demo. They care whether the system can survive contact with payroll, customer expectations, and accountability.
 
 ---
 
@@ -145,23 +130,22 @@ Evidence first. Narrative second.
 
 AI is being treated as a structural operating lever now. That part is clear.
 
-For SMBs, this is not a cue to panic-cut.
+For SMBs, this is not a cue to panic-cut. It is a cue to execute better than bigger players where you can:
 
-It’s a cue to execute better than bigger players where you can: tighter loops, clearer ownership, faster learning cycles.
+- tighter loops,
+- clearer ownership,
+- better fallback behavior,
+- faster learning cycles.
 
-Redesign one workflow. Measure it. Prove it. Then scale.
+Redesign one workflow. Measure it. Prove it. Then scale. That is the game.
 
-That’s the game.
+## References
+
+- Associated Press - Block to cut more than 4,000 jobs as it leans harder into AI and efficiency: https://apnews.com/article/18e00a0b278977b0a87893f55e3db7bb
+- Anthropic - The Anthropic Economic Index (occupation-level AI usage patterns): https://www.anthropic.com/economic-index
+- Anthropic - Economic Futures: https://www.anthropic.com/economic-futures
+- NIST - AI Risk Management Framework 1.0: https://www.nist.gov/itl/ai-risk-management-framework
 
 ---
 
-## Key sources
-
-- Reuters (Feb 26, 2026): Block AI-linked overhaul and workforce cuts  
-  https://www.reuters.com/business/blocks-fourth-quarter-profit-rises-announces-over-4000-job-cuts-2026-02-26/
-
-- Reuters (Feb 25/27, 2026): global layoffs linked to AI investment shift  
-  https://www.reuters.com/business/world-at-work/companies-cutting-jobs-investments-shift-toward-ai-2026-02-25/
-
-- OpenAI Operator context (agentic action layer):  
-  https://openai.com/index/introducing-operator/
+*Sean builds AI systems and autonomous workflows at Knox Analytics.*
