@@ -3,6 +3,7 @@ layout: post
 title: "The AI Shift Has Shifted: From Models to Operating Systems"
 date: 2026-03-10
 categories: [essays]
+published: true
 ---
 
 The AI story used to be easy: build a bigger model, publish bigger benchmarks, declare a winner. That era is fading fast.
