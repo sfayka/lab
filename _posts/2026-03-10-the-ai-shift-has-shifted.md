@@ -9,6 +9,9 @@ The AI story used to be easy: build a bigger model, publish bigger benchmarks, d
 
 What’s taking over is less glamorous and more important: **execution economics**. The winners now are the teams that understand three things deeply: how much compute actually costs over time, how much AI can harden core workflows instead of just generating text, and how quickly security and reliability can be encoded into every autonomous process.  
 
+At business scale, tokens are not a rounding error — unit economics compound fast when usage becomes real. The actual promise isn’t clever chat; it’s orchestration: intelligence pushing mundane 1s and 0s around your infrastructure while your real costs (people) do real value-add work.
+
+
 In other words, AI is no longer a research project. It’s becoming an operating model.
 
 The headlines from the last week all point the same direction. The biggest investors and acquirers are no longer chasing another “model announcement” first. They’re buying infrastructure, workflow control, testing and security layers. If that sounds less dramatic, it’s because we’re finally leaving hype and entering boring-but-vital territory: **operating systems for work**.
@@ -24,7 +27,7 @@ A lot of leadership teams still ask, “Should we buy or build?” The smarter f
 Nscale’s move into Broadcom’s ecosystem does two things:
 
 1. **It validates AI as capex heavy**. Model compute is no longer an OPEX curiosity for experimentation. It is a strategic balance-sheet discussion.
-2. **It turns vendor concentration into a board-level risk decision**. If your AI stack depends on one narrow set of providers, one outage or price move can crater margins and reputation overnight.
+2. **It turns vendor concentration into a board-level risk decision**. If your AI stack depends on one narrow set of providers, one outage, price move, or vendor policy decision you don’t agree with can crater margins and reputation overnight.
 3. **It pushes demand planning up from IT to finance**. Compute burn rates are now forecast variables with strategic consequences, not just engineering trivia.
 
 ### What this means for business leaders: capex strategy, vendor concentration, and demand forecasting
@@ -74,7 +77,7 @@ If you’re not treating process data as a first-class AI input—latency, excep
 
 The Promptfoo acquisition is less about headline M&A optics and more about a maturing market truth: **if AI agents fail, they fail loudly and repeatedly.**
 
-As businesses scale AI pilots, “security” stops being just IAM, MFA, and endpoint policy. It becomes a product requirement spanning reliability, robustness, and observability. Prompt injection, data leakage, policy drift, chain-of-thought misuse, and silent model failure modes are now ordinary operational risks that compound with scale.
+As businesses scale AI pilots, “security” stops being just IAM, MFA, and endpoint policy. It becomes a product requirement spanning reliability, robustness, and observability. Prompt injection, data leakage, policy drift, chain-of-thought misuse, and silent model failure modes are now ordinary operational risks that compound with scale. Prompt-injection will only grow as an attack vector — and we’ll see new companies become enterprise heroes by catching and containing it.
 
 The Promptfoo move reinforces that the market values tooling that can test, score, and harden AI systems continuously. It’s not about putting a gate at the front door; it’s about creating a control system around each milepost in the workflow.
 
@@ -119,16 +122,3 @@ For buyers and executives in older product organizations, the new due diligence 
 A company with excellent fundamentals but weak AI execution now looks like a company with good customers but fragile future. A company with solid execution mechanics—even if less famous—can command respect because it can out-run the race by compounding. Markets are voting for velocity and control, not just history.
 
 ---
-
-## 3 Practical Takeaways (This Week)
-
-1. **Start tracking AI-related capex and compute dependence in 2-year scenarios.**  
-   Run a simple but disciplined model by BU/team: peak token/load assumptions, reroute assumptions, provider concentration, and fallback costs. If you cannot explain your AI compute trajectory under a 20% demand surge, you don’t own your future burn rate.
-
-2. **Pilot at least one non-customer-facing workflow as an “agent first” process.**  
-   Pick a back-office or creative production flow with high volume and measurable loops. Define checkpoints, escalate rules, and success metrics before rollout. Your next quarter of learning should come from internal operations, not public-facing interactions.
-
-3. **Bake security test harnesses into any production AI agent rollout before expanding across departments.**  
-   Treat every new agent path like production code: versioned prompts, test suites, policy checks, logging, and automated rollback. If you can’t prove an agent is safe and repeatable at one scope, it does not get scaled.
-
-The AI shift hasn’t just moved from models to agents. It’s moved from models to systems, from experiments to operating discipline, and from buzzwords to execution architecture. The teams that thrive this year won’t be the ones with the loudest model announcements. They’ll be the ones who can run AI with the same rigor they run payroll, fulfillment, and product releases—and who can explain that system to a CFO without blinking.
