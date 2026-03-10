@@ -1,44 +1,21 @@
 title: Knox Analytics Lab
-email: hello@knoxanalytics.com
-description: >-
-  Lab notes, essays, and experiments from Knox Analytics. Practical AI, honest analysis, no fluff.
-baseurl: ""
-url: "https://lab.knoxanalytics.com"
-author:
-  name: Sean Fay
-  url: https://knoxanalytics.com
-twitter:
-  username: knoxanalytics
-  card: summary_large_image
-logo: /assets/images/og-image.png
-social:
-  name: Knox Analytics
-  links:
-    - https://knoxanalytics.com
+description: Where we break things, build things, and write about it.
+author: Knox Analytics
+url: https://lab.knoxanalytics.com
 
-theme: minima
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+paginate: 10
+paginate_path: /page:num/
+
+permalink: /posts/:title/
 
 plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+  - jekyll-paginate
 
-minima:
-  skin: auto
-
-header_pages:
-  - essays.md
-  - experiments.md
-  - now.md
-
-# Optional: make excerpts on listings a bit nicer
-show_excerpts: true
-
-# Suppress Sass deprecation warnings from theme
-sass:
-  quiet_deps: true
-  style: compressed
-  silence_deprecations:
-    - global-builtin
-    - color-functions
-    - import
+exclude:
+  - Gemfile
+  - Gemfile.lock

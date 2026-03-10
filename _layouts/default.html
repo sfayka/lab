@@ -1,62 +1,70 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {% seo %}
-    <link rel="icon" type="image/svg+xml" href="{{ '/assets/icons/favicon-ka.svg?v=2' | relative_url }}">
-    <link rel="shortcut icon" href="{{ '/assets/icons/favicon-ka.svg?v=2' | relative_url }}">
-    <link rel="apple-touch-icon" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}">
-    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
-    
-    {% if jekyll.environment == 'production' and site.google_analytics %}
-      {% include google-analytics.html %}
-    {% endif %}
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="wrapper">
-        <a class="site-title" rel="author" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-        <nav class="site-nav">
-          {% for path in site.header_pages %}
-            {% assign my_page = site.pages | where: "path", path | first %}
-            {% if my_page.title %}
-              <a class="page-link" href="{{ my_page.url | relative_url }}">{{ my_page.title }}</a>
-            {% endif %}
-          {% endfor %}
-          <a class="page-link" href="https://knoxanalytics.com" target="_blank" rel="noopener noreferrer">Knox Analytics</a>
-        </nav>
-      </div>
-    </header>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="author" content="{{ site.author }}">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+  <script>
+    // Theme initialization - runs before body renders to prevent flash
+    (function() {
+      const theme = localStorage.getItem('theme') || 'dark';
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        {{ content }}
+  <header>
+    <nav class="container">
+      <a href="{{ '/' | relative_url }}" class="nav-brand">Knox Lab</a>
+      <div class="nav-links">
+        <a href="https://knoxanalytics.com" class="nav-link">knoxanalytics.com →</a>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <span id="theme-icon">🌙</span>
+        </button>
       </div>
-    </main>
+    </nav>
+  </header>
 
-    <footer class="site-footer">
-      <div class="wrapper">
-        <div class="footer-col-wrapper">
-          <div class="footer-col">
-            <p class="feed-subscribe">
-              <a href="{{ 'feed.xml' | relative_url }}">
-                <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M4 11a9 9 0 0 1 9 9"></path>
-                  <path d="M4 4a16 16 0 0 1 16 16"></path>
-                  <circle cx="5" cy="19" r="1"></circle>
-                </svg>
-                <span>Subscribe</span>
-              </a>
-            </p>
-          </div>
-          <div class="footer-col">
-            <p>{{ site.description | escape }}</p>
-          </div>
-        </div>
+  <main>
+    {{ content }}
+  </main>
+
+  <footer>
+    <div class="footer-content container">
+      <p class="footer-text">&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
+      <div class="footer-links">
+        <a href="https://knoxanalytics.com">knoxanalytics.com</a>
+        <a href="https://github.com/sfayka">GitHub</a>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle functionality
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const html = document.documentElement;
+
+    function updateThemeIcon() {
+      icon.textContent = html.classList.contains('dark') ? '☀️' : '🌙';
+    }
+
+    toggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      const isDark = html.classList.contains('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeIcon();
+    });
+
+    updateThemeIcon();
+  </script>
+</body>
 </html>
