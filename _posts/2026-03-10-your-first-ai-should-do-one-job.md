@@ -3,7 +3,7 @@ layout: post
 title: "Your First AI Agent Should Do One Job. Ship It Next Week."
 date: 2026-03-10
 categories: [essays]
-published: false
+published: true
 ---
 
 Everybody wants an autonomous employee. That is usually how teams get into trouble.

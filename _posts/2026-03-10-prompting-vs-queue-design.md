@@ -3,7 +3,7 @@ layout: post
 title: "Prompting Is Not the Moat. Queue Design Is"
 date: 2026-03-10
 categories: [essays]
-published: false
+published: true
 ---
 
 People keep asking whether prompt engineering still matters. Of course it matters. It just is not the moat.
