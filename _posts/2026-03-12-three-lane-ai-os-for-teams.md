@@ -6,11 +6,13 @@ categories: [essays]
 description: "A pragmatic decision framework for CTOs and Ops leaders to standardize AI agents across orchestration, implementation, and desktop automation—without sacrificing control."
 ---
 
+> Disclosure: At Knox Analytics we operate OpenClaw + OpenAI Codex. We do not currently use Perplexity in production. This article is a vendor‑agnostic framework to help teams decide which tool fits which lane and why.
+
 In 2026, autonomy is cheap. Trust is not.
 
 This piece turns the “AI pilot” into an operating system teams can actually run. The idea is simple: don’t debate tools in the abstract—route work by risk envelope and workflow type.
 
-We use three lanes:
+This framework uses three lanes:
 
 - Lane 1 — Intake & Decision: get signals into a single board, then gate by business impact.
 - Lane 2 — Execution: make safe changes with approvals, tests, and rollback plans.
