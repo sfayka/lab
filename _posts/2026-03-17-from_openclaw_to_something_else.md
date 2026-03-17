@@ -4,6 +4,7 @@ title: "I Tried to Build an AI Agent. I Was Solving the Wrong Problem."
 date: 2026-03-17
 categories: [lab, ai, automation]
 tags: [openclaw, codex, ai-agents, workflows, productivity]
+published: true
 ---
 
 ## The idea
