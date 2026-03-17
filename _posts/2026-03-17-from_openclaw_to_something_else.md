@@ -1,6 +1,6 @@
 ---
 layout: post
-title: I buil an AI Agent. I Was Solving the Wrong Problem.
+title: I built an AI Agent. I Was Solving the Wrong Problem.
 date: 2026-03-17
 categories:
    - lab
