@@ -13,7 +13,7 @@ tags:
    - workflows
    - productivity
 published: true
-slug: buil-ai-agent-solving-wrong-problem
+slug: built-ai-agent-solving-wrong-problem
 ---
 
 ## The idea
