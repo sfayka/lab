@@ -1,10 +1,19 @@
 ---
 layout: post
-title: "I Tried to Build an AI Agent. I Was Solving the Wrong Problem."
+title: I buil an AI Agent. I Was Solving the Wrong Problem.
 date: 2026-03-17
-categories: [lab, ai, automation]
-tags: [openclaw, codex, ai-agents, workflows, productivity]
+categories:
+   - lab
+   - ai
+   - automation
+tags:
+   - openclaw
+   - codex
+   - ai-agents
+   - workflows
+   - productivity
 published: true
+slug: buil-ai-agent-solving-wrong-problem
 ---
 
 ## The idea
@@ -16,6 +25,7 @@ Tools like OpenClaw promise something that sounds incredibly powerful:
 > Give it a task, and it figures out how to get it done.
 
 Not just answering questions — actually doing work:
+
 - breaking problems into steps  
 - delegating to sub-agents  
 - executing across systems  
@@ -32,12 +42,14 @@ So I went all in.
 I didn’t just try it casually — I committed to it.
 
 I built:
+
 - a task harness  
 - a queue system with prioritization  
 - structured prompts for delegation  
 - retries and execution loops  
 
 I used ChatGPT and Codex heavily to:
+
 - debug failures  
 - improve prompts  
 - refine execution  
@@ -45,6 +57,7 @@ I used ChatGPT and Codex heavily to:
 And for a while, it *felt* like it was working.
 
 It could:
+
 - complete simple tasks  
 - chain a few steps together  
 - call tools and return results  
@@ -82,6 +95,7 @@ It was:
 My first instinct was that I was doing something wrong.
 
 Maybe:
+
 - my prompts weren’t good enough  
 - I needed better task breakdown  
 - I needed more structure  
@@ -153,6 +167,7 @@ I moved to:
 ## The new system
 
 What I use now is much simpler:
+
 - ChatGPT → thinking / planning
 - Linear → task system
 - Codex → execution
@@ -223,6 +238,7 @@ This isn’t a knock on OpenClaw.
 It *is* useful.
 
 It works well for:
+
 - scheduled tasks  
 - simple automation  
 - recurring summaries  
@@ -246,6 +262,7 @@ It was about architecture.
 > start with structure  
 
 If you don’t have:
+
 - a task model  
 - clear execution boundaries  
 - observable state  
