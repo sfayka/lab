@@ -16,6 +16,8 @@ A simple GitHub Pages (Jekyll) site for **lab.knoxanalytics.com**.
 - Ruby (2.6 or higher) - You have Ruby installed ✓
 - Bundler - You have Bundler installed ✓
 
+This repo tracks `Gemfile.lock` so local builds and GitHub Pages builds stay aligned. If your Bundler install is picky, use the local bundle path in the troubleshooting step below instead of ignoring the lockfile.
+
 ### Setup and run
 
 1. **Install dependencies:**
@@ -32,6 +34,13 @@ A simple GitHub Pages (Jekyll) site for **lab.knoxanalytics.com**.
    Navigate to `http://localhost:4000`
 
 The site will automatically rebuild when you make changes to files. Press `Ctrl+C` to stop the server.
+
+If you are setting up the site on a new machine, the usual workflow is:
+
+```bash
+bundle install
+bundle exec jekyll serve
+```
 
 ### Troubleshooting
 

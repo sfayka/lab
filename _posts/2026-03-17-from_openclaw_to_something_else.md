@@ -1,6 +1,6 @@
 ---
 layout: post
-title: I built an AI Agent. I Was Solving the Wrong Problem.
+title: "I Built an AI Agent. I Was Solving the Wrong Problem."
 date: 2026-03-17
 categories:
    - lab
@@ -18,264 +18,111 @@ slug: buil-ai-agent-solving-wrong-problem
 
 ## The idea
 
-A few weeks ago, I got pulled into the idea of agent-based systems.
+A few weeks ago, I got pulled into the same temptation a lot of builders are feeling right now: if agents can plan, call tools, and keep going on their own, maybe the next layer of software is just “let the model handle it.” That sounds like leverage. It also sounds like the future, so I built toward it. I wired up OpenClaw, added a task harness, set up a queue, and built a thin execution loop around it.
 
-Tools like OpenClaw promise something that sounds incredibly powerful:
+On paper, it looked like the right kind of system. In practice, it felt like trying to run a warehouse with a very confident intern who could talk a good game but kept losing the pallet jack. The early demos were convincing enough to keep me going. It could break work into steps. It could call tools. It could finish simple tasks. Every time it did something correctly, it felt like I was one prompt away from a clean autonomous workflow.
 
-> Give it a task, and it figures out how to get it done.
+> **That was the trap.**
 
-Not just answering questions — actually doing work:
+The short version: **I built an agent when I needed a workflow**.
 
-- breaking problems into steps  
-- delegating to sub-agents  
-- executing across systems  
-- running autonomously  
+## What I thought I was building
 
-If that works, it changes how you build.
+I thought I was building an agent platform. That was the pitch in my head: give the system a task, let it decide how to get there, and let the model handle the messy middle.
 
-So I went all in.
+That idea is seductive because it sounds like removing work. In reality, it often just moves the work somewhere less visible. You stop writing code, but you start supervising behavior. You stop managing one clear process, but you inherit five vague ones.
 
-## The experiment
+And that is exactly what happened.
 
-I didn’t just try it casually — I committed to it.
+<u>Less implementation</u> is not the same thing as <u>less operational burden</u>.
 
-I built:
+## What actually happened
 
-- a task harness  
-- a queue system with prioritization  
-- structured prompts for delegation  
-- retries and execution loops  
+The system wasn’t broken in a dramatic way. It didn’t crash every time or fail obviously. It failed in the annoying, expensive way that makes you question your own judgment. Tasks would stall halfway through. Outputs would come back half-finished. State would drift. Retries would behave differently depending on the mood of the loop. I had to keep checking what it was doing, which meant I never really got to trust it.
 
-I used ChatGPT and Codex heavily to:
+The best way I can describe it is this: I had built something that looked like a conveyor belt, but it behaved like a conversation. It could talk about the package. It was not great at moving the package.
 
-- debug failures  
-- improve prompts  
-- refine execution  
+That distinction matters. Conversations are flexible. Workflows are accountable. If you mix those two up, you end up with something that feels intelligent and acts fragile.
 
-And for a while, it *felt* like it was working.
+> **Conversations are flexible. Workflows are accountable.**
 
-It could:
+## The wrong diagnosis
 
-- complete simple tasks  
-- chain a few steps together  
-- call tools and return results  
+My first instinct was to blame the usual suspects. Maybe the prompts were weak. Maybe the task breakdown wasn’t clear enough. Maybe I needed better retries, more structure, more agents, one more layer of orchestration, one more abstraction to smooth things out.
 
-And when it worked, it was impressive.
+That is the classic builder reflex when a system gets flaky: add more scaffolding and hope the structure starts behaving like intent.
 
-## The reality
+It didn’t.
 
-But over time, a pattern started to emerge.
+I kept tightening the prompts and tuning the loop, but I was polishing the wrong part of the machine. I was treating the failure like a model problem when it was really an architecture problem.
 
-It wasn’t reliable.
+## The real problem
 
-Not in the way I needed.
+Eventually the thing snapped into focus. I wasn’t trying to build an agent. I was trying to build a workflow system and making it wear an agent costume.
 
-The problems were subtle at first, but consistent:
+**Those are not the same product.**
 
-- tasks would stall halfway through  
-- outputs would be partially complete with no clear signal  
-- state would drift or disappear  
-- retries were inconsistent  
-- I had to constantly check what it was doing  
+An agent framework is good at flexible reasoning, loose planning, and opportunistic tool use. A workflow system is good at state, boundaries, repeatability, and clean handoffs. If you ask one to pretend to be the other, you get the worst of both worlds: the uncertainty of a model with none of the discipline of a real pipeline.
 
-It wasn’t “delegate and walk away.”
+What I actually needed was not “smarter autonomy.” I needed a system that knew where work lived, what state it was in, when it was done, and how to tell me when it wasn’t.
 
-It was:
+*That* is the difference between a demo and an operating system.
 
-> delegate… and then babysit it
+## What changed
 
-## What I thought the problem was
+Once I stopped chasing the agent fantasy, the design got much simpler.
 
-My first instinct was that I was doing something wrong.
+I moved toward a boring stack on purpose:
 
-Maybe:
+- **ChatGPT** for thinking and decomposition
+- **Linear** for holding the actual task
+- **Codex** for execution
+- **Cursor** for refinement
 
-- my prompts weren’t good enough  
-- I needed better task breakdown  
-- I needed more structure  
-- I needed more agents  
+That sounds less exciting than a “fully autonomous agent.” It is less exciting. It is also more usable.
 
-So I kept iterating.
+The shape of the work became clear. I use ChatGPT to explore the problem and break it down. I put the resulting tasks into Linear so they have clear state and ownership. I hand implementation to Codex when there is an actual piece of work to do. Then I review the output and move forward.
 
-More prompts.  
-More configuration.  
-More orchestration.
+No magic. Just a cleaner division of labor.
 
-## What the problem actually was
+## The difference in practice
 
-Eventually it clicked.
+The old setup felt like babysitting a very clever tool that might drift off the rails if I blinked. The new setup feels like operating a system. Progress is visible. Status is visible. Failures are legible. If something goes wrong, I can see where it happened instead of trying to reconstruct a trail of partial reasoning.
 
-The issue wasn’t the model.  
-It wasn’t the prompts.
+That difference is huge.
 
-It was the system.
+It is the difference between asking a chef to cook in your head and running a kitchen with labeled stations. One sounds elegant. The other actually ships dinner.
 
-I was trying to use an **agent framework** to do the job of a **workflow system**.
+And the weird part is that the better system feels boring. That is not a flaw. That is usually the signal that the architecture is finally doing its job.
 
-Those are not the same thing.
-
-## What was missing
-
-What I actually needed was:
-
-- a clear task model  
-- explicit state (queued, running, done, failed)  
-- deterministic execution  
-- observable outputs  
-- reliable completion  
-
-What I had instead was:
-
-- a conversational loop  
-- implicit state  
-- probabilistic planning  
-- loosely connected tool calls  
-
-In other words:
-
-> it looked powerful, but it wasn’t built for reliability
-
-## The shift
-
-The turning point was simple:
-
-> stop trying to build an agent  
-> start building a system  
-
-Instead of:
-
-> give this to the agent and hope it figures it out
-
-I moved to:
-
-> define the work clearly, then let something execute it
-
-## The new system
-
-What I use now is much simpler:
-
-- ChatGPT → thinking / planning
-- Linear → task system
-- Codex → execution
-- Cursor → refinement
-
-That’s it.
-
-No orchestration layer.  
-No agent hierarchy.  
-No complex runtime.
-
-## How it actually works
-
-1. I use ChatGPT to:
-   - explore ideas  
-   - break things into tasks  
-
-2. I put those tasks into Linear:
-   - small  
-   - bounded  
-   - clearly defined  
-
-3. I assign tasks to Codex:
-   - it executes  
-   - opens PRs  
-   - returns results  
-
-4. I review and move on
-
-## The difference
-
-The experience is completely different.
-
-### Before (agent-first)
-
-- unclear progress  
-- fragile execution  
-- constant intervention  
-- hard to debug  
-
-### After (task-first)
-
-- clear state  
-- predictable behavior  
-- fast iteration  
-- real output  
-
-## The surprising part
-
-The new system feels…
-
-boring.
-
-And that’s exactly why it works.
+> **Boring is often what reliability looks like.**
 
 ## What OpenClaw is actually good at
 
-This isn’t a knock on OpenClaw.
+This is not a takedown of OpenClaw. It is useful. I still think it has a place.
 
-It *is* useful.
+It works well for scheduled tasks, recurring summaries, lightweight automation, and other jobs that are narrow enough to tolerate some looseness. It is fine when the stakes are low and the path is short.
 
-It works well for:
+Where it gets shaky is the territory where reliability matters more than novelty. Long-running tasks. Multi-step execution. Anything that needs a strong guarantee that state will hold together from beginning to end.
 
-- scheduled tasks  
-- simple automation  
-- recurring summaries  
-- lightweight workflows  
+That is where “agentic” starts to sound more like “approximate.”
 
-Where it struggles:
+## The lesson
 
-- long-running tasks  
-- multi-step execution  
-- anything that needs to be reliable  
+The biggest thing I learned here wasn’t about a tool. It was about respecting the difference between a model and an operating system for work.
 
-## What I learned
+If you don’t have a task model, if you don’t have execution boundaries, if you don’t have observable state, then adding more autonomy is like bolting a jet engine to a shopping cart. It may be exciting for a minute. It is not a serious way to move freight.
 
-The biggest lesson wasn’t about a tool.
+The better move is to start with structure and let the model fill in the gaps.
 
-It was about architecture.
+That is the operating lesson I keep coming back to: the system should control execution. The model should help with reasoning inside that system. Not the other way around.
 
-> don’t start with agents  
-> start with structure  
+> **System first. Model second.**
 
-If you don’t have:
+## Where this goes next
 
-- a task model  
-- clear execution boundaries  
-- observable state  
+I am still building from this workflow. The next thing I want is a small tool that turns email into a structured issue, routes it into Linear, hands it to Codex, and tracks the follow-up cleanly.
 
-…adding agents just makes things harder.
+That is a much more interesting problem than “can I build a perfect agent.” It is also a much more useful one.
 
-## Where this leads
-
-Once you have a system like this:
-
-- you can still use AI for planning  
-- you can still use AI for execution  
-- you can still automate parts of the flow  
-
-But now:
-
-> the system controls execution  
-> the model fills in the gaps  
-
-Not the other way around.
-
-## Final thought
-
-I didn’t abandon the idea of AI agents.
-
-I just stopped trying to make them do something they weren’t built for.
-
-And once I did that:
-
-> I got more done in a few days than I did in weeks of trying to “build the perfect agent”
-
-## Next
-
-I’m now building a small tool based on this workflow:
-
-email → structured issue → Linear → Codex → follow-up
-
-It’s something I’ll actually use.
-
-Which is a good sign.
+I did not abandon the idea of AI agents. I just stopped asking them to solve the wrong problem.

@@ -1,7 +1,33 @@
-_site
-.sass-cache
-.jekyll-cache
+# Jekyll build output
+_site/
+.sass-cache/
+.jekyll-cache/
 .jekyll-metadata
-vendor
-.bundle
-Gemfile.lock
+
+# Ruby/Bundler
+.bundle/
+vendor/bundle/
+
+# Node / frontend
+node_modules/
+dist/
+coverage/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs and temp files
+*.log
+tmp/
