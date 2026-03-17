@@ -24,7 +24,9 @@ So I built toward that future. I wired up OpenClaw, added a task harness, set up
 
 The early demos were convincing enough to keep me going. It could break work into steps. It could call tools. It could finish simple tasks. Every time it did something correctly, it felt like I was one prompt away from a clean autonomous workflow.
 
-That was the trap.
+> **That was the trap.**
+
+The short version: **I built an agent when I needed a workflow**.
 
 ## What I thought I was building
 
@@ -34,6 +36,8 @@ That idea is seductive because it sounds like removing work. In reality, it ofte
 
 And that is exactly what happened.
 
+<u>Less implementation</u> is not the same thing as <u>less operational burden</u>.
+
 ## What actually happened
 
 The system wasn’t broken in a dramatic way. It didn’t crash every time or fail obviously. It failed in the annoying, expensive way that makes you question your own judgment. Tasks would stall halfway through. Outputs would come back half-finished. State would drift. Retries would behave differently depending on the mood of the loop. I had to keep checking what it was doing, which meant I never really got to trust it.
@@ -41,6 +45,8 @@ The system wasn’t broken in a dramatic way. It didn’t crash every time or fa
 The best way I can describe it is this: I had built something that looked like a conveyor belt, but it behaved like a conversation. It could talk about the package. It was not great at moving the package.
 
 That distinction matters. Conversations are flexible. Workflows are accountable. If you mix those two up, you end up with something that feels intelligent and acts fragile.
+
+> **Conversations are flexible. Workflows are accountable.**
 
 ## The wrong diagnosis
 
@@ -52,27 +58,34 @@ It didn’t.
 
 I kept tightening the prompts and tuning the loop, but I was polishing the wrong part of the machine. I was treating the failure like a model problem when it was really an architecture problem.
 
+*The prompt was not the product.*
+
 ## The real problem
 
 Eventually the thing snapped into focus. I wasn’t trying to build an agent. I was trying to build a workflow system and making it wear an agent costume.
 
-Those are not the same product.
+**Those are not the same product.**
 
 An agent framework is good at flexible reasoning, loose planning, and opportunistic tool use. A workflow system is good at state, boundaries, repeatability, and clean handoffs. If you ask one to pretend to be the other, you get the worst of both worlds: the uncertainty of a model with none of the discipline of a real pipeline.
 
 What I actually needed was not “smarter autonomy.” I needed a system that knew where work lived, what state it was in, when it was done, and how to tell me when it wasn’t.
 
+*That* is the difference between a demo and an operating system.
+
 ## What changed
 
 Once I stopped chasing the agent fantasy, the design got much simpler.
 
-I moved toward a boring stack on purpose. ChatGPT is useful for thinking and decomposition. Linear is useful for holding the actual task. Codex is useful for execution. Cursor is useful for refinement. None of them have to be everything.
+I moved toward a boring stack on purpose:
 
-That sounds less exciting than “fully autonomous agent.” It is less exciting. It is also more usable.
+- **ChatGPT** for thinking and decomposition
+- **Linear** for holding the actual task
+- **Codex** for execution
+- **Cursor** for refinement
 
-The shape of the work became clear:
+That sounds less exciting than a “fully autonomous agent.” It is less exciting. It is also more usable.
 
-I use ChatGPT to explore the problem and break it down. I put the resulting tasks into Linear so they have clear state and ownership. I hand implementation to Codex when there is an actual piece of work to do. Then I review the output and move forward.
+The shape of the work became clear. I use ChatGPT to explore the problem and break it down. I put the resulting tasks into Linear so they have clear state and ownership. I hand implementation to Codex when there is an actual piece of work to do. Then I review the output and move forward.
 
 No magic. Just a cleaner division of labor.
 
@@ -85,6 +98,8 @@ That difference is huge.
 It is the difference between asking a chef to cook in your head and running a kitchen with labeled stations. One sounds elegant. The other actually ships dinner.
 
 And the weird part is that the better system feels boring. That is not a flaw. That is usually the signal that the architecture is finally doing its job.
+
+> **Boring is often what reliability looks like.**
 
 ## What OpenClaw is actually good at
 
@@ -106,6 +121,8 @@ The better move is to start with structure and let the model fill in the gaps.
 
 That is the operating lesson I keep coming back to: the system should control execution. The model should help with reasoning inside that system. Not the other way around.
 
+> **System first. Model second.**
+
 ## Where this goes next
 
 I am still building from this workflow. The next thing I want is a small tool that turns email into a structured issue, routes it into Linear, hands it to Codex, and tracks the follow-up cleanly.
@@ -113,3 +130,5 @@ I am still building from this workflow. The next thing I want is a small tool th
 That is a much more interesting problem than “can I build a perfect agent.” It is also a much more useful one.
 
 I did not abandon the idea of AI agents. I just stopped asking them to solve the wrong problem.
+
+<u>That</u> is the part worth carrying forward.
