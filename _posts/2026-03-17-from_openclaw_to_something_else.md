@@ -18,11 +18,9 @@ slug: buil-ai-agent-solving-wrong-problem
 
 ## The idea
 
-A few weeks ago, I got pulled into the same temptation a lot of builders are feeling right now: if agents can plan, call tools, and keep going on their own, maybe the next layer of software is just “let the model handle it.” That sounds like leverage. It also sounds like the future.
+A few weeks ago, I got pulled into the same temptation a lot of builders are feeling right now: if agents can plan, call tools, and keep going on their own, maybe the next layer of software is just “let the model handle it.” That sounds like leverage. It also sounds like the future, so I built toward it. I wired up OpenClaw, added a task harness, set up a queue, and built a thin execution loop around it.
 
-So I built toward that future. I wired up OpenClaw, added a task harness, set up a queue, and built a thin execution loop around it. On paper, it looked like the right kind of system. In practice, it felt like trying to run a warehouse with a very confident intern who could talk a good game but kept losing the pallet jack.
-
-The early demos were convincing enough to keep me going. It could break work into steps. It could call tools. It could finish simple tasks. Every time it did something correctly, it felt like I was one prompt away from a clean autonomous workflow.
+On paper, it looked like the right kind of system. In practice, it felt like trying to run a warehouse with a very confident intern who could talk a good game but kept losing the pallet jack. The early demos were convincing enough to keep me going. It could break work into steps. It could call tools. It could finish simple tasks. Every time it did something correctly, it felt like I was one prompt away from a clean autonomous workflow.
 
 > **That was the trap.**
 
@@ -57,8 +55,6 @@ That is the classic builder reflex when a system gets flaky: add more scaffoldin
 It didn’t.
 
 I kept tightening the prompts and tuning the loop, but I was polishing the wrong part of the machine. I was treating the failure like a model problem when it was really an architecture problem.
-
-*The prompt was not the product.*
 
 ## The real problem
 
@@ -130,5 +126,3 @@ I am still building from this workflow. The next thing I want is a small tool th
 That is a much more interesting problem than “can I build a perfect agent.” It is also a much more useful one.
 
 I did not abandon the idea of AI agents. I just stopped asking them to solve the wrong problem.
-
-<u>That</u> is the part worth carrying forward.
