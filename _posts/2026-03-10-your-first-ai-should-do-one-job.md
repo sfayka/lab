@@ -129,13 +129,9 @@ A few mistakes show up over and over:
 - skipping golden tests
 - treating model confidence as the same thing as business safety
 
-That last one gets teams in trouble. A model can sound confident and still be operationally wrong.
-
-Ask me how I know.
+That last one gets teams in trouble. A model can sound confident and still be operationally wrong. I've watched a task come back marked complete with no output, no commit, nothing in the repo — just a status change and a system that had no way of knowing the difference between describing the work and doing it.
 
 ## Start Narrow, Then Earn More Surface Area
-
-Autonomous can wait. Trust cannot.
 
 Your first real win with agents is usually not flashy. It lives in a workflow you already hate. Something repetitive. Something annoying. Something that drains attention from people who should be doing better work. That is exactly where you start.
 

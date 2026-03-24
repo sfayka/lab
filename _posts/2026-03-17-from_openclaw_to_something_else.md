@@ -16,8 +16,6 @@ published: true
 slug: built-ai-agent-solving-wrong-problem
 ---
 
-## The idea
-
 A few weeks ago, I got pulled into the same temptation a lot of builders are feeling right now: if agents can plan, call tools, and keep going on their own, maybe the next layer of software is just “let the model handle it.” That sounds like leverage. It also sounds like the future, so I built toward it. I wired up OpenClaw, added a task harness, set up a queue, and built a thin execution loop around it.
 
 On paper, it looked like the right kind of system. In practice, it felt like trying to run a warehouse with a very confident intern who could talk a good game but kept losing the pallet jack. The early demos were convincing enough to keep me going. It could break work into steps. It could call tools. It could finish simple tasks. Every time it did something correctly, it felt like I was one prompt away from a clean autonomous workflow.
@@ -25,8 +23,6 @@ On paper, it looked like the right kind of system. In practice, it felt like try
 > **That was the trap.**
 
 The short version: **I built an agent when I needed a workflow**.
-
-## What I thought I was building
 
 I thought I was building an agent platform. That was the pitch in my head: give the system a task, let it decide how to get there, and let the model handle the messy middle.
 
@@ -36,17 +32,11 @@ And that is exactly what happened.
 
 <u>Less implementation</u> is not the same thing as <u>less operational burden</u>.
 
-## What actually happened
-
 The system wasn’t broken in a dramatic way. It didn’t crash every time or fail obviously. It failed in the annoying, expensive way that makes you question your own judgment. Tasks would stall halfway through. Outputs would come back half-finished. State would drift. Retries would behave differently depending on the mood of the loop. I had to keep checking what it was doing, which meant I never really got to trust it.
 
 The best way I can describe it is this: I had built something that looked like a conveyor belt, but it behaved like a conversation. It could talk about the package. It was not great at moving the package.
 
 That distinction matters. Conversations are flexible. Workflows are accountable. If you mix those two up, you end up with something that feels intelligent and acts fragile.
-
-> **Conversations are flexible. Workflows are accountable.**
-
-## The wrong diagnosis
 
 My first instinct was to blame the usual suspects. Maybe the prompts were weak. Maybe the task breakdown wasn’t clear enough. Maybe I needed better retries, more structure, more agents, one more layer of orchestration, one more abstraction to smooth things out.
 
@@ -55,8 +45,6 @@ That is the classic builder reflex when a system gets flaky: add more scaffoldin
 It didn’t.
 
 I kept tightening the prompts and tuning the loop, but I was polishing the wrong part of the machine. I was treating the failure like a model problem when it was really an architecture problem.
-
-## The real problem
 
 Eventually the thing snapped into focus. I wasn’t trying to build an agent. I was trying to build a workflow system and making it wear an agent costume.
 
@@ -85,8 +73,6 @@ The shape of the work became clear. I use ChatGPT to explore the problem and bre
 
 No magic. Just a cleaner division of labor.
 
-## The difference in practice
-
 The old setup felt like babysitting a very clever tool that might drift off the rails if I blinked. The new setup feels like operating a system. Progress is visible. Status is visible. Failures are legible. If something goes wrong, I can see where it happened instead of trying to reconstruct a trail of partial reasoning.
 
 That difference is huge.
@@ -95,13 +81,9 @@ It is the difference between asking a chef to cook in your head and running a ki
 
 And the weird part is that the better system feels boring. That is not a flaw. That is usually the signal that the architecture is finally doing its job.
 
-> **Boring is often what reliability looks like.**
-
 ## What OpenClaw is actually good at
 
-This is not a takedown of OpenClaw. It is useful. I still think it has a place.
-
-It works well for scheduled tasks, recurring summaries, lightweight automation, and other jobs that are narrow enough to tolerate some looseness. It is fine when the stakes are low and the path is short.
+OpenClaw has a place. It works well for scheduled tasks, recurring summaries, lightweight automation — jobs narrow enough to tolerate some looseness, where stakes are low and the path is short.
 
 Where it gets shaky is the territory where reliability matters more than novelty. Long-running tasks. Multi-step execution. Anything that needs a strong guarantee that state will hold together from beginning to end.
 

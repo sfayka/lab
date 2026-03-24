@@ -6,55 +6,46 @@ categories: [essays]
 description: "A transparent walkthrough of the operating model we actually run: approvals-first orchestration with OpenClaw and repo‑native changes with OpenAI Codex."
 ---
 
-This is a case study of how we operate AI in production at Knox Analytics today. It is not a vendor comparison; it is our stack and our process, with the controls we enforce.
+The first time we ran a Codex task without a tightly scoped recipe, it came back with a clean PR that touched three files. The target file — right. Two adjacent config files the model had decided might be relevant — wrong. Nothing broke, and the reviewer caught it, but that near-miss made something clear: we had been thinking about our AI operating model as a set of tools, not as a system with controls. The tools were fine. The controls weren't there yet.
 
-> Scope & disclosure: We run **OpenClaw** as the orchestration/gateway and **OpenAI Codex** for code/engineering work. We do **not** operate Perplexity in production. Anything mentioned outside this stack is presented only as an alternative pattern, not a claim of use.
+That's when we got serious about the actual mechanics.
 
-## Our operating model at a glance
-
-- **Orchestration (OpenClaw):** channel intake (Slack), routing rules, approval matrices, audit logs, kill‑switches, and weekly governance.
-- **Implementation (OpenAI Codex):** repo‑native edits with PRs, tests, and reviewer‑ready diffs; no direct merges, no prod deploys without human gate.
-- **No desktop/local agents in prod:** we avoid file‑system wide agents; where local checks are needed, we scope them to deterministic scripts.
+Here is the operating model we run today at Knox Analytics. This isn't an exhaustive framework or a vendor recommendation. It's our stack — OpenClaw for orchestration, OpenAI Codex for code work — and the specific controls we enforce around each piece.
 
 ## Channel intake and routing
 
-- Slack is the control surface. We collect triage signals (alerts, TODOs, brief prompts) and route them to owners.
-- OpenClaw enforces a **policy matrix**: who can approve which action classes, at what times, and in which channels.
-- We set conservative defaults: read‑only first, dry‑runs where available, and explicit timeboxes.
+Slack is our control surface. Triage signals — alerts, TODOs, short task prompts — come in through Slack and get routed to owners via OpenClaw. We enforce a policy matrix that defines who can approve which action classes, in which channels, at what times. Conservative defaults apply everywhere: read-only first, dry-runs where available, explicit timeboxes on anything with side effects. Nothing runs open-ended.
 
-## Approvals, audit, and kill‑switches
+The policy matrix isn't just documentation. It's what OpenClaw actually checks before allowing an action. That distinction matters — policy that doesn't gate behavior is just wishful thinking written down somewhere.
 
-- Every action with side‑effects requires an approval flow; approvals are logged with actor, scope, and expiry.
-- We keep an immutable action log and attach evidence (outputs/links) to decisions.
-- Any owner can trigger an emergency **pause** for a workflow family; resumption requires an explicit review.
+## Approvals, audit, and kill-switches
 
-## Code changes with OpenAI Codex
+Every action with side effects requires an explicit approval flow. Approvals are logged with the actor, the scope, and the expiry. We maintain an immutable action log and attach evidence — outputs, links, diffs — to each decision.
 
-- Codex proposes branch changes only. We require: PR, tests, lints, and reviewer sign‑off.
-- We scope Codex tasks to **bounded recipes** (e.g., dependency bump, selector fix, doc sync) with clear acceptance criteria.
-- We track outcomes with simple metrics: success rate, rework rate, and time‑to‑merge.
+Any team member can pause a workflow family immediately. Resumption requires a deliberate review, not just a timeout. That kill-switch sounds like an emergency feature, but we've used it for ordinary reasons too: pausing a recurring task during a high-traffic period, holding a flow while we update its recipe. Having it as a real control changes how you think about what it means to run something.
+
+## Code changes with Codex
+
+Codex proposes branch changes only. Every task requires a PR, passing tests, lint, and reviewer sign-off. We scope tasks to bounded recipes — dependency bumps, selector fixes, doc syncs — with explicit acceptance criteria that define what the model is and isn't allowed to touch.
+
+The scoping lesson from that first near-miss stayed with us. If a recipe doesn't define file scope explicitly, the model interprets its mandate broadly. That's not a flaw in the model — it's a gap in the task definition, and the task definition is our job. We tightened the recipe templates, added explicit file-scope constraints, and haven't had that problem since.
+
+We track three numbers per Codex workflow: success rate, rework rate, and time-to-merge. Those numbers tell us whether a recipe is working or needs tightening.
 
 ## Weekly governance cadence
 
-- A short standing review covers: last 7 days of logs, overrides, and exception root causes.
-- Thresholds and SLAs are tuned here (impact gates, escalation windows, retry limits).
-- We document 1–2 small process fixes each week; no “big bang” governance rewrites.
+Every week we run a short review of the past seven days: logs, overrides, and any exception root causes. Thresholds and SLAs get tuned here — impact gates, escalation windows, retry limits. We document one or two small process fixes per cycle and don't attempt large governance rewrites. Incremental adjustment is how this kind of system actually improves; big-bang governance rewrites rarely survive contact with next week's logs.
 
-## What we don’t do (yet)
+## What we don't do
 
-- No Perplexity Computer/Local in prod; no desktop‑wide agent privileges.
-- No unsupervised merges or deploys; prod actions always require a human gate.
-- No unlimited “memory” — we enforce TTL and keep context lean.
+No desktop-wide agent privileges, no file-system-wide automation in production. No unsupervised merges or deploys — production actions always require a human gate. No unbounded context; we enforce TTL on anything stored and keep the memory layer lean.
 
-## Alternatives we’d consider and when
+We're also not running Perplexity Local in production. Desktop automation is interesting, but it needs a tighter playbook than we've built yet. We'd rather wait until we have the right approval and rollback controls in place before adding it to the stack.
 
-- Desktop/Local assistants (e.g., Perplexity Local) for **design/QA** pilots that need browser/OS context — only with strict playbooks, approvals, and rollback drills.
-- Additional orchestration targets (ticketing/CRM) as volume grows — after logs/approvals prove stable.
+## Why this holds together
 
-## Why this works for us
+Every change in this system ties back to a log line, a PR, and a person. That's the property we care about most — not automation rate, not task volume, not how many things the model did without being asked. Accountability is the thing that makes the rest of it trustworthy.
 
-- It’s **explainable**: every change ties back to a log line, a PR, and a person.
-- It’s **incremental**: we add automation where rework falls, not where demos look good.
-- It’s **secure by default**: read‑only, dry‑run, timebox, and kill‑switch as table stakes.
+We add automation where rework falls, not where demos look good. That discipline is harder than it sounds — demos always look good.
 
-If you’re considering a similar path and want deeper detail (policies, templates, or runbooks), reach out — we’re happy to share patterns without sharing private code.
+If you're considering a similar path and want deeper detail on policies, templates, or runbooks, reach out. We're happy to share patterns without sharing private code.
