@@ -6,134 +6,84 @@ categories: [essays]
 published: true
 ---
 
-There’s a version of the story we keep telling about AI agents that sounds reasonable on the surface.
+There is a version of the AI agent story that sounds reasonable right up until you try to run real work through it. The models just are not there yet. They lose context, hallucinate, miss edge cases, and need another generation or two before autonomy becomes trustworthy.
 
-The models just aren’t there yet. They’re not reliable enough, they lose context, they hallucinate, they need better reasoning. Give it another release or two and everything will stabilize.
+I believed some version of that too, at least until I started using these systems on actual operating work instead of clean demos. Not toy prompts. Not one-off coding tricks. Real tasks tied to Linear tickets, repositories, status changes, and outputs that either exist or do not. I ran OpenClaw, experimented with Paperclip, wired pieces together, and let them operate with some level of autonomy.
 
-That explanation held up right until I started trying to use them for real work.
+That is when the standard explanation stopped holding up. The failures did not feel like intelligence failures. They felt like systems failures.
 
-Not demos. Not one-off prompts. Actual tasks tied to systems — Linear tickets, repositories, things that either ship or don’t. I ran OpenClaw, experimented with Paperclip, wired things together, and let them try to operate with some level of autonomy.
-
-That’s when the explanation stopped making sense.
-
-Because the failures weren’t about intelligence.
-
-They were about everything around it.
+> **The models are not the whole problem. The control layer is the problem.**
 
 ---
 
-The moment that really forced the issue for me was simple.
+The moment that forced the issue for me was not dramatic. A task got marked completed. There was no PR, no commit, no artifact, nothing in the repo, and nothing in Linear beyond the status change itself. Just a system confidently reporting that work had been done.
 
-A task was marked as completed.
+**Done according to what?**
 
-No PR. No commit. No artifact. Nothing in the repo. Nothing in Linear beyond a status change. Just a system confidently reporting that something had been done.
-
-Done according to what?
-
-If there’s no observable output, what exactly completed?
-
-It’s a small thing until you realize how often it happens.
+That question matters more than people think. If there is no observable output, then completion is just a feeling the system had about itself. That is fine in chat. It is useless in operations.
 
 ---
 
-Multi-step work is where it becomes impossible to ignore.
+The pattern gets harder to ignore once you move from single tasks to multi-step work. Ask an agent to handle something bounded and you will often get a reasonable result. Ask it to sequence work across stages, validate intermediate output, and integrate the result into a live workflow, and things start to drift. Steps get skipped. Context degrades. Progress stalls halfway through. You end up staring at the terminal trying to decide whether the system is still working or quietly stopped five minutes ago.
 
-Single tasks usually work. Ask for something bounded and you’ll often get a reasonable result. But as soon as the work requires sequencing — do this, then that, then validate, then integrate — things start to drift.
+That is the point where the autonomy story starts to fall apart. You check in, rephrase, restate the task, and nudge it forward. Eventually it becomes obvious that you are not delegating work. You are supervising a system that needs regular intervention to remain pointed in the right direction. That is not autonomy. It is managed drift.
 
-Steps get skipped. Context degrades. Progress stalls somewhere in the middle.
-
-And now you’re in this awkward position where you don’t know if it’s still working or quietly stopped five minutes ago.
-
-So you check in. You rephrase. You nudge it forward.
-
-At some point it becomes obvious you’re not delegating anything. You’re supervising a system that needs constant intervention to stay on track.
-
-That’s not autonomy. It just feels like it for the first few minutes.
+> **That is not autonomy. It is managed drift.**
 
 ---
 
-The silent failures are worse.
+The silent failures are worse than the obvious ones. At least a hard failure gives you something to respond to. A traceback is annoying, but it is legible. A silent stall is operational poison. These systems often just stop. No clear failure state. No retry policy you can trust. No explicit indicator of whether the task failed, stalled, or never actually started the important part.
 
-At least a hard failure gives you something to react to. These systems tend to just… stop. No clear failure state. No indication of what went wrong. No retry behavior.
+If you cannot tell whether a piece of work completed, failed, or stalled, then you do not really have a system. You have a conversation that sometimes produces useful artifacts.
 
-If you’re not watching closely, you won’t even know it didn’t finish.
-
-And if you can’t tell whether something completed, failed, or stalled, you don’t really have a system. You have a conversation that sometimes produces results.
+*A conversation is not a workflow.*
 
 ---
 
-The easy conclusion is that the models aren’t good enough.
+The easy conclusion is that the models are not capable enough yet. I do not think that fully survives contact with reality. The same models can write working code, break down problems, and fix their own mistakes when prompted correctly. They can clearly do useful work. The issue is not raw capability in the narrow sense. The issue is that almost none of the surrounding machinery makes that work reliable.
 
-But that doesn’t quite hold up.
+That distinction matters because it changes where the bottleneck actually lives. If the model can generate competent work but the system cannot define, track, verify, and complete that work consistently, then the model is not your first operational problem. Your control layer is.
 
-The same models can:
-- write working code
-- break down problems
-- fix their own errors when prompted correctly
-
-So the capability is there.
-
-What’s missing is everything that makes work *reliable*.
+> **If the model can do useful work but the system cannot verify it, your bottleneck is not intelligence. It is operations.**
 
 ---
 
-Right now, most agent setups rely on prompts as the interface for work.
+Right now, most agent setups still rely on prompts as the main interface for work. That is the architectural weakness hiding in plain sight. Prompts can describe intent, but they do not define a task model. They do not give you explicit lifecycle state. They do not tell you what completion means in a way another system can verify. They do not let you say, with confidence, that a task is done because evidence exists in the world beyond the model saying so.
 
-But prompts don’t define:
-- what the task actually is
-- what state it’s in
-- what completion means
+That is why chat-native systems feel impressive and fragile at the same time. They are good at producing output. They are much worse at carrying operational accountability.
 
-They don’t give you a way to say, with any confidence, “this is done.”
-
-They just produce output and move on.
-
-That’s fine for chat. It breaks down quickly for systems.
+**Prompts can express intent. They cannot carry accountability.**
 
 ---
 
-If you step back, the pattern is pretty consistent.
+If you step back, the pattern is consistent across tools. There is usually no structured task definition beyond a blob of instructions. Lifecycle tracking is thin or implied. Verification is weak. Completion is rarely tied to something concrete like a commit, a PR, a deployed artifact, or a state transition backed by evidence.
 
-There’s no structured task definition beyond a blob of instructions. No lifecycle tracking beyond whatever the tool decides to surface. No verification that ties completion to something real, like a commit or a PR.
-
-So everything becomes probabilistic.
-
-Sometimes it works. Sometimes it doesn’t. And you’re left filling in the gaps manually.
+So the whole workflow becomes probabilistic. Sometimes it works. Sometimes it drifts. Sometimes it says it worked and leaves nothing behind. Then a human steps in and patches the gap manually, which is the part people forget to count when they say the system is autonomous.
 
 ---
 
-OpenClaw is a good example of this.
+OpenClaw is a good example. If what you want is a capable chat-driven agent that can run scheduled work and handle lightweight flows, it is useful. It does what it is designed to do. But if you try to treat it like a system that can reliably execute multi-step work with minimal supervision and leave behind trustworthy outputs, you run into the same failure modes over and over again.
 
-If what you want is a capable chat-driven agent that can run scheduled work, it’s solid. It’s useful. It does exactly what it’s designed to do.
+That is not because OpenClaw is badly built. It is because people keep asking an agent shell to behave like a workflow engine with a real control plane.
 
-But if you try to treat it like a system that can reliably execute multi-step tasks and produce real outputs without supervision, you start running into the same problems over and over again.
-
-Not because it’s poorly built.
-
-Because that layer just isn’t there.
+*Agent shell* and *workflow engine* are not interchangeable categories.
 
 ---
 
-That’s the part that’s been missing in everything I’ve tried so far.
+That is the missing layer in almost everything I have tried so far. Not better reasoning. Not more autonomy. Not another agent framework. A control layer.
 
-Not better reasoning. Not more autonomy. Not another agent framework.
+The missing piece is something that defines tasks clearly, tracks lifecycle explicitly, and only considers work complete when there is real evidence the work happened. A PR exists. A commit landed. A document was generated. A ticket changed state because a verifiable artifact was attached to it. Until you have that layer, autonomy is mostly theater.
 
-A control layer.
+You do not have an autonomous system. You have a tool that looks autonomous as long as a human operator is standing nearby to keep the illusion intact.
 
-Something that defines tasks clearly, tracks their lifecycle explicitly, and only considers them complete when there’s actual evidence that the work happened.
-
-Until that exists, you don’t really have autonomous systems.
-
-You have tools that look autonomous, as long as you’re watching them closely.
+> **Until completion is tied to evidence, autonomy is mostly theater.**
 
 ---
 
-That’s the direction I’m moving in now with Harness.
+That is the direction I am moving in now with Harness. Not another agent. A system that sits around the agent and makes the work itself reliable.
 
-Not another agent.
+At this point, I do not think the model is the main bottleneck for a lot of teams trying to operationalize agents. The bottleneck is everything around it: task definition, state management, verification, routing, retries, and the discipline to treat completion as an evidence problem instead of a vibes problem.
 
-A system that sits around the agent and makes the work itself reliable.
+That is where the next real gains are going to come from. Not smarter demos. Better operating systems for work.
 
-Because at this point, the model isn’t the bottleneck.
-
-Everything around it is.
+> **Not smarter demos. Better operating systems for work.**
