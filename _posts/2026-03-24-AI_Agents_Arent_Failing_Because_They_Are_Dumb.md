@@ -2,6 +2,8 @@
 title: "AI Agents Aren’t Failing Because They’re Dumb"
 date: 2026-03-24
 tags: [ai, agents, systems, automation, harness]
+categories: [essays]
+published: true
 ---
 
 There’s a version of the story we keep telling about AI agents that sounds reasonable on the surface.
