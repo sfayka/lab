@@ -6,11 +6,15 @@ categories: [essays]
 description: "A pragmatic decision framework for CTOs and Ops leaders to standardize AI agents across orchestration, implementation, and desktop automation—without sacrificing control."
 ---
 
-> Disclosure: At Knox Analytics we operate OpenClaw + OpenAI Codex. We do not currently use Perplexity in production. This article is a vendor‑agnostic framework to help teams decide which tool fits which lane and why.
+A few months ago, we were running six different AI automations — some in OpenClaw, some in scripts wired to Slack, a few things connected to Claude directly — and we couldn’t answer a basic question: which ones are safe to let run without someone checking them first?
+
+That question exposed the real problem. We didn’t have a system. We had a pile of integrations, each with its own approval story and its own risk profile. None of them talked to each other, and nobody could say with confidence which ones needed human eyes and which could run on their own. When something went wrong, we were reconstructing context from Slack messages and guessing.
+
+The framework below is how we answered that. It isn’t about picking the right tool — that question changes every month. It’s about routing work by risk, so the automation that can run does run, and the automation that needs a human gets one.
 
 In 2026, autonomy is cheap. Trust is not.
 
-This piece turns the “AI pilot” into an operating system teams can actually run. The idea is simple: don’t debate tools in the abstract—route work by risk envelope and workflow type.
+The idea is simple: don’t debate tools in the abstract — route work by risk envelope and workflow type.
 
 This framework uses three lanes:
 

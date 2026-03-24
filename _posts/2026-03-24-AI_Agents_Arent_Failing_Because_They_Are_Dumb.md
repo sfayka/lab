@@ -25,8 +25,7 @@ The pattern gets harder to ignore once you move from single tasks to multi-step 
 
 That is the point where the autonomy story starts to fall apart. You check in, rephrase, restate the task, and nudge it forward. Eventually it becomes obvious that you are not delegating work. You are supervising a system that needs regular intervention to remain pointed in the right direction. That is not autonomy. It is managed drift.
 
-> **That is not autonomy. It is managed drift.**
-
+---
 
 The silent failures are worse than the obvious ones. At least a hard failure gives you something to respond to. A traceback is annoying, but it is legible. A silent stall is operational poison. These systems often just stop. No clear failure state. No retry policy you can trust. No explicit indicator of whether the task failed, stalled, or never actually started the important part.
 
@@ -66,11 +65,8 @@ You do not have an autonomous system. You have a tool that looks autonomous as l
 > **Until completion is tied to evidence, autonomy is mostly theater.**
 
 
-That is the direction I am moving in now with Harness. Not another agent. A system that sits around the agent and makes the work itself reliable.
+That is the direction this work has to go. Not a smarter model or another agent framework. A control layer that defines work clearly, tracks state explicitly, and only considers a task complete when there is real evidence in the world that it happened.
 
-At this point, I do not think the model is the main bottleneck for a lot of teams trying to operationalize agents. The bottleneck is everything around it: task definition, state management, verification, routing, retries, and the discipline to treat completion as an evidence problem instead of a vibes problem.
+The bottleneck for most teams trying to operationalize agents isn't the model. It's everything around it: task definition, state management, verification, routing, retries, and the discipline to treat completion as an evidence problem instead of a confidence one.
 
 That is where the next real gains are going to come from. Not smarter demos. Better operating systems for work.
-
-> **Not smarter demos. Better operating systems for work.**
-
