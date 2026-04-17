@@ -2,26 +2,39 @@
 
 ## Writing Style For Article Revisions
 
-When revising or drafting articles in this repo, default to Sean's published voice and cadence.
+When revising or drafting articles in this repo, default to Sean's published operator-founder voice and cadence.
 
-Reference posts:
-- `/Users/ssbob/Developer/lab/_posts/2026-02-16-your-ai-agent-can-code-it-cant-design.md`
-- `/Users/ssbob/Developer/lab/_posts/2026-02-17-two-ai-agents-as-my-design-and-engineering-team.md`
-- `/Users/ssbob/Developer/lab/_posts/2026-03-06-the-model-changed-again-your-ops-didnt.md`
+Reference material:
+- `/Users/ssbob/Documents/Developer/Knox_Analytics/lab/_posts/2026-03-25-build-me-a-1m-arr-product.md`
+- `/Users/ssbob/Documents/Developer/Knox_Analytics/lab/_posts/2026-03-17-from_openclaw_to_something_else.md`
+- `/Users/ssbob/Documents/Developer/Knox_Analytics/lab/_posts/2026-02-15-hardening-openclaw.md`
+- `/Users/ssbob/Documents/Developer/Knox_Analytics/lab/_posts/2026-02-05-the-microservices-moment-for-ai.md`
+- `/Users/ssbob/Documents/Developer/Knox_Analytics/lab/_posts/2026-02-05-why-2026-is-the-year-of-boring-ai.md`
+- Full synthesized guide: `/Users/ssbob/.hermes/notes/sean-writing-style-guide.md`
+- Hermes skill: `sean-writing-style`
 
-Style rules:
-- Write in paragraphs, not stacked one-line sentences. Use a single short line only when it lands a point.
-- Lead with a hard claim or opinion, then earn it with concrete examples and operational detail.
-- Avoid checklist-post energy. The shape should usually be: strong thesis, lived example, practical implication.
-- Prefer operator/founder language over generic AI-blog language.
-- Keep the tone direct, opinionated, and pragmatic. Do not sound like a neutral explainer.
-- Use concrete failure modes, tradeoffs, and workflow examples. Avoid abstract framework language unless it is clearly necessary.
-- Favor "what actually happens in production" over hype, trend summaries, or generic futurism.
-- Keep articles grounded in Knox Analytics themes: orchestration, applied AI software, workflow design, human review, routing, reliability, governance, and business consequences for SMBs.
-- Do not overuse punchy fragments. Sean does use them, but sparingly.
-- If an article includes tactics, they should support the argument, not replace it.
+Voice rules:
+- Write like an operator-founder, not a neutral analyst.
+- Be direct, opinionated, pragmatic, and skeptical of hype.
+- Start with a hard claim, contrarian thesis, or concrete production mismatch.
+- Earn the claim with workflow detail, failure modes, system behavior, and business consequences.
+- Prefer real systems language: PRs, queues, routing, permissions, review loops, audit trails, state transitions, and trust boundaries.
+- Keep abstractions attached to a concrete picture of how the system works.
+- Use personal experience when it sharpens the argument, not to drift into memoir.
+- Favor "what breaks in production" over trend-summary writing.
+- Use short punch lines sparingly; the default unit is still a well-shaped paragraph.
+- If a post includes tactics, they should support the thesis rather than replace it.
+
+Default structure:
+1. Strong claim or failure moment.
+2. Why the common framing is wrong.
+3. The real problem.
+4. Practical implications in concrete operating language.
+5. A strong close that lands on an operating lesson or decision rule.
 
 Editing guidance:
-- When a draft feels too AI-written, compress the abstractions, add concrete examples, and remove generic scaffolding language.
-- If a post starts sounding like a framework doc or consultant checklist, rewrite it back into an essay with a point of view.
-- Keep the close strong. End on an operating lesson, decision rule, or hard-earned conclusion.
+- If a draft feels AI-written, compress abstractions and generic scaffolding.
+- Add concrete examples, workflow details, and real tradeoffs.
+- Replace consultant/checklist energy with a point of view.
+- Look for places to sharpen contrast: "On paper... In practice..." or "The problem is not X. The problem is Y."
+- Make sure the ending is stronger and more specific than the opening.
