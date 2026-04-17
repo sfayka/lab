@@ -15,6 +15,8 @@ This is the failure mode that never makes the demo. Not a hallucination, not a c
 
 ---
 
+## The Failure Mode That Looks Clean
+
 The mechanics are straightforward enough. An agent executes a task, produces some output or believes it did, and reports a result back to whatever manages the work. If the task management layer accepts that report at face value — and most do, because most systems weren't designed to do otherwise — then completion becomes whatever the executor believed it was. Not what evidence in the external world confirms. Not what a second system can verify independently. The agent's self-assessment, laundered through a status field into a fact.
 
 Most tools in the current ecosystem work this way whether they say so or not. The agent executes the task and reports on the task, which is a subtle conflict of interest that doesn't matter until it really does. Linear doesn't know what happened in the repository. GitHub doesn't know what the agent put in Linear. The agent knows what it intended to do, and it's confident it did it, and that confidence flows upstream as ground truth.
@@ -35,6 +37,8 @@ The task overview captures this in aggregate. Across a handful of tasks you can 
 
 ---
 
+## What A Good Completion Looks Like
+
 To understand what the system does with a real problem, it helps to see what it does with a clean one first.
 
 ![Harness accepted completion detail — Linear passed, GitHub artifacts present, all systems aligned](/assets/images/harness/02-accepted-completion-detail.png)
@@ -44,6 +48,8 @@ The accepted completion case shows a task where the evidence held up. The verifi
 That's the baseline. The interesting case is when the chain breaks.
 
 ---
+
+## Where Most Systems Would Wave It Through
 
 ![Harness task detail: dryrun review kno 133 db v4 — verification rejected, reconciliation mismatch, outcome blocked](/assets/images/harness-2/05-hero-shot.png)
 
@@ -58,6 +64,8 @@ The task didn't silently proceed. It didn't mark itself complete on the agent's 
 This is what most systems would not do.
 
 ---
+
+## Evidence Is Verdict
 
 There's a line in the verification panel worth sitting with: "executor-reported success was treated as advisory input only." That's not a hedge or a legal disclaimer. It's the architectural stance the entire system runs on. Every task, whether it completes cleanly or gets blocked, goes through the same evaluation. The executor's report is input. Evidence is verdict.
 
@@ -78,6 +86,8 @@ That's what the `in_review` state represents. Not an error waiting to be correct
 That's more information than most systems provide about their cleanest completions, let alone their ambiguous ones. A human reviewer can look at this and make a decision. They can go to Linear, find or create the record, confirm the schema review happened, and close the task. Or they can find that the review didn't actually complete and route it back for re-execution. Either way, they're working with an honest accounting of what the system knows rather than a confident status update that buried the uncertainty.
 
 ---
+
+## Why This Gets More Expensive At Scale
 
 Scale this pattern up and the argument becomes easier to see. Multi-agent pipelines compound optimistic assumptions. Each layer inherits whatever the previous layer chose to believe. Each layer trusts the layer beneath it, which means a bad completion at layer one propagates forward until something visible breaks — often several steps later, in a context where the original failure is hard to trace. The earlier you catch a bad completion, the cheaper the correction. The later it surfaces, the more expensive it becomes to unwind.
 

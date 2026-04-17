@@ -24,6 +24,8 @@ The instinct in that moment is to reach for the prompt. Rewrite the instructions
 
 ---
 
+## Capability And Reliability Are Different Problems
+
 Capable and reliable are different problems. The industry has spent enormous effort on the first one and almost none on the second. That's not a criticism — capability was the necessary first move. But we're past the point where capability is the bottleneck for most practical work. The models can write code, analyze documents, break down problems, and recover from their own mistakes when given the right structure. That's been true for a while. What hasn't caught up is the infrastructure that makes that capability trustworthy at the task level.
 
 Claudius didn't fail because it wasn't smart enough. It nearly signed an illegal onion futures contract — not a typo, *onion futures* — because nothing in the system stopped it from doing so. It proposed contacting a thief to negotiate payment for stolen goods because helpfulness, untethered from policy, looks an awful lot like terrible judgment. It almost handed the company over to an impersonator through a procedural loophole that any mildly skeptical human would have caught in about four seconds. These weren't intelligence failures. They were control failures. The model understood what it was being asked to do. The system around it had no mechanism to say *not like that.*
@@ -38,6 +40,8 @@ Worth noting: Anthropic calls this control architecture a "harness" too. Apparen
 
 ---
 
+## Why This Matters Now
+
 This starts to matter more as the tools that manage work get serious about AI. The trajectory for something like Linear isn't "AI helps you write tickets faster." It's AI that can intake, triage, assign, and close work with minimal human touch across an entire engineering cycle. That's a real direction and, frankly, an interesting one. But it only pays off if someone answers the question that's currently going unanswered: how does the system know when work is actually done?
 
 Right now the honest answer is: the agent said so. Sometimes there's a commit attached. Sometimes there isn't. The task tracker and the repository have no reliable relationship with each other — they're just two systems that occasionally agree when a human manually keeps them in sync. At a small scale that's annoying. At the scale those tools are building toward, it's a structural problem that sits underneath everything else.
@@ -45,6 +49,8 @@ Right now the honest answer is: the agent said so. Sometimes there's a commit at
 Anthropic's own [autonomy research](https://www.anthropic.com/research/measuring-agent-autonomy) makes this concrete: the 99.9th percentile of Claude Code sessions went from under 25 minutes of autonomous operation to over 45 in just three months. Sessions are getting longer. The blast radius of an unverified completion is getting bigger. That's not a reason to slow down — it's a reason to build the accountability layer before you need it, not after.
 
 ---
+
+## The Missing Product Layer
 
 The layer that's missing isn't a smarter agent. It's a control plane that treats completion as an evidence problem instead of a confidence one. Something that defines work clearly — what it means to finish this task, in this repository, against these acceptance criteria — tracks state explicitly through execution, and only closes the loop when there's something in the world to point to. A PR that exists. A commit that landed. A deployed artifact. A state change with an attached record rather than a status update floating free of any evidence.
 
