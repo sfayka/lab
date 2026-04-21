@@ -4,7 +4,7 @@ date: 2026-04-17
 tags: [ai, agents, smb, automation, harness, operations]
 categories: [essays]
 layout: post
-published: false
+published: true
 ---
 
 Small businesses do not need more AI. They need better operators.
