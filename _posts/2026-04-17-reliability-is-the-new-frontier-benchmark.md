@@ -4,7 +4,7 @@ date: 2026-04-17
 tags: [ai, agents, reliability, harness, automation, control-plane]
 categories: [essays]
 layout: post
-published: true
+published: false
 ---
 
 The next real benchmark for AI agents is not intelligence. It is reliability.
