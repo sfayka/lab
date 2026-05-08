@@ -7,7 +7,7 @@
 - [x] Check current external signals on MCP governance and secure agent access.
 - [x] Draft an unpublished article for issue #44.
 - [x] Run the smallest relevant verification for the site.
-- [ ] Commit, push, and open a PR for review.
+- [x] Commit, push, and open a PR for review.
 
 ## Brief Spec
 
@@ -20,3 +20,4 @@ Draft a Lab article arguing that MCP's durable product surface is not connector 
 - `npm run build` then failed inside the sandbox because Next could not fetch Google font assets.
 - `npm run build` passed with escalated network access for the font fetch.
 - Generated build/dependency files were removed and `tsconfig.json` was restored so the PR stays focused on the article draft and task notes.
+- PR opened for review: https://github.com/sfayka/lab/pull/50
