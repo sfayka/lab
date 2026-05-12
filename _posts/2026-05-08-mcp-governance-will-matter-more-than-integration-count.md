@@ -7,6 +7,8 @@ layout: post
 published: false
 ---
 
+![Editorial hero image for MCP governance, permissions, trust boundaries, and audit trails]({{ "/images/generated/hermes/mcp-governance-hero.png" | relative_url }})
+
 The next MCP fight is not going to be about who has the longest connector list.
 
 That is the easy scoreboard. It is also the least useful one. A tool catalog tells you what an agent can reach. It does not tell you what the system should trust, who approved the action, which permissions traveled with the request, or what happens when a low-trust input gets routed into a high-trust workflow.
