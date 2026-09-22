@@ -4,7 +4,7 @@ title: "The 90‑Day AI Reality Check: Cut Costs with SLMs, Ship Narrow Agents, 
 description: "A practical 90-day plan to replace bloated AI workflows with small, scoped agents, reduce spend, and stay closer to compliance with a realistic, measurable path."
 date: 2026-03-09 10:05:00 -0400
 tags: [ai, strategy, slm, agents, compliance]
-categories: [lab]
+categories: [essays]
 published: true
 ---
 
