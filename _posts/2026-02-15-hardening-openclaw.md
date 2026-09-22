@@ -1,12 +1,10 @@
 ---
 layout: post
-title: "Hardening Openclaw for my 2nd Employee"
+title: "Hardening OpenClaw for My 2nd Employee"
 date: 2026-02-15
 categories: [essays]
 published: true
 ---
-
-## I Set Up OpenClaw as an Autonomous Business Agent — Here’s How I Secured It
 
 OpenClaw is suddenly everywhere. The project’s gaining serious traction, the ecosystem is expanding fast, and a lot of people are spinning it up with default settings just to see what it can do.
 
