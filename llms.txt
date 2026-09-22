@@ -1,0 +1,19 @@
+# Knox Analytics Lab
+
+> Practical writing from Knox Analytics on AI strategy, agent operations, and shipping software that holds up for SMBs.
+
+## Entity
+
+- Site: https://lab.knoxanalytics.com
+- Parent: https://knoxanalytics.com (Knox Analytics consulting + software studio)
+- Contact: hello@knoxanalytics.com
+
+## What this site is
+
+Knox Analytics Lab publishes essays and experiments about AI ops, agents, review gates, and production workflows. It supports the parent consulting practice — strategy and implementation for SMBs — with public, ungated writing.
+
+## Related
+
+- Main site (services / contact): https://knoxanalytics.com
+- Feed: https://lab.knoxanalytics.com/feed.xml
+- Sitemap: https://lab.knoxanalytics.com/sitemap.xml
