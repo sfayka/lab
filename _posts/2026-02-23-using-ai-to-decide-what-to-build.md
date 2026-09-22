@@ -33,7 +33,7 @@ We needed broader signal, faster — and something better than gut feel plus vib
 
 We gave the agent a very specific brief:
 
-> "Survey the current AI tools landscape for small businesses and agencies. Focus on: what tools exist, what problems they claim to solve, what the most common complaints are in reviews and forums, and where there are obvious gaps between what users need and what's currently available. Prioritize Reddit, HN, G2, and Capterra. Return a structured gap analysis."
+> "Survey current AI tools for small businesses and agencies. Focus on: what tools exist, what problems they claim to solve, what the most common complaints are in reviews and forums, and where there are obvious gaps between what users need and what's currently available. Prioritize Reddit, HN, G2, and Capterra. Return a structured gap analysis."
 
 Then we let it do a multi-step run: search, read, cluster complaints, and synthesize themes.
 
@@ -85,5 +85,10 @@ That said, this only worked because the agent had context from real client work.
 
 The report didn't hand us a roadmap. It gave us a better set of questions, and that was enough to choose the next build with more confidence.
 
+---
 
-That's the loop.
+## What we built next
+
+<!-- SEAN: Name the actual next build (product / workflow / experiment), why this gap analysis pointed there, and what you learned in the first shipping window. Do not invent a product — leave blank until filled. -->
+
+That's the loop: signal → a sharper question → a real bet → receipts.
