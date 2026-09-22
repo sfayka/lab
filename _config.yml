@@ -1,5 +1,8 @@
 title: Knox Analytics Lab
-description: Where we break things, build things, and write about it.
+description: >-
+  Practical writing from Knox Analytics on AI strategy, agent operations,
+  and shipping software that holds up for SMBs. Technical experiments and
+  honest analysis — no fluff, no gated content.
 author: Knox Analytics
 url: https://lab.knoxanalytics.com
 
@@ -15,7 +18,28 @@ permalink: /posts/:title/
 
 plugins:
   - jekyll-paginate
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+feed:
+  title: Knox Analytics Lab
+  description: Essays and experiments on AI ops, agents, and shipping software.
 
 exclude:
   - Gemfile
   - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - pnpm-lock.yaml
+  - next.config.mjs
+  - tsconfig.json
+  - components.json
+  - app
+  - components
+  - hooks
+  - lib
+  - styles
+  - tasks
+  - distribution

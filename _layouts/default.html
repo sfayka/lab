@@ -4,14 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-  <meta name="description"
-    content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  {% seo %}
   <meta name="author" content="{{ site.author }}">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <link rel="icon" type="image/svg+xml" href="{{ '/favicon-ka.svg?v=2' | relative_url }}">
   <link rel="shortcut icon" href="{{ '/favicon-ka.svg?v=2' | relative_url }}">
   <link rel="apple-touch-icon" href="{{ '/apple-touch-icon.png' | relative_url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="{{ '/feed.xml' | absolute_url }}">
 </head>
 
 <body>
@@ -48,6 +47,7 @@
       <p class="footer-text">&copy; {{ site.time | date: '%Y' }} {{ site.author }}</p>
       <div class="footer-links">
         <a href="https://knoxanalytics.com">knoxanalytics.com</a>
+        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
         <a href="https://github.com/sfayka">GitHub</a>
       </div>
     </div>

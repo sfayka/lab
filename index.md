@@ -5,7 +5,8 @@ layout: default
 <div class="hero container">
   <p class="hero-label">Knox Analytics Lab</p>
   <h1>Where we break things, build things, and write about it.</h1>
-  <p>Technical experiments and honest analysis. No fluff, no gated content.</p>
+  <p>Practical notes on AI strategy, agent ops, and shipping software for SMBs. Technical experiments and honest analysis. No fluff, no gated content.</p>
+  <p><a href="https://knoxanalytics.com">Looking for AI strategy or implementation help?</a> That lives on the main Knox Analytics site.</p>
 </div>
 
 <div class="posts-section container">
