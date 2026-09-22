@@ -2,10 +2,7 @@
 layout: post
 title: "I Built an AI Agent. I Was Solving the Wrong Problem."
 date: 2026-03-17
-categories:
-   - lab
-   - ai
-   - automation
+categories: [essays]
 tags:
    - openclaw
    - codex
