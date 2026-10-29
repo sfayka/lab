@@ -6,5 +6,5 @@ permalink: /essays/
 
 Longer writing and notes.
 
-{% assign essays = site.posts | where_exp: "p", "p.categories contains 'essays'" %}
+{% assign essays = site.posts %}
 {% include post-list.html posts=essays %}
