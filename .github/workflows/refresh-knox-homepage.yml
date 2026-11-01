@@ -1,0 +1,26 @@
+# After the Lab publishes, ask Cloudflare Pages to rebuild knoxanalytics.com
+# so the "From the Lab" cards on the homepage pick up new posts.
+# Inert until a KNOX_CF_DEPLOY_HOOK repo secret is added
+# (Cloudflare Pages > knoxanalyticsv2 > Settings > Builds > Deploy hooks).
+name: Refresh Knox homepage Lab cards
+
+on:
+  page_build:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger knoxanalytics.com rebuild
+        env:
+          HOOK: ${{ secrets.KNOX_CF_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK" ]; then
+            echo "KNOX_CF_DEPLOY_HOOK is not set; skipping."
+            exit 0
+          fi
+          curl -fsS -X POST "$HOOK" > /dev/null
+          echo "Rebuild requested."
