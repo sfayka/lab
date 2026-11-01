@@ -16,6 +16,13 @@ paginate_path: /page:num/
 
 permalink: /posts/:title/
 
+# Default share image (1200x630) for pages and posts without their own `image:`
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-image.png
+
 plugins:
   - jekyll-paginate
   - jekyll-feed
@@ -36,10 +43,21 @@ exclude:
   - next.config.mjs
   - tsconfig.json
   - components.json
-  - app
+  - app/
   - components
   - hooks
   - lib
   - styles
   - tasks
   - distribution
+  - postcss.config.mjs
+  # Repo docs and templates: useful on GitHub, not as public pages
+  - README.md
+  - AGENTS.md
+  - EXPERIMENTS_GUIDE.md
+  - MAINTENANCE.md
+  - MAINTENANCE_CHECKLIST.md
+  - NOW_PAGE_GUIDE.md
+  - POSTS_GUIDE.md
+  - QUICK_START.md
+  - now.md.template
