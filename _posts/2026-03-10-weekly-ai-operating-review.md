@@ -6,69 +6,72 @@ categories: [essays]
 published: true
 ---
 
-Most SMB AI initiatives fail quietly: teams assume agents “just work” because dashboards look green. In reality, model behavior drifts, integrations fail, and humans drift into unsafe exceptions when workload spikes. A short, repeatable weekly operating review catches that drift before it becomes revenue leakage.
+Most SMB AI pilots don't blow up. They rot.
 
-## Why this matters now
+Dashboards stay green. Someone says the agent is "working." Meanwhile exceptions stack up, reviewers quietly absorb the mess, and cost-per-task creeps until nobody wants to open the bill.
 
-- Without a recurring review, small agent regressions compound into escalating exception rates and rising support overhead.
-- SMB teams usually optimize for launch metrics (feature usage) rather than operating metrics (rework, escalations, cost leakage).
-- Weekly cadence is frequent enough to correct drift, but lightweight enough for small teams.
+A short weekly operating review is how you catch that drift before it shows up as missed SLAs, burned reviewers, or a quiet decision to shelve the whole thing.
 
-## Sections
+This is not a vendor checklist. It's a scorecard and a 60-minute ritual. Fill it with your numbers, your owners, and one real incident from the past week — or don't bother running it.
 
-### 1) Define a true AI operating scorecard
+<!-- SEAN: Optional opener beat — one concrete Knox week (what broke, who caught it, what the scorecard would have shown). No invented metrics. -->
 
-- Track core metrics: exception rate, escalation volume, cost per task, review load, latency, rework.
-- Add segment-level slices by workflow (support, sales, finance, internal ops).
-- Set baseline week-over-week and explicit “red/amber/green” thresholds.
+## The scorecard (one page)
 
-### 2) Monitor exception quality, not just count
+Track these every week for the workflows that actually touch customers or money. If a metric isn't owned, it doesn't count.
 
-- Exception rate = handled by humans / total automated attempts.
-- Classify exceptions by root cause: model hallucination, tool failure, policy gap, stale data, orchestration bug.
-- Prioritize by “cost-weighted exception impact,” not raw frequency.
+| Signal | What it means | Baseline / threshold | Owner |
+| --- | --- | --- | --- |
+| Exception rate | Humans handling work the agent attempted | <!-- SEAN: your baseline + red line --> | <!-- SEAN: name --> |
+| Escalation volume | Tickets / tasks that left the happy path | <!-- SEAN --> | <!-- SEAN --> |
+| Review load | Queue depth × avg review time | <!-- SEAN --> | <!-- SEAN --> |
+| Cost per completed task | Model + tool + human fix time | <!-- SEAN --> | <!-- SEAN --> |
+| First-time-right rate | Completed without rework | <!-- SEAN --> | <!-- SEAN --> |
+| Latency (p50 / p95) | End-to-end, not just model call | <!-- SEAN --> | <!-- SEAN --> |
 
-### 3) Track review load as a capacity metric
+Slice by workflow if you run more than one lane (support, intake, finance, internal ops). A blended average hides the lane that's on fire.
 
-- Review load = manual queue volume + average review time + reviewer throughput.
-- Break out by route: escalations from automatic agents vs direct human requests.
-- Watch for “silent overload”: rising queue size with flat throughput (hidden burnout signal).
+### Exception quality beats exception count
 
-### 4) Latency and reliability in context
+Don't just count failures. Tag them:
 
-- Measure both end-to-end latency and per-step latency (LLM call, tool call, queue wait, human review).
-- Separate reliability into completion success rate and “first-time-right” completion.
-- Correlate latency spikes with specific integration dependencies.
+- model miss / hallucination
+- tool or integration failure
+- policy gap
+- stale data
+- orchestration bug (routing, handoff, state)
 
-### 5) Cost and quality controls
+Prioritize by cost-weighted impact, not frequency. Ten cheap misses are not the same as one expensive silent wrong answer.
 
-- Track cost per task by model, model tier, and workflow stage.
-- Calculate rework cost: manual fix time × impacted tasks.
-- Compare cost/performance deltas when changing routing, model size, or prompt strategy.
+<!-- SEAN: Drop your top 3 exception classes from a recent Knox week, with rough cost or time impact if you have it. -->
 
-### 6) Weekly review ritual (60–75 minutes)
+## The 60-minute agenda
 
-- Monday scorecard review by ops + process owner + team lead.
-- 20-minute root-cause deep-dive on top 3 regressions.
-- 20-minute action planning: policy changes, guardrail updates, retraining/retuning targets.
-- 15-minute owner assignment + verification due dates for next review.
+Keep the room small: ops owner, process owner, one engineer who can change routing/prompts/guardrails.
 
-## Failure modes to avoid
+| Block | Time | What you do |
+| --- | --- | --- |
+| Scorecard | 15 min | Red / amber / green vs last week. No storytelling yet. |
+| Top regressions | 20 min | Root-cause the top 1–3 drifts. Pick a class, not a vibe. |
+| Actions | 15 min | Policy, guardrail, routing, or prompt change — one change per owner. |
+| Commit | 10 min | Owner + verification date before next review. Write it down. |
 
-- Reviewing dashboards without defining “acceptable drift windows.”
-- Tracking only accuracy and ignoring cost and review burden.
-- Deferring exception analysis to ad hoc post-incident meetings.
-- Confusing high automation percentage with high reliability.
-- Changing prompts/models without controlled measurement windows.
+If you need 90 minutes every week, the system is too opaque. Fix instrumentation, not the meeting length.
 
-## Operating decision or implementation lesson
+<!-- SEAN: Paste a real past agenda (or redact one) so readers see how Knox runs this, not a template. -->
 
-**Institutionalize a weekly AI operating review with a fixed scorecard and owner, so every exception class gets a root cause, owner action, and verification date before the next cycle.**
+## Failure modes
 
-## References
+- Green dashboards with undefined drift windows
+- Accuracy theater that ignores cost and review burden
+- Exception analysis only after incidents
+- High automation % mistaken for reliability
+- Prompt/model swaps with no measurement window
 
-- <https://learn.microsoft.com/azure/architecture/ai-ml/>
-- <https://www.ibm.com/topics/ai-governance>
-- <https://www.pinecone.io/learn/generative-ai/ai-observability/>
-- <https://www.langchain.com/>  
-- <https://www.honeycomb.io/blog/incident-review/>
+## Close
+
+Run the review. Name an owner. Give every exception class a cause, an action, and a date you will check again.
+
+If you can't fill the scorecard with real numbers this week, that *is* the finding.
+
+<!-- SEAN: Closing line with Lab voice — optional one-sentence Knox conviction, still no invented KPIs. -->
